@@ -1,0 +1,119 @@
+# {{MARKET_NAME}}
+
+{{MARKET_NAME}} is a collection of Fayegram plugins for coding, image work, and
+browser UI work. Install the packages you need, then use their focused skills
+to give your assistant a clear task, workflow, and expected result.
+
+The repository carries Codex, Grok, and Antigravity-compatible marketplace
+formats. Your host supplies the model, tools, account, and execution permissions;
+each skill explains the additional requirements for its workflow.
+
+{{REPOSITORY}}
+
+Distribution channel: **{{RELEASE}}**. The channel label is separate from native
+package versions and does not establish whether this candidate is published.
+{{SETUP}}
+
+## Choose a Plugin
+
+{{PLUGIN_SUMMARIES}}
+
+Each package includes its own instructions, requirements, usage guidance, and
+license. Follow a package link above for its workflows and examples, or browse
+the [complete skill inventory](plugins/README.md). Coming-soon website listings
+are not installable packages.
+
+<details>
+<summary>Complete skill inventory</summary>
+
+{{INVENTORY}}
+
+</details>
+
+## Getting Started
+
+1. Obtain this repository's checkout and open a terminal at its root.
+2. Choose your host below and follow its installation steps. Install only the plugins you need.
+3. Start a fresh host session, confirm skill discovery, and read the chosen skill's requirements before your first request.
+
+{{HOST_SETUP}}
+
+{{AGENT_SETUP}}
+
+Install the host and sign in before using its native installation commands.
+Plugin installation supplies package files; it does not supply host tools,
+accounts, or optional runtimes. Each skill documents the tools it needs and
+whether explicit invocation is required.
+
+## Use a Skill
+
+Choose a skill for the task you actually want to perform. Skills distinguish
+analysis, planning, implementation, review, and other workflows; an analysis
+request does not authorize changes. Provide the relevant repository, files,
+images, or running UI, your desired result, and any constraints.
+
+{{STARTER_REQUEST}}
+
+Use your host's native skill selection or invocation syntax. Codex examples may
+use `$skill-name`; other hosts have their own interfaces and syntax. Follow the
+specific skill's activation rules rather than copying another host's command.
+The website's skill pages offer practical examples and requirements.
+
+Bundled agents, scripts, and reference files support their owning skills. They
+are not separate plugins or interchangeable user commands. Installation and
+discovery alone do not prove that a host can execute every packaged workflow.
+
+Website invocation guidance is described by the resolved presentation policy in
+`market-info/manifest.json`. A platform with undocumented examples is not a claim
+of incompatibility. Website examples cannot override a package's explicit
+activation requirements, and selecting a platform does not change package files.
+
+## Updates and Troubleshooting
+
+When updating, compare the installed package's source and version with the
+checkout you intend to use, then follow your host's supported update or import
+procedure. Keep unrelated registrations and settings intact. A fresh session may
+be needed to discover new skills.
+
+{{TROUBLESHOOTING}}
+
+Include your host and version, plugin ID and version, the requested skill, and
+the observed error when reporting a problem. Remove private files and credentials
+from diagnostic material. See [SECURITY.md](SECURITY.md) for private security
+reporting; repository maintenance follows [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Repository Layout
+
+- `.agents/plugins/marketplace.json`: canonical marketplace registry
+- `.grok-plugin/marketplace.json`: compatibility registry for the same packages
+- `plugins/`: complete included packages with their existing native manifests
+- `skills/` and `agents/`: intentionally distributed standalone extensions
+- `market-info/`: resolved public presentation, channel, provenance, and inventory
+- `scripts/`: standalone validation and maintained documentation templates
+
+{{STANDALONE}}
+
+## Validation
+
+Run from this checkout:
+
+```powershell
+npm run validate
+```
+
+Validation checks registry/package alignment, metadata, package instructions,
+assets, current inventories, licensing boundaries, and forbidden artifacts.
+
+## Documentation, Website, and Licensing
+
+- This README helps you choose a package and find its setup instructions.
+{{DOCUMENTATION_SETUP}}
+- [Plugin and skill inventory](plugins/README.md) lists the packages actually included in this checkout.
+- Each linked package README covers its workflows, tools, and license; its `skills/` directory contains the actual skill instructions.
+
+{{WEBSITE}}
+
+This repository does not grant a repository-wide open-source license. Each
+plugin has its own MIT `LICENSE` and `FAYEGRAM_ASSETS.md` identity-asset policy.
+See [LICENSING.md](LICENSING.md). Website source and rendered pages are separate;
+resolved presentation information is carried in this repository.

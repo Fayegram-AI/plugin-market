@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repository Change Planning"
+  short_description: "Plan repository feature and behavior changes."
+  default_prompt: "Use $repository-change-planning to create, assess, or revise this repository-backed change plan without executing it."

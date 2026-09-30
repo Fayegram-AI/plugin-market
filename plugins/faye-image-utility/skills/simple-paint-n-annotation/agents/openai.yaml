@@ -1,0 +1,4 @@
+interface:
+  display_name: "Faye Simple Paint and Annotation"
+  short_description: "Paint, annotate, composite, and transform static images."
+  default_prompt: "Use $simple-paint-n-annotation to add clear labels and arrows to this image."

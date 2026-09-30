@@ -1,0 +1,52 @@
+# Operating system files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor metadata
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs and temporary output
+*.log
+logs/
+tmp/
+temp/
+
+# Runtime caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# JavaScript and package-manager output
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+dist/
+build/
+coverage/
+
+# Local environments and secrets
+.env
+.env.*
+!.env.example
+*.local
+*.secret
+secrets/
+
+# Archives and scratch output
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+.codex-cache/
+.codex-tmp/
+scratch/

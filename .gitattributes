@@ -1,0 +1,3 @@
+# Distribution snapshots must retain the exact bytes recorded in market-info.
+# Package-specific launcher attributes may still require LF for shell scripts.
+* -text

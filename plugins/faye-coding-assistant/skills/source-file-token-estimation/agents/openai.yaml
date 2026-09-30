@@ -1,0 +1,7 @@
+interface:
+  display_name: "Source File Token Estimation"
+  short_description: "Estimate large source-file token footprint."
+  default_prompt: "Use $source-file-token-estimation to estimate the token footprint of large source files in this repository."
+
+policy:
+  allow_implicit_invocation: false

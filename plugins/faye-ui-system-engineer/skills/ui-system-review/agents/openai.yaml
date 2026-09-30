@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI System Review"
+  short_description: "Review web UI source and system contracts."
+  default_prompt: "Use $ui-system-review to review this UI source for system, state, and accessibility defects."

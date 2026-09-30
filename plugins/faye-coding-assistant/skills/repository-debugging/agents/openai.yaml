@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repository Debugging"
+  short_description: "Diagnose failures; fix only when requested."
+  default_prompt: "Use $repository-debugging to diagnose this concrete repository failure and apply a fix only if requested."

@@ -1,0 +1,10 @@
+{
+    "name": "faye-ui-system-engineer",
+    "version": "0.1.0-beta.4",
+    "description": "Faye UI System Engineer provides visual design, architecture, implementation, source review, and rendered inspection for browser UI screens, components, and reusable systems.",
+    "author": {
+        "name": "Fayegram",
+        "url": "https://fayegram.com"
+    },
+    "homepage": "https://plugin-market.fayegram.com"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Coding Handoff"
+  short_description: "Prepare concise change or continuation handoffs."
+  default_prompt: "Use $coding-handoff to prepare a concise PR, implementation, or task/session handoff from these facts or this named change."

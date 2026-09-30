@@ -1,0 +1,7 @@
+# Plugin Marketplace Index
+
+`marketplace.json` indexes the included packages using relative `./plugins/<plugin-name>` sources.
+
+{{INVENTORY}}
+
+The native registry contains distribution policy, not website teaser listings.

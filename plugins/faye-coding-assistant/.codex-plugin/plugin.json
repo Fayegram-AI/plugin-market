@@ -1,0 +1,66 @@
+{
+    "name": "faye-coding-assistant",
+    "version": "0.1.0-beta.7",
+    "description": "Focused, scope-preserving repository skills for exploration, change planning, implementation, debugging, review, refactor and verification planning, test-suite health, handoff, documentation, coding goals, and source-file token estimation.",
+    "author": {
+        "name": "Fayegram",
+        "url": "https://fayegram.com"
+    },
+    "homepage": "https://plugin-market.fayegram.com",
+    "repository": "https://github.com/Fayegram-AI/plugin-market.git",
+    "license": "MIT",
+    "keywords": [
+        "faye-coding-assistant",
+        "coding-assistant",
+        "codebase-exploration",
+        "repository-change-planning",
+        "implementation",
+        "debugging",
+        "code-review",
+        "phase-implementation-review",
+        "refactor-planning",
+        "verification-planning",
+        "test-suite-health",
+        "coding-handoff",
+        "documentation-reconciliation",
+        "coding-goal-guardrails",
+        "goal-progress-reporting",
+        "source-file-token-estimation",
+        "read-only-analysis"
+    ],
+    "skills": "./skills/",
+    "interface": {
+        "displayName": "Faye Coding Assistant",
+        "shortDescription": "Focused, scope-preserving coding skills.",
+        "longDescription": "Faye Coding Assistant provides independent, scope-preserving skills for codebase exploration, repository change planning, authorized implementation, debugging, general and phased review, refactor and verification planning, test-suite health, and coding handoff. Shared read-only and write-authorized agents remain permission-bounded helpers, while separate skills cover coding-goal guardrails, progress reporting, documentation reconciliation, and explicit source-file token estimation.",
+        "developerName": "Fayegram",
+        "category": "Productivity",
+        "capabilities": [
+            "Codebase Exploration",
+            "Repository Change Planning",
+            "Authorized Implementation",
+            "Repository Debugging",
+            "Code Review",
+            "Phase Implementation Review",
+            "Refactor Planning",
+            "Verification Planning",
+            "Test Suite Health",
+            "Coding Handoff",
+            "Documentation Reconciliation",
+            "Coding Goal Guardrails",
+            "Goal Progress Reporting",
+            "Source File Token Estimation"
+        ],
+        "websiteURL": "https://plugin-market.fayegram.com",
+        "privacyPolicyURL": "https://plugin-market.fayegram.com/privacy",
+        "termsOfServiceURL": "https://plugin-market.fayegram.com/terms",
+        "defaultPrompt": [
+            "Use $codebase-exploration to map ownership and execution flow for this repository question.",
+            "Use $repository-change-planning to create a repository-backed implementation plan for this change.",
+            "Use $repository-implementation to make this bounded repository change with proportionate verification."
+        ],
+        "brandColor": "#2563EB",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+    }
+}

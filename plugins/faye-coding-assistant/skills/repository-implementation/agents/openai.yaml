@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repository Implementation"
+  short_description: "Bounded, authorized repository implementation."
+  default_prompt: "Use $repository-implementation to make this bounded repository change with proportionate verification."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Format Converter"
+  short_description: "Convert static images among JPEG, PNG, WebP, and base64."
+  default_prompt: "Use $faye-image-format-converter to convert this image to WebP."

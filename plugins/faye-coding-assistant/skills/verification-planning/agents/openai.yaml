@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verification Planning"
+  short_description: "Plan proportionate tests and verification."
+  default_prompt: "Use $verification-planning to recommend proportionate tests, commands, or manual QA for this change."

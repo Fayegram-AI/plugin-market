@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI System Architecture"
+  short_description: "Specify web UI layers, contracts, and state ownership."
+  default_prompt: "Use $ui-system-architecture to design the UI architecture and migration boundaries for this web application."

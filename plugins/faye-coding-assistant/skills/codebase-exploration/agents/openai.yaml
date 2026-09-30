@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codebase Exploration"
+  short_description: "Read-only repository ownership and flow mapping."
+  default_prompt: "Use $codebase-exploration to map repository ownership, entry points, and execution flow for this question."

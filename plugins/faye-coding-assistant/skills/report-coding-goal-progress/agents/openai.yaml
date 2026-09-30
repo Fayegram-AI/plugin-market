@@ -1,0 +1,4 @@
+interface:
+  display_name: "Coding Goal Progress Report"
+  short_description: "Report authoritative coding goal status."
+  default_prompt: "Use $report-coding-goal-progress to present this authoritative coding /goal snapshot, including supplied position and horizon."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test Suite Health"
+  short_description: "Assess test-suite cost, stability, and maintenance."
+  default_prompt: "Use $test-suite-health to assess this test suite for material cost, flakiness, overlap, and maintenance risks."

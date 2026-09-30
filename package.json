@@ -1,0 +1,15 @@
+{
+    "name": "faye-plugin-market",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "description": "Fayegram plugins for everyday utilities, software development, image work, and browser UI systems.",
+    "scripts": {
+        "validate": "node scripts/validate-marketplace.mjs",
+        "check:js": "node --check scripts/validate-marketplace.mjs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Fayegram-AI/plugin-market.git"
+    }
+}

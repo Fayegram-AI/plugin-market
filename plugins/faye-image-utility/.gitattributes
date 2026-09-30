@@ -1,0 +1,2 @@
+# POSIX launchers must stay executable by sh after Windows checkouts and edits.
+*.sh text eol=lf

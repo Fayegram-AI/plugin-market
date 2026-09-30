@@ -1,0 +1,7 @@
+interface:
+  display_name: "Image Age Rating"
+  short_description: "Provide image age-rating estimates and visible causes."
+  default_prompt: "Use $faye-image-age-rating to estimate this image's age ratings across all supported systems and return visible causes as JSON."
+
+policy:
+  allow_implicit_invocation: false

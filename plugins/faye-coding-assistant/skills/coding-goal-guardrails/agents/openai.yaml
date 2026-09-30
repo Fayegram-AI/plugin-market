@@ -1,0 +1,4 @@
+interface:
+  display_name: "Coding Goal Guardrails"
+  short_description: "Lightweight guardrails for coding goals."
+  default_prompt: "Use $coding-goal-guardrails while creating or explicitly resuming this multi-step coding /goal."

@@ -1,0 +1,44 @@
+{
+    "name": "faye-plugin-market",
+    "interface": {
+        "displayName": "Faye Plugin Market"
+    },
+    "plugins": [
+        {
+            "name": "faye-coding-assistant",
+            "source": {
+                "source": "local",
+                "path": "./plugins/faye-coding-assistant"
+            },
+            "policy": {
+                "installation": "AVAILABLE",
+                "authentication": "ON_INSTALL"
+            },
+            "category": "Productivity"
+        },
+        {
+            "name": "faye-image-utility",
+            "source": {
+                "source": "local",
+                "path": "./plugins/faye-image-utility"
+            },
+            "policy": {
+                "installation": "AVAILABLE",
+                "authentication": "ON_INSTALL"
+            },
+            "category": "Productivity"
+        },
+        {
+            "name": "faye-ui-system-engineer",
+            "source": {
+                "source": "local",
+                "path": "./plugins/faye-ui-system-engineer"
+            },
+            "policy": {
+                "installation": "AVAILABLE",
+                "authentication": "ON_INSTALL"
+            },
+            "category": "Productivity"
+        }
+    ]
+}

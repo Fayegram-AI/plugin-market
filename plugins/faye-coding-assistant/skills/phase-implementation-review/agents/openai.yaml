@@ -1,0 +1,4 @@
+interface:
+  display_name: "Phase Implementation Review"
+  short_description: "Review phased work when review is requested."
+  default_prompt: "Use $phase-implementation-review to review this completed phase as the requested deliverable."

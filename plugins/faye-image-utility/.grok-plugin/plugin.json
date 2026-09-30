@@ -1,0 +1,10 @@
+{
+    "name": "faye-image-utility",
+    "version": "0.1.0-beta.6",
+    "description": "Faye Image Utility provides focused workflows for generated-image artifact QA, deterministic editing and annotation, image format conversion, and explicit age/content rating estimates.",
+    "author": {
+        "name": "Fayegram",
+        "url": "https://fayegram.com"
+    },
+    "homepage": "https://plugin-market.fayegram.com"
+}

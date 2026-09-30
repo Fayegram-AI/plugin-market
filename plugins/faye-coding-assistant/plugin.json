@@ -1,0 +1,10 @@
+{
+    "name": "faye-coding-assistant",
+    "license": "MIT",
+    "author": {
+        "name": "Fayegram",
+        "url": "https://fayegram.com"
+    },
+    "description": "Focused, scope-preserving repository skills for exploration, change planning, implementation, debugging, review, refactor and verification planning, test-suite health, handoff, documentation, coding goals, and source-file token estimation.",
+    "version": "0.1.0-beta.7"
+}

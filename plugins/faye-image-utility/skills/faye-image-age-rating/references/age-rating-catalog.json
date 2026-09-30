@@ -1,0 +1,474 @@
+{
+    "schemaVersion": "1.0.0",
+    "catalogVersion": "2026-08-01.1",
+    "sourcesCheckedAt": "2026-08-01",
+    "ratingIdPattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+    "defaultSystemsSelection": "all",
+    "defaultCauseMode": "all",
+    "defaultOutputMode": "strict_json",
+    "systemOrder": [
+        "mpa",
+        "pegi",
+        "eirin",
+        "cero",
+        "imda"
+    ],
+    "systems": [
+        {
+            "id": "mpa",
+            "name": "Motion Picture Association",
+            "jurisdiction": "United States",
+            "applicableMedia": [
+                "film"
+            ],
+            "sourceUrl": "https://www.filmratings.com/ratings-guide/",
+            "ratings": [
+                {
+                    "id": "mpa-g",
+                    "code": "G",
+                    "label": "G",
+                    "minimumAge": null,
+                    "thresholdKind": "general"
+                },
+                {
+                    "id": "mpa-pg",
+                    "code": "PG",
+                    "label": "PG",
+                    "minimumAge": null,
+                    "thresholdKind": "advisory"
+                },
+                {
+                    "id": "mpa-pg-13",
+                    "code": "PG-13",
+                    "label": "PG-13",
+                    "minimumAge": 13,
+                    "thresholdKind": "advisory"
+                },
+                {
+                    "id": "mpa-r",
+                    "code": "R",
+                    "label": "R",
+                    "minimumAge": 17,
+                    "thresholdKind": "accompanied-restriction"
+                },
+                {
+                    "id": "mpa-nc-17",
+                    "code": "NC-17",
+                    "label": "NC-17",
+                    "minimumAge": 18,
+                    "thresholdKind": "restricted"
+                }
+            ]
+        },
+        {
+            "id": "pegi",
+            "name": "Pan European Game Information",
+            "jurisdiction": "Europe",
+            "applicableMedia": [
+                "game"
+            ],
+            "sourceUrl": "https://pegi.info/what-do-the-labels-mean",
+            "ratings": [
+                {
+                    "id": "pegi-3",
+                    "code": "3",
+                    "label": "PEGI 3",
+                    "minimumAge": 3,
+                    "thresholdKind": "age-label"
+                },
+                {
+                    "id": "pegi-7",
+                    "code": "7",
+                    "label": "PEGI 7",
+                    "minimumAge": 7,
+                    "thresholdKind": "age-label"
+                },
+                {
+                    "id": "pegi-12",
+                    "code": "12",
+                    "label": "PEGI 12",
+                    "minimumAge": 12,
+                    "thresholdKind": "age-label"
+                },
+                {
+                    "id": "pegi-16",
+                    "code": "16",
+                    "label": "PEGI 16",
+                    "minimumAge": 16,
+                    "thresholdKind": "age-label"
+                },
+                {
+                    "id": "pegi-18",
+                    "code": "18",
+                    "label": "PEGI 18",
+                    "minimumAge": 18,
+                    "thresholdKind": "adult"
+                }
+            ]
+        },
+        {
+            "id": "eirin",
+            "name": "EIRIN",
+            "jurisdiction": "Japan",
+            "applicableMedia": [
+                "film"
+            ],
+            "sourceUrl": "https://www.eirin.jp/english/008.html",
+            "ratings": [
+                {
+                    "id": "eirin-g",
+                    "code": "G",
+                    "label": "G",
+                    "minimumAge": null,
+                    "thresholdKind": "general"
+                },
+                {
+                    "id": "eirin-pg12",
+                    "code": "PG12",
+                    "label": "PG12",
+                    "minimumAge": 12,
+                    "thresholdKind": "advisory"
+                },
+                {
+                    "id": "eirin-r15-plus",
+                    "code": "R15+",
+                    "label": "R15+",
+                    "minimumAge": 15,
+                    "thresholdKind": "restricted"
+                },
+                {
+                    "id": "eirin-r18-plus",
+                    "code": "R18+",
+                    "label": "R18+",
+                    "minimumAge": 18,
+                    "thresholdKind": "restricted"
+                }
+            ]
+        },
+        {
+            "id": "cero",
+            "name": "Computer Entertainment Rating Organization",
+            "jurisdiction": "Japan",
+            "applicableMedia": [
+                "game"
+            ],
+            "sourceUrl": "https://www.cero.gr.jp/en/publics/index/17/",
+            "ratings": [
+                {
+                    "id": "cero-a",
+                    "code": "A",
+                    "label": "A",
+                    "minimumAge": null,
+                    "thresholdKind": "general"
+                },
+                {
+                    "id": "cero-b",
+                    "code": "B",
+                    "label": "B",
+                    "minimumAge": 12,
+                    "thresholdKind": "advisory"
+                },
+                {
+                    "id": "cero-c",
+                    "code": "C",
+                    "label": "C",
+                    "minimumAge": 15,
+                    "thresholdKind": "advisory"
+                },
+                {
+                    "id": "cero-d",
+                    "code": "D",
+                    "label": "D",
+                    "minimumAge": 17,
+                    "thresholdKind": "advisory"
+                },
+                {
+                    "id": "cero-z",
+                    "code": "Z",
+                    "label": "Z",
+                    "minimumAge": 18,
+                    "thresholdKind": "restricted"
+                }
+            ]
+        },
+        {
+            "id": "imda",
+            "name": "Infocomm Media Development Authority",
+            "jurisdiction": "Singapore",
+            "applicableMedia": [
+                "film",
+                "video"
+            ],
+            "sourceUrl": "https://iris.imda.gov.sg/guide/film-and-video-classification-guide",
+            "ratings": [
+                {
+                    "id": "imda-g",
+                    "code": "G",
+                    "label": "G",
+                    "minimumAge": null,
+                    "thresholdKind": "general"
+                },
+                {
+                    "id": "imda-pg",
+                    "code": "PG",
+                    "label": "PG",
+                    "minimumAge": null,
+                    "thresholdKind": "advisory"
+                },
+                {
+                    "id": "imda-pg13",
+                    "code": "PG13",
+                    "label": "PG13",
+                    "minimumAge": 13,
+                    "thresholdKind": "advisory"
+                },
+                {
+                    "id": "imda-nc16",
+                    "code": "NC16",
+                    "label": "NC16",
+                    "minimumAge": 16,
+                    "thresholdKind": "restricted"
+                },
+                {
+                    "id": "imda-m18",
+                    "code": "M18",
+                    "label": "M18",
+                    "minimumAge": 18,
+                    "thresholdKind": "restricted"
+                },
+                {
+                    "id": "imda-r21",
+                    "code": "R21",
+                    "label": "R21",
+                    "minimumAge": 21,
+                    "thresholdKind": "restricted"
+                }
+            ]
+        }
+    ],
+    "causes": [
+        {
+            "id": "mature-themes",
+            "label": "Mature themes",
+            "description": "Themes or situations requiring greater audience maturity, including grief, illness, abuse, exploitation, war, or other heavy subject matter."
+        },
+        {
+            "id": "action-peril",
+            "label": "Action or peril",
+            "description": "Danger, pursuit, hazardous action, or sustained threat without necessarily depicting injury."
+        },
+        {
+            "id": "violence",
+            "label": "Violence",
+            "description": "Actual, attempted, or strongly implied physical harm, fighting, cruelty, killing, or weapon use."
+        },
+        {
+            "id": "blood-gore",
+            "label": "Blood or gore",
+            "description": "Visible blood, wounds, injury detail, mutilation, dismemberment, corpses, or graphic bodily harm."
+        },
+        {
+            "id": "fear-horror",
+            "label": "Fear or horror",
+            "description": "Frightening, disturbing, menacing, supernatural, grotesque, or horror-oriented imagery."
+        },
+        {
+            "id": "nudity",
+            "label": "Nudity",
+            "description": "Non-sexual, artistic, medical, partial, full, or sexualized nudity, classified with its context and detail."
+        },
+        {
+            "id": "sexual-content",
+            "label": "Sexual content",
+            "description": "Sexual themes, references, posing, activity, paraphernalia, or explicit sexual expression."
+        },
+        {
+            "id": "sexual-violence",
+            "label": "Sexual violence",
+            "description": "Sexual coercion, assault, exploitation, or sexualized threatening material."
+        },
+        {
+            "id": "language",
+            "label": "Language",
+            "description": "Profanity, slurs, explicitly sexual language, or other strong or offensive readable text."
+        },
+        {
+            "id": "crude-rude-content",
+            "label": "Crude or rude content",
+            "description": "Crude humor, rude gestures, bodily-function material, or comparable non-sexual coarse content."
+        },
+        {
+            "id": "alcohol",
+            "label": "Alcohol",
+            "description": "Alcohol references, possession, consumption, misuse, intoxication, or glamorization."
+        },
+        {
+            "id": "tobacco-smoking",
+            "label": "Tobacco or smoking",
+            "description": "Tobacco products, smoking, vaping, paraphernalia, underage use, or glamorization."
+        },
+        {
+            "id": "drug-use",
+            "label": "Drug use",
+            "description": "Illegal or misused drugs, references, paraphernalia, production, consumption, effects, abuse, or glamorization."
+        },
+        {
+            "id": "gambling",
+            "label": "Gambling",
+            "description": "Gambling themes, betting, casino activity, or simulated games of chance."
+        },
+        {
+            "id": "discrimination-hate",
+            "label": "Discrimination or hate",
+            "description": "Hateful or discriminatory stereotypes, symbols, dehumanization, slurs, hostility, or encouragement of hatred."
+        },
+        {
+            "id": "self-harm-suicide",
+            "label": "Self-harm or suicide",
+            "description": "Self-injury, attempted or completed suicide, related aftermath, or strongly implied self-harm."
+        },
+        {
+            "id": "crime-antisocial-behavior",
+            "label": "Crime or antisocial behavior",
+            "description": "Crime, abuse, trafficking, prostitution, delinquency, dangerous wrongdoing, or instructional or glamorized antisocial acts."
+        }
+    ],
+    "interactiveRisks": [
+        {
+            "id": "in-game-purchases",
+            "label": "In-game purchases"
+        },
+        {
+            "id": "paid-random-items",
+            "label": "Paid random items"
+        },
+        {
+            "id": "time-limited-offers",
+            "label": "Time-limited offers"
+        },
+        {
+            "id": "cryptocurrency",
+            "label": "Cryptocurrency-linked play"
+        },
+        {
+            "id": "pressure-to-play",
+            "label": "Pressure to play"
+        },
+        {
+            "id": "unrestricted-communication",
+            "label": "Unrestricted communication"
+        }
+    ],
+    "findingEnums": {
+        "presence": [
+            "present",
+            "absent",
+            "uncertain",
+            "not_assessable"
+        ],
+        "severity": [
+            "mild",
+            "moderate",
+            "strong",
+            "extreme"
+        ],
+        "confidence": [
+            "low",
+            "medium",
+            "high",
+            "very_high"
+        ],
+        "realism": [
+            "stylized",
+            "non_realistic",
+            "mixed",
+            "realistic",
+            "unknown"
+        ],
+        "detail": [
+            "implied",
+            "non_detailed",
+            "moderate",
+            "detailed",
+            "graphic",
+            "unknown"
+        ],
+        "frequency": [
+            "isolated",
+            "occasional",
+            "frequent",
+            "pervasive",
+            "unknown"
+        ],
+        "framing": [
+            "contextualized",
+            "neutral",
+            "glamorized",
+            "instructional",
+            "exploitative",
+            "unknown"
+        ],
+        "evidenceSource": [
+            "visible",
+            "user_provided",
+            "inferred"
+        ]
+    },
+    "requestEnums": {
+        "causeMode": [
+            "all",
+            "off",
+            "selected"
+        ],
+        "outputMode": [
+            "strict_json",
+            "json_with_summary",
+            "json_then_summary"
+        ],
+        "medium": [
+            "artwork",
+            "photograph",
+            "film",
+            "game",
+            "video",
+            "mixed",
+            "unknown"
+        ]
+    },
+    "resultEnums": {
+        "status": [
+            "completed",
+            "manual_review_required",
+            "unable_to_assess"
+        ],
+        "interactiveRiskStatus": [
+            "not_applicable",
+            "not_assessable",
+            "assessed"
+        ],
+        "mediumSource": [
+            "invoker_provided",
+            "inferred",
+            "undetermined"
+        ],
+        "messageLevel": [
+            "info",
+            "warning"
+        ],
+        "messageCode": [
+            "medium-inferred",
+            "medium-unspecified",
+            "auto-selection-fallback",
+            "system-medium-mismatch",
+            "assessment-note"
+        ]
+    },
+    "messageOrder": [
+        "medium-inferred",
+        "medium-unspecified",
+        "auto-selection-fallback",
+        "system-medium-mismatch",
+        "assessment-note"
+    ],
+    "notice": "Informational estimate of the visible image only, by analogy to selected rating systems; it does not classify the originating game, film, video, or other complete work and is not an official rating, certification, legal determination, moderation decision, or age-verification result."
+}

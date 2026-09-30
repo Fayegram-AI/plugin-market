@@ -1,0 +1,52 @@
+name: Validate marketplace
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate marketplace package
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate marketplace structure
+        run: npm run validate
+
+      - name: Check JavaScript syntax
+        shell: bash
+        run: |
+          while IFS= read -r file; do
+            node --check "$file"
+          done < <(find scripts plugins -type f \( -name '*.js' -o -name '*.mjs' \) | sort)
+
+      - name: Check Python syntax
+        shell: bash
+        run: |
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+
+          for file_path in sorted(Path("plugins").rglob("*.py")):
+              ast.parse(file_path.read_text(encoding="utf-8"), filename=str(file_path))
+              print(file_path)
+          PY

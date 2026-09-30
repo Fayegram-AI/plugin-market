@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Review"
+  short_description: "Evidence-backed review of repository changes."
+  default_prompt: "Use $code-review to review this repository change for concrete, actionable correctness risks."

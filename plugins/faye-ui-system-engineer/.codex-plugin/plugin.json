@@ -1,0 +1,60 @@
+{
+    "name": "faye-ui-system-engineer",
+    "version": "0.1.0-beta.4",
+    "description": "Faye UI System Engineer provides visual design, architecture, implementation, source review, and rendered inspection for browser UI screens, components, and reusable systems.",
+    "author": {
+        "name": "Fayegram",
+        "url": "https://fayegram.com"
+    },
+    "homepage": "https://plugin-market.fayegram.com",
+    "repository": "https://github.com/Fayegram-AI/plugin-market.git",
+    "license": "MIT",
+    "keywords": [
+        "faye-ui-system-engineer",
+        "web-ui-system",
+        "website-ui",
+        "web-application-ui",
+        "browser-editor-ui",
+        "pwa-ui",
+        "ui-system",
+        "design-system",
+        "ui-primitives",
+        "ui-architecture",
+        "web-state-architecture",
+        "ui-audit",
+        "ui-migration",
+        "accessibility",
+        "responsive-layout",
+        "visual-qa"
+    ],
+    "skills": "./skills/",
+    "interface": {
+        "displayName": "Faye UI System Engineer",
+        "shortDescription": "Web UI design, implementation, review, and inspection.",
+        "longDescription": "Five focused skills cover visual design, architecture, implementation and migration, source review, and rendered inspection for browser-based websites, web applications, PWAs, and browser-based editors or workspaces. Build individual screens and components or reusable UI systems, preserving the host framework and separating chrome from authored content. Includes a dependency-free source scanner and an optional independent UI reviewer definition.",
+        "developerName": "Fayegram",
+        "category": "Productivity",
+        "capabilities": [
+            "UI Visual Design",
+            "Web UI Architecture",
+            "Web State Architecture",
+            "UI Implementation",
+            "UI Migration",
+            "UI Source Review",
+            "UI Inspection",
+            "Accessibility Review",
+            "Responsive Layout"
+        ],
+        "websiteURL": "https://plugin-market.fayegram.com",
+        "privacyPolicyURL": "https://plugin-market.fayegram.com/privacy",
+        "termsOfServiceURL": "https://plugin-market.fayegram.com/terms",
+        "defaultPrompt": [
+            "Use $ui-visual-design to define the visual direction for this web interface.",
+            "Use $ui-system-implementation to build this responsive web screen from the agreed design.",
+            "Use $ui-inspection to inspect this screen for visual and usability issues."
+        ],
+        "brandColor": "#0F766E",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+    }
+}

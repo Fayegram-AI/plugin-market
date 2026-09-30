@@ -1,0 +1,10 @@
+{
+    "name": "faye-image-utility",
+    "license": "MIT",
+    "author": {
+        "name": "Fayegram",
+        "url": "https://fayegram.com"
+    },
+    "description": "Faye Image Utility provides focused workflows for generated-image artifact QA, deterministic editing and annotation, image format conversion, and explicit age/content rating estimates.",
+    "version": "0.1.0-beta.6"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Visual Design"
+  short_description: "Define a coherent visual direction for web UI."
+  default_prompt: "Use $ui-visual-design to define the visual direction and acceptance criteria for this screen."

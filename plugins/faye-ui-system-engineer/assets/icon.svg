@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+    <title id="title">Faye UI System Engineer</title>
+    <desc id="desc">A structured interface grid connected through a central system node.</desc>
+    <rect width="1024" height="1024" rx="176" fill="#0F172A"/>
+    <rect x="168" y="190" width="688" height="644" rx="72" fill="#F8FAFC"/>
+    <rect x="220" y="242" width="584" height="84" rx="30" fill="#CCFBF1"/>
+    <circle cx="270" cy="284" r="18" fill="#0F766E"/>
+    <rect x="312" y="269" width="210" height="30" rx="15" fill="#134E4A"/>
+    <rect x="220" y="378" width="168" height="404" rx="34" fill="#E2E8F0"/>
+    <rect x="436" y="378" width="368" height="178" rx="34" fill="#E2E8F0"/>
+    <rect x="436" y="604" width="368" height="178" rx="34" fill="#E2E8F0"/>
+    <path d="M388 580H436M620 556V604" fill="none" stroke="#0F766E" stroke-width="28" stroke-linecap="round"/>
+    <circle cx="412" cy="580" r="30" fill="#14B8A6" stroke="#F8FAFC" stroke-width="14"/>
+    <circle cx="620" cy="580" r="30" fill="#0F766E" stroke="#F8FAFC" stroke-width="14"/>
+    <rect x="266" y="430" width="76" height="24" rx="12" fill="#64748B"/>
+    <rect x="266" y="484" width="76" height="24" rx="12" fill="#94A3B8"/>
+    <rect x="266" y="538" width="76" height="24" rx="12" fill="#94A3B8"/>
+    <rect x="488" y="430" width="196" height="26" rx="13" fill="#64748B"/>
+    <rect x="488" y="478" width="264" height="24" rx="12" fill="#94A3B8"/>
+    <rect x="488" y="656" width="196" height="26" rx="13" fill="#64748B"/>
+    <rect x="488" y="704" width="264" height="24" rx="12" fill="#94A3B8"/>
+</svg>

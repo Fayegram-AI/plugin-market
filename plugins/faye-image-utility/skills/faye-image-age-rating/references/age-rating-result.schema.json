@@ -1,0 +1,743 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://codex-market.fayegram.com/schemas/faye-image-age-rating/result-1.0.0.json",
+    "title": "Faye Image Age Rating Result",
+    "type": "object",
+    "required": [
+        "schemaVersion",
+        "catalogVersion",
+        "utility",
+        "status",
+        "systemsSelection",
+        "causeSelection",
+        "outputMode",
+        "results",
+        "notice"
+    ],
+    "properties": {
+        "schemaVersion": {
+            "const": "1.0.0"
+        },
+        "catalogVersion": {
+            "const": "2026-08-01.1"
+        },
+        "utility": {
+            "const": "age_rating"
+        },
+        "status": {
+            "$ref": "#/$defs/resultStatus"
+        },
+        "systemsSelection": {
+            "$ref": "#/$defs/systemsSelection"
+        },
+        "causeSelection": {
+            "$ref": "#/$defs/causeSelection"
+        },
+        "outputMode": {
+            "$ref": "#/$defs/outputMode"
+        },
+        "results": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 25,
+            "items": {
+                "$ref": "#/$defs/imageResult"
+            }
+        },
+        "summary": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[^\\u0009-\\u000D\\u001C-\\u0020\\u0085\\u00A0\\u1680\\u2000-\\u200A\\u2028-\\u2029\\u202F\\u205F\\u3000\\uFEFF]"
+        },
+        "notice": {
+            "const": "Informational estimate of the visible image only, by analogy to selected rating systems; it does not classify the originating game, film, video, or other complete work and is not an official rating, certification, legal determination, moderation decision, or age-verification result."
+        }
+    },
+    "additionalProperties": false,
+    "$defs": {
+        "systemId": {
+            "enum": [
+                "mpa",
+                "pegi",
+                "eirin",
+                "cero",
+                "imda"
+            ]
+        },
+        "systemsSelection": {
+            "oneOf": [
+                {
+                    "enum": [
+                        "all",
+                        "auto"
+                    ]
+                },
+                {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 5,
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "#/$defs/systemId"
+                    }
+                }
+            ]
+        },
+        "outputMode": {
+            "enum": [
+                "strict_json",
+                "json_with_summary",
+                "json_then_summary"
+            ]
+        },
+        "resultStatus": {
+            "enum": [
+                "completed",
+                "manual_review_required",
+                "unable_to_assess"
+            ]
+        },
+        "confidence": {
+            "enum": [
+                "low",
+                "medium",
+                "high",
+                "very_high"
+            ]
+        },
+        "mediumId": {
+            "enum": [
+                "artwork",
+                "photograph",
+                "film",
+                "game",
+                "video",
+                "mixed",
+                "unknown"
+            ]
+        },
+        "mediumResult": {
+            "type": "object",
+            "required": [
+                "id",
+                "source",
+                "confidence"
+            ],
+            "properties": {
+                "id": {
+                    "$ref": "#/$defs/mediumId"
+                },
+                "source": {
+                    "enum": [
+                        "invoker_provided",
+                        "inferred",
+                        "undetermined"
+                    ]
+                },
+                "confidence": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/$defs/confidence"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            },
+            "additionalProperties": false
+        },
+        "message": {
+            "type": "object",
+            "required": [
+                "level",
+                "code",
+                "systemIds",
+                "message"
+            ],
+            "properties": {
+                "level": {
+                    "enum": [
+                        "info",
+                        "warning"
+                    ]
+                },
+                "code": {
+                    "enum": [
+                        "medium-inferred",
+                        "medium-unspecified",
+                        "auto-selection-fallback",
+                        "system-medium-mismatch",
+                        "assessment-note"
+                    ]
+                },
+                "systemIds": {
+                    "type": "array",
+                    "maxItems": 5,
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "#/$defs/systemId"
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "[^\\u0009-\\u000D\\u001C-\\u0020\\u0085\\u00A0\\u1680\\u2000-\\u200A\\u2028-\\u2029\\u202F\\u205F\\u3000\\uFEFF]"
+                }
+            },
+            "additionalProperties": false
+        },
+        "ratingId": {
+            "enum": [
+                "mpa-g",
+                "mpa-pg",
+                "mpa-pg-13",
+                "mpa-r",
+                "mpa-nc-17",
+                "pegi-3",
+                "pegi-7",
+                "pegi-12",
+                "pegi-16",
+                "pegi-18",
+                "eirin-g",
+                "eirin-pg12",
+                "eirin-r15-plus",
+                "eirin-r18-plus",
+                "cero-a",
+                "cero-b",
+                "cero-c",
+                "cero-d",
+                "cero-z",
+                "imda-g",
+                "imda-pg",
+                "imda-pg13",
+                "imda-nc16",
+                "imda-m18",
+                "imda-r21"
+            ]
+        },
+        "ratingLabel": {
+            "enum": [
+                "G",
+                "PG",
+                "PG-13",
+                "R",
+                "NC-17",
+                "PEGI 3",
+                "PEGI 7",
+                "PEGI 12",
+                "PEGI 16",
+                "PEGI 18",
+                "PG12",
+                "R15+",
+                "R18+",
+                "A",
+                "B",
+                "C",
+                "D",
+                "Z",
+                "PG13",
+                "NC16",
+                "M18",
+                "R21"
+            ]
+        },
+        "causeId": {
+            "enum": [
+                "mature-themes",
+                "action-peril",
+                "violence",
+                "blood-gore",
+                "fear-horror",
+                "nudity",
+                "sexual-content",
+                "sexual-violence",
+                "language",
+                "crude-rude-content",
+                "alcohol",
+                "tobacco-smoking",
+                "drug-use",
+                "gambling",
+                "discrimination-hate",
+                "self-harm-suicide",
+                "crime-antisocial-behavior"
+            ]
+        },
+        "interactiveRiskId": {
+            "enum": [
+                "in-game-purchases",
+                "paid-random-items",
+                "time-limited-offers",
+                "cryptocurrency",
+                "pressure-to-play",
+                "unrestricted-communication"
+            ]
+        },
+        "causeSelection": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "required": [
+                        "mode"
+                    ],
+                    "properties": {
+                        "mode": {
+                            "enum": [
+                                "all",
+                                "off"
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "mode",
+                        "selectedId"
+                    ],
+                    "properties": {
+                        "mode": {
+                            "const": "selected"
+                        },
+                        "selectedId": {
+                            "$ref": "#/$defs/causeId"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            ]
+        },
+        "ratingResult": {
+            "type": "object",
+            "required": [
+                "systemId",
+                "ratingId",
+                "ratingLabel",
+                "confidence",
+                "driverIds",
+                "hasUnreportedDrivers",
+                "visibilityLimits"
+            ],
+            "properties": {
+                "systemId": {
+                    "$ref": "#/$defs/systemId"
+                },
+                "ratingId": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/$defs/ratingId"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "ratingLabel": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/$defs/ratingLabel"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "confidence": {
+                    "$ref": "#/$defs/confidence"
+                },
+                "driverIds": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "#/$defs/causeId"
+                    }
+                },
+                "hasUnreportedDrivers": {
+                    "type": "boolean"
+                },
+                "visibilityLimits": {
+                    "$ref": "#/$defs/stringList"
+                }
+            },
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "ratingId": {
+                                "type": "null"
+                            }
+                        },
+                        "required": [
+                            "ratingId"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "ratingLabel": {
+                                "type": "null"
+                            },
+                            "driverIds": {
+                                "maxItems": 0
+                            }
+                        }
+                    }
+                }
+            ],
+            "additionalProperties": false
+        },
+        "causeFinding": {
+            "type": "object",
+            "required": [
+                "id",
+                "presence",
+                "severity",
+                "confidence",
+                "evidence",
+                "qualifiers"
+            ],
+            "properties": {
+                "id": {
+                    "$ref": "#/$defs/causeId"
+                },
+                "presence": {
+                    "enum": [
+                        "present",
+                        "absent",
+                        "uncertain",
+                        "not_assessable"
+                    ]
+                },
+                "severity": {
+                    "oneOf": [
+                        {
+                            "enum": [
+                                "mild",
+                                "moderate",
+                                "strong",
+                                "extreme"
+                            ]
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "confidence": {
+                    "$ref": "#/$defs/confidence"
+                },
+                "evidence": {
+                    "$ref": "#/$defs/stringList"
+                },
+                "qualifiers": {
+                    "type": "object",
+                    "required": [
+                        "realism",
+                        "detail",
+                        "frequency",
+                        "framing",
+                        "evidenceSource"
+                    ],
+                    "properties": {
+                        "realism": {
+                            "enum": [
+                                "stylized",
+                                "non_realistic",
+                                "mixed",
+                                "realistic",
+                                "unknown"
+                            ]
+                        },
+                        "detail": {
+                            "enum": [
+                                "implied",
+                                "non_detailed",
+                                "moderate",
+                                "detailed",
+                                "graphic",
+                                "unknown"
+                            ]
+                        },
+                        "frequency": {
+                            "enum": [
+                                "isolated",
+                                "occasional",
+                                "frequent",
+                                "pervasive",
+                                "unknown"
+                            ]
+                        },
+                        "framing": {
+                            "enum": [
+                                "contextualized",
+                                "neutral",
+                                "glamorized",
+                                "instructional",
+                                "exploitative",
+                                "unknown"
+                            ]
+                        },
+                        "evidenceSource": {
+                            "enum": [
+                                "visible",
+                                "user_provided",
+                                "inferred"
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "presence": {
+                                "const": "present"
+                            }
+                        },
+                        "required": [
+                            "presence"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "severity": {
+                                "enum": [
+                                    "mild",
+                                    "moderate",
+                                    "strong",
+                                    "extreme"
+                                ]
+                            },
+                            "evidence": {
+                                "minItems": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "presence": {
+                                "enum": [
+                                    "absent",
+                                    "not_assessable"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "presence"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "severity": {
+                                "type": "null"
+                            }
+                        }
+                    }
+                }
+            ],
+            "additionalProperties": false
+        },
+        "causeReport": {
+            "type": "object",
+            "required": [
+                "mode",
+                "findings"
+            ],
+            "properties": {
+                "mode": {
+                    "enum": [
+                        "all",
+                        "off",
+                        "selected"
+                    ]
+                },
+                "selectedId": {
+                    "$ref": "#/$defs/causeId"
+                },
+                "findings": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "#/$defs/causeFinding"
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "interactiveRiskFinding": {
+            "type": "object",
+            "required": [
+                "id",
+                "presence",
+                "confidence",
+                "evidenceSource",
+                "evidence"
+            ],
+            "properties": {
+                "id": {
+                    "$ref": "#/$defs/interactiveRiskId"
+                },
+                "presence": {
+                    "enum": [
+                        "present",
+                        "absent",
+                        "uncertain",
+                        "not_assessable"
+                    ]
+                },
+                "confidence": {
+                    "$ref": "#/$defs/confidence"
+                },
+                "evidenceSource": {
+                    "enum": [
+                        "visible",
+                        "user_provided"
+                    ]
+                },
+                "evidence": {
+                    "$ref": "#/$defs/stringList"
+                }
+            },
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "presence": {
+                                "const": "present"
+                            }
+                        },
+                        "required": [
+                            "presence"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "evidence": {
+                                "minItems": 1
+                            }
+                        }
+                    }
+                }
+            ],
+            "additionalProperties": false
+        },
+        "interactiveRiskReport": {
+            "type": "object",
+            "required": [
+                "status",
+                "findings"
+            ],
+            "properties": {
+                "status": {
+                    "enum": [
+                        "not_applicable",
+                        "not_assessable",
+                        "assessed"
+                    ]
+                },
+                "findings": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "#/$defs/interactiveRiskFinding"
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "manualReview": {
+            "type": "object",
+            "required": [
+                "required",
+                "reasons"
+            ],
+            "properties": {
+                "required": {
+                    "type": "boolean"
+                },
+                "reasons": {
+                    "$ref": "#/$defs/stringList"
+                }
+            },
+            "additionalProperties": false
+        },
+        "imageResult": {
+            "type": "object",
+            "required": [
+                "imageLabel",
+                "status",
+                "medium",
+                "systemsEvaluated",
+                "messages",
+                "ratings",
+                "causes",
+                "interactiveRisks",
+                "visibilityLimits",
+                "manualReview"
+            ],
+            "properties": {
+                "imageLabel": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120,
+                    "pattern": "[^\\u0009-\\u000D\\u001C-\\u0020\\u0085\\u00A0\\u1680\\u2000-\\u200A\\u2028-\\u2029\\u202F\\u205F\\u3000\\uFEFF]"
+                },
+                "status": {
+                    "$ref": "#/$defs/resultStatus"
+                },
+                "medium": {
+                    "$ref": "#/$defs/mediumResult"
+                },
+                "systemsEvaluated": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 5,
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "#/$defs/systemId"
+                    }
+                },
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/message"
+                    }
+                },
+                "ratings": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 5,
+                    "items": {
+                        "$ref": "#/$defs/ratingResult"
+                    }
+                },
+                "causes": {
+                    "$ref": "#/$defs/causeReport"
+                },
+                "interactiveRisks": {
+                    "$ref": "#/$defs/interactiveRiskReport"
+                },
+                "visibilityLimits": {
+                    "$ref": "#/$defs/stringList"
+                },
+                "manualReview": {
+                    "$ref": "#/$defs/manualReview"
+                }
+            },
+            "additionalProperties": false
+        },
+        "stringList": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "[^\\u0009-\\u000D\\u001C-\\u0020\\u0085\\u00A0\\u1680\\u2000-\\u200A\\u2028-\\u2029\\u202F\\u205F\\u3000\\uFEFF]"
+            }
+        }
+    }
+}

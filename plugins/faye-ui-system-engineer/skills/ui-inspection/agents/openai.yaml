@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Inspection"
+  short_description: "Inspect rendered web UI and observable interactions."
+  default_prompt: "Use $ui-inspection to inspect this screen for visual and usability issues using the available evidence."

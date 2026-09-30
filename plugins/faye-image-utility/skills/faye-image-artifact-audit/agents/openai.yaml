@@ -1,0 +1,4 @@
+interface:
+  display_name: "Faye Image Artifact Audit"
+  short_description: "Audit generated images for artifacts and conformance."
+  default_prompt: "Use $faye-image-artifact-audit to inspect this image for visible artifacts and prompt conformance."

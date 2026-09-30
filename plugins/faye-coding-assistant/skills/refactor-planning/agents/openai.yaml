@@ -1,0 +1,4 @@
+interface:
+  display_name: "Refactor Planning"
+  short_description: "Plan structural and compatibility changes."
+  default_prompt: "Use $refactor-planning to map and sequence this structural or compatibility change without implementing it."

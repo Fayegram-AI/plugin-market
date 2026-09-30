@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reconcile Repository Docs"
+  short_description: "Reconcile repository docs with current state."
+  default_prompt: "Use $reconcile-repository-docs to align this repository's documentation with its supported current state."

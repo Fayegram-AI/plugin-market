@@ -1,0 +1,479 @@
+{
+    "schemaVersion": 1,
+    "target": "release",
+    "release": "public",
+    "marketplace": {
+        "name": "faye-plugin-market",
+        "displayName": "Faye Plugin Market",
+        "summary": "Fayegram plugins for everyday utilities, software development, image work, and browser UI systems."
+    },
+    "publisher": {
+        "name": "Fayegram",
+        "url": "https://fayegram.com"
+    },
+    "addresses": {
+        "websiteUrl": "https://plugin-market.fayegram.com",
+        "repositoryUrl": "https://github.com/Fayegram-AI/plugin-market.git",
+        "hosting": {
+            "provider": "firebase",
+            "projectId": "faye-casuals",
+            "siteId": "faye-codex-market"
+        }
+    },
+    "plugins": [
+        {
+            "id": "faye-coding-assistant",
+            "name": "Faye Coding Assistant",
+            "version": "0.1.0-beta.7",
+            "release": "public",
+            "fingerprint": "f21f3bdf079b354765ba30e63a84ab3a25d085516242b82f140594efe8b136aa",
+            "skills": [
+                "code-review",
+                "codebase-exploration",
+                "coding-goal-guardrails",
+                "coding-handoff",
+                "phase-implementation-review",
+                "reconcile-repository-docs",
+                "refactor-planning",
+                "report-coding-goal-progress",
+                "repository-change-planning",
+                "repository-debugging",
+                "repository-implementation",
+                "source-file-token-estimation",
+                "test-suite-health",
+                "verification-planning"
+            ]
+        },
+        {
+            "id": "faye-image-utility",
+            "name": "Faye Image Utility",
+            "version": "0.1.0-beta.6",
+            "release": "public",
+            "fingerprint": "82511352ff760eb6c4a5419dec9332a1584dfef1bf7173dbc29570f8921b89d4",
+            "skills": [
+                "faye-image-age-rating",
+                "faye-image-artifact-audit",
+                "faye-image-format-converter",
+                "simple-paint-n-annotation"
+            ]
+        },
+        {
+            "id": "faye-ui-system-engineer",
+            "name": "Faye UI System Engineer",
+            "version": "0.1.0-beta.4",
+            "release": "public",
+            "fingerprint": "ec44a1117d6530797bed8590ab92393c463f2778a3a55d08e0221ab09b859469",
+            "skills": [
+                "ui-inspection",
+                "ui-system-architecture",
+                "ui-system-implementation",
+                "ui-system-review",
+                "ui-visual-design"
+            ]
+        }
+    ],
+    "listings": [
+        {
+            "id": "faye-codex-utility",
+            "name": "Faye Codex Utility",
+            "include": false,
+            "status": "coming-soon",
+            "shortName": "Harness Utility",
+            "regionPackage": "@fayegram-ai/faye-codex-utility-site-region",
+            "mount": {
+                "mode": "full",
+                "basePath": "/plugins/faye-codex-utility"
+            },
+            "requireCatalogContent": true,
+            "summary": "A set of utilities to improve harness performance and guardrail operations.",
+            "highlights": []
+        },
+        {
+            "id": "faye-coding-assistant",
+            "name": "Faye Coding Assistant",
+            "include": true,
+            "status": "available",
+            "shortName": "Coding Assistant",
+            "regionPackage": "@fayegram-ai/faye-coding-assistant-site-region",
+            "mount": {
+                "mode": "full",
+                "basePath": "/plugins/faye-coding-assistant"
+            },
+            "requireCatalogContent": true
+        },
+        {
+            "id": "faye-image-utility",
+            "name": "Faye Image Utility",
+            "include": true,
+            "status": "available",
+            "shortName": "Image Utility",
+            "regionPackage": "@fayegram-ai/faye-image-utility-site-region",
+            "mount": {
+                "mode": "full",
+                "basePath": "/plugins/faye-image-utility"
+            },
+            "requireCatalogContent": true
+        },
+        {
+            "id": "faye-ui-system-engineer",
+            "name": "Faye UI System Engineer",
+            "include": true,
+            "status": "available",
+            "shortName": "UI System Engineer",
+            "regionPackage": "@fayegram-ai/faye-ui-system-engineer-site-region",
+            "mount": {
+                "mode": "full",
+                "basePath": "/plugins/faye-ui-system-engineer"
+            },
+            "requireCatalogContent": true
+        }
+    ],
+    "standalone": {
+        "skills": [],
+        "agents": []
+    },
+    "policies": {
+        "schemaVersion": 1,
+        "effectiveDate": "2026-09-27",
+        "pages": [
+            {
+                "slug": "privacy",
+                "title": "Privacy Policy",
+                "summary": "How Fayegram's plugins and marketplace website handle user-directed content, local files, and third-party services.",
+                "sections": [
+                    {
+                        "heading": "Scope",
+                        "paragraphs": [
+                            "This policy applies to Faye Codex Utility, Faye Coding Assistant, Faye Image Utility, Faye UI System Engineer, and the Faye Plugin Market website. Fayegram is the team publishing and maintaining these plugins. The plugins run inside the user's host environment and do not operate a Fayegram account service or backend."
+                        ]
+                    },
+                    {
+                        "heading": "What Fayegram collects",
+                        "paragraphs": [
+                            "Fayegram does not receive or retain plugin prompts, repository content, images, browser conversations, generated files, or usage telemetry on an independently operated server. The reviewed plugin packages contain no Fayegram analytics, advertising, tracking, account system, or independent network client.",
+                            "The marketplace website is a static catalog. It has no sign-in, contact form, advertising, or Fayegram analytics. Its hosting provider may process ordinary request data such as IP address, device or browser information, requested URL, and timestamps to deliver and secure the site under the provider's own terms."
+                        ]
+                    },
+                    {
+                        "heading": "Data the plugins may handle",
+                        "paragraphs": [
+                            "Depending on the workflow the user chooses, a plugin may handle the following data in the user's host environment for the purpose of completing that request:"
+                        ],
+                        "items": [
+                            "Prompts, instructions, task context, and limited conversation excerpts.",
+                            "Repository files, paths, source text, file sizes, line counts, Git state, test output, and other workspace evidence used for coding or source-file token estimation.",
+                            "Images, image paths, base64 image data, visible image content, prompts associated with images, and deterministic image measurements used for conversion, editing, artifact review, or user-requested age-rating estimates.",
+                            "When the user explicitly requests an image age-rating estimate, the visible image content may include mature or potentially sensitive subjects such as violence, blood or gore, nudity, sexual content, substances, horror, or strong language. The utility analyzes only what is visibly needed for the requested estimate and does not identify people or infer sensitive personal traits.",
+                            "Local saved-prompt notes, browser screenshots, compact session notes, reports, and generated image files when the user requests or authorizes those outputs.",
+                            "Supported ChatGPT/Gemini chat identity, limited conversation content, conversation URLs, and user-directed messages; when Browser Use is selected, relevant page and composer state."
+                        ]
+                    },
+                    {
+                        "heading": "Recipients and external transmission",
+                        "paragraphs": [
+                            "The selected host and its model or subagent services process information under the user's account, workspace, and applicable provider terms. For Codex, these are the relevant OpenAI services and terms. Fayegram does not receive a separate copy merely because a Fayegram plugin was used.",
+                            "The LLM Chat Operator uses a complete purpose-built ChatGPT capability when it covers the request, or supported ChatGPT/Gemini browser pages when Browser Use is selected or required. User-directed messages and explicitly authorized content are transmitted to the selected service, operated by OpenAI or Google. Fayegram is not an intermediary for that transmission, does not receive the content, and does not control the service's collection, use, retention, model-training choices, or account settings.",
+                            "Other reviewed plugin scripts process files locally and do not independently call Fayegram or third-party network services. Users should not provide credentials, authentication secrets, payment-card data, government identifiers, protected health information, or other restricted data to a plugin."
+                        ],
+                        "links": [
+                            {
+                                "label": "OpenAI Privacy Policy",
+                                "href": "https://openai.com/policies/privacy-policy/",
+                                "description": "Applies to relevant OpenAI and ChatGPT services according to the user's account and service context."
+                            },
+                            {
+                                "label": "Google Privacy Policy",
+                                "href": "https://policies.google.com/privacy",
+                                "description": "Applies to relevant Google and Gemini services according to the user's account and service context."
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Storage and retention",
+                        "paragraphs": [
+                            "Fayegram does not set a retention period for plugin content because Fayegram does not receive or store that content. Local notes, screenshots, reports, converted images, and edited images remain where the user or plugin placed them until the user deletes them. Repository history or backups may preserve copies according to the user's own tools and settings.",
+                            "Host, model-provider, browser, workspace, and hosting-provider retention is controlled by those services and the user's account or organization settings. Users should review and use the deletion, temporary-chat, history, and privacy controls offered by the applicable service."
+                        ]
+                    },
+                    {
+                        "heading": "User choices and controls",
+                        "items": [
+                            "Choose what prompts, files, images, paths, and context to provide.",
+                            "Do not invoke a workflow that is not appropriate for the content involved.",
+                            "Review proposed browser or file-changing actions and withhold authorization when needed.",
+                            "Delete local plugin outputs using normal filesystem and repository tools.",
+                            "Use the account, chat-history, temporary-chat, privacy, and deletion controls provided by the applicable host or service for content sent to it."
+                        ]
+                    },
+                    {
+                        "heading": "Changes and questions",
+                        "paragraphs": [
+                            "Fayegram may update this policy when the plugins, website, or applicable publication requirements change. The effective date above identifies this policy version when published. Fayegram does not offer individual privacy or technical-support correspondence for these plugins."
+                        ]
+                    }
+                ]
+            },
+            {
+                "slug": "terms",
+                "title": "Terms of Use",
+                "summary": "Terms for using the Fayegram plugins and the Faye Plugin Market website.",
+                "sections": [
+                    {
+                        "heading": "Acceptance and scope",
+                        "paragraphs": [
+                            "These Terms are provided by the Fayegram team and apply to Faye Codex Utility, Faye Coding Assistant, Faye Image Utility, Faye UI System Engineer, and the Faye Plugin Market website. By installing, accessing, or using them, the user agrees to these Terms. If the user does not agree, the user should not use them.",
+                            "These Terms supplement, and do not replace, the terms that apply to the selected host, its provider, the user's browser or workspace, and any other service the user chooses to use."
+                        ]
+                    },
+                    {
+                        "heading": "Permitted use",
+                        "paragraphs": [
+                            "Any software license included in a distributed plugin package controls the rights it grants for that package. These Terms do not narrow, replace, or add restrictions to those package-license rights. Separately identified Fayegram identity assets remain subject to the identity-asset policy included with the applicable package."
+                        ],
+                        "items": [
+                            "Use the plugins only for lawful purposes and within the permissions granted by the user and the host environment.",
+                            "Do not use the plugins to bypass access controls, service restrictions, rate limits, safety measures, or third-party terms.",
+                            "Do not provide credentials, authentication secrets, payment-card data, government identifiers, protected health information, or other restricted data to the plugins."
+                        ]
+                    },
+                    {
+                        "heading": "User responsibility",
+                        "paragraphs": [
+                            "The user controls the inputs, requested actions, accounts, local files, and third-party services used with the plugins. The user is responsible for reviewing actions and outputs, maintaining backups, obtaining necessary rights and permissions, and deciding whether a result is suitable for its intended use. Neither these Terms nor a package license claims or changes ownership of user inputs or outputs.",
+                            "Coding recommendations, web UI audit findings, generated or edited images, artifact findings, and token estimates may be incomplete or inaccurate. Image age-rating results are informational still-image analogies only; they are not official ratings, certifications, legal advice, moderation decisions, or viewer-age verification."
+                        ]
+                    },
+                    {
+                        "heading": "Third-party services",
+                        "paragraphs": [
+                            "The LLM Chat Operator can send user-directed content through a supported direct ChatGPT capability or supported ChatGPT/Gemini browser sessions. Those services are operated by OpenAI and Google, not Fayegram. The user is responsible for the account used, the content sent, and compliance with the applicable service terms. Fayegram does not control third-party availability, security, data practices, outputs, account actions, or changes to those services.",
+                            "A direction from the user to use a third-party service does not authorize the plugin to evade that service's rules. Fayegram's disclaimers do not replace any authorization or compliance required by a third-party service or distribution platform."
+                        ],
+                        "links": [
+                            {
+                                "label": "OpenAI Terms of Use",
+                                "href": "https://openai.com/policies/terms-of-use/",
+                                "description": "Terms for relevant OpenAI and ChatGPT services."
+                            },
+                            {
+                                "label": "Google Terms of Service",
+                                "href": "https://policies.google.com/terms",
+                                "description": "Terms for relevant Google and Gemini services."
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Provided as is; no support commitment",
+                        "paragraphs": [
+                            "The plugins and website are provided as is and as available, without promises that they will be uninterrupted, error-free, compatible with future host or third-party changes, maintained, or suitable for a particular purpose. To the fullest extent permitted by law, Fayegram disclaims express and implied warranties, including merchantability, fitness for a particular purpose, and non-infringement.",
+                            "The Fayegram team does not provide individual technical support, guaranteed maintenance, response times, service-level commitments, or a commitment to add features or fix a particular issue. Self-service information may be changed or withdrawn at any time."
+                        ]
+                    },
+                    {
+                        "heading": "Limitation of liability",
+                        "paragraphs": [
+                            "To the fullest extent permitted by law, Fayegram will not be liable for indirect, incidental, special, consequential, exemplary, or punitive damages, or for lost data, lost profits, business interruption, account action, or third-party conduct arising from or related to use of the plugins or website. Nothing in these Terms excludes liability that cannot lawfully be excluded."
+                        ]
+                    },
+                    {
+                        "heading": "Changes and discontinuation",
+                        "paragraphs": [
+                            "The Fayegram team may update, suspend, or discontinue a plugin, feature, website page, or these Terms. The effective date above identifies the current published Terms. Continued use after updated Terms are published constitutes acceptance of the updated Terms."
+                        ]
+                    }
+                ]
+            },
+            {
+                "slug": "support",
+                "title": "Self-service information",
+                "summary": "Reference information for Fayegram plugins; no individual support channel or response commitment is offered.",
+                "sections": [
+                    {
+                        "heading": "No support channel",
+                        "paragraphs": [
+                            "Fayegram does not provide an individual support channel for these plugins. Fayegram plugins are provided as is, without a help desk, ticket system, guaranteed response time, service-level agreement, compatibility commitment, or maintenance obligation."
+                        ]
+                    },
+                    {
+                        "heading": "Self-service steps",
+                        "items": [
+                            "Confirm that your host is current and that the intended plugin is available and enabled through that host’s supported setup.",
+                            "Open the plugin's catalog entry and read the included skill instructions, boundaries, dependencies, and expected invocation wording.",
+                            "Use an explicit skill invocation when the skill requires one, and provide only the files and context needed for the task.",
+                            "Review the host error, plugin output, local permissions, dependency versions, and the current workspace state before retrying.",
+                            "If a host feature or third-party website changed, use that provider's own documentation and support resources."
+                        ],
+                        "links": [
+                            {
+                                "label": "Faye Plugin Market catalog",
+                                "href": "/",
+                                "description": "Browse plugin packages and their included skills, agents, scripts, and references."
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Third-party and host issues",
+                        "paragraphs": [
+                            "Codex, ChatGPT, Gemini, Python, Pillow, browsers, operating systems, and hosting services are not operated by Fayegram. Account, billing, outage, data-retention, abuse, and platform-access questions must be handled through the applicable provider's controls and support process. Do not send passwords, API keys, one-time codes, session cookies, or other secrets while seeking help."
+                        ],
+                        "links": [
+                            {
+                                "label": "OpenAI Help Center",
+                                "href": "https://help.openai.com/",
+                                "description": "Help for Codex, ChatGPT, and OpenAI accounts or services."
+                            },
+                            {
+                                "label": "Gemini Apps Help",
+                                "href": "https://support.google.com/gemini/",
+                                "description": "Help for Gemini Web and Google account-connected features."
+                            },
+                            {
+                                "label": "Python documentation",
+                                "href": "https://www.python.org/doc/",
+                                "description": "Runtime information for local Python-based image utilities."
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Privacy and terms",
+                        "paragraphs": [
+                            "Fayegram does not currently provide a direct inquiry or incident-reporting channel for these plugins. Review the published Privacy Policy and Terms of Use before installing or using them."
+                        ],
+                        "links": [
+                            {
+                                "label": "Privacy Policy",
+                                "href": "/privacy/",
+                                "description": "Data categories, recipients, retention, and user controls."
+                            },
+                            {
+                                "label": "Terms of Use",
+                                "href": "/terms/",
+                                "description": "Use conditions, third-party responsibility, disclaimers, and limitations."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "setup": {
+        "schemaVersion": 1,
+        "title": "Install and set up",
+        "summary": "Connect your coding host to Faye Plugin Market, choose the plugins you need, and confirm their skills are ready to use.",
+        "prerequisites": [
+            "Install and sign in to the host you plan to use. Plugin installation does not install the host or supply an account.",
+            "Use the marketplace checkout for the intended channel. Coming-soon plugins are not available to install from this release.",
+            "Read the chosen plugin's requirements. Helpers may need local runtimes or host tools in addition to the plugin files."
+        ],
+        "agentRules": [
+            "Identify the requested host and surface, the intended marketplace checkout, and the plugins the user wants before making changes.",
+            "Inspect the checkout's market-info/manifest.json and native registry. Use its actual marketplace identity and included packages; do not invent repository addresses or install an excluded plugin.",
+            "Check existing registrations and installations first. Reuse matching entries, preserve unrelated settings, and stop to clarify conflicting sources or versions.",
+            "Follow the user's authorized installation and trust scope; reuse authorization already given. Never clear caches, remove plugins, rewrite global configuration wholesale, or weaken host permissions to make a check pass.",
+            "Run the applicable native steps below. Keep authentication in the host's supported sign-in flow; never request that credentials be pasted into a prompt.",
+            "Verify the installed identity, version, enabled state where exposed, and skill discovery. A successful exit code or copied files alone do not prove a skill works.",
+            "Start a fresh session and use one small read-only skill request when the user authorizes a functional check. Report passed, blocked, and untested steps separately."
+        ],
+        "troubleshooting": [
+            "If the host cannot find a marketplace, confirm the terminal is at the checkout root and that its native registry is present.",
+            "If a plugin is already installed, compare its source and version before updating. Keep a working installation until the replacement is understood.",
+            "If skills are missing, check the plugin's enabled state and restart the session. Explicit-only skills may be absent from an automatic skill list.",
+            "If a skill cannot use a tool or runtime, check that skill's requirements and the host's permissions. Installation does not grant extra execution permissions.",
+            "If a check is blocked, report what was observed and what remains unverified. Do not treat a local test as proof of public remote installation."
+        ],
+        "platforms": [
+            {
+                "id": "codex",
+                "label": "Codex CLI",
+                "method": "codex-cli",
+                "documentationUrl": "https://developers.openai.com/codex/cli/reference/",
+                "requirements": [
+                    "An installed Codex CLI with the plugin command and a signed-in account for skill execution."
+                ],
+                "notes": [
+                    "The marketplace's native identity is used after @ in plugin selectors. A local registration alias can be different.",
+                    "Explicit-only invocation policies remain part of the packaged skills."
+                ],
+                "verification": {
+                    "date": "2026-09-27",
+                    "hostVersion": "Codex CLI 0.155.0 on Windows",
+                    "installation": "tested",
+                    "activation": "tested",
+                    "scope": "Local marketplace installation and one read-only exploration skill were tested in isolated configuration directories. Public remote installation and every individual workflow were not tested."
+                }
+            },
+            {
+                "id": "grok",
+                "label": "Grok Build",
+                "method": "grok-cli",
+                "documentationUrl": "https://docs.x.ai/build/features/skills-plugins-marketplaces",
+                "requirements": [
+                    "An installed Grok Build CLI with plugin support and a signed-in account for skill execution."
+                ],
+                "notes": [
+                    "Trust is a host permission decision, not a marketplace availability setting.",
+                    "Grok discovers skills in its native skill interface; these setup commands do not translate skill requests from another host."
+                ],
+                "verification": {
+                    "date": "2026-09-27",
+                    "hostVersion": "Grok Build 1.0.41 on Windows",
+                    "installation": "tested",
+                    "activation": "tested",
+                    "scope": "Local marketplace installation, loaded-skill discovery, and one read-only exploration skill were tested in isolated configuration directories. Public remote installation and every individual workflow were not tested."
+                }
+            },
+            {
+                "id": "antigravity",
+                "label": "Antigravity CLI",
+                "method": "antigravity-cli",
+                "documentationUrl": "https://www.antigravity.google/docs/plugins?tab=cli",
+                "requirements": [
+                    "An installed Antigravity CLI and a signed-in account for skill execution. Desktop and IDE setup are separate surfaces."
+                ],
+                "notes": [
+                    "Use agy plugin list to verify CLI imports. Filesystem locations can differ by host version; the tested CLI resolved skills under ~/.gemini/config/plugins/.",
+                    "A desktop registration alone does not prove CLI import or skill execution. The local check retained existing desktop registrations."
+                ],
+                "verification": {
+                    "date": "2026-09-27",
+                    "hostVersion": "Antigravity CLI 1.2.4 on Windows",
+                    "installation": "tested",
+                    "activation": "tested",
+                    "scope": "The three release plugins and 23 skills were imported through the active CLI, and one read-only exploration request passed with Gemini 3.8 Flash (Medium). This was not an isolated profile or a test of every workflow; existing desktop registrations were retained."
+                }
+            }
+        ]
+    },
+    "presentation": {
+        "defaultPlatform": "codex",
+        "platformOrder": [
+            "codex",
+            "grok",
+            "antigravity"
+        ],
+        "platforms": {
+            "codex": {
+                "label": "Codex",
+                "status": "documented",
+                "invocation": "${skill}",
+                "evidence": "Explicit dollar-prefixed skill invocations in the packaged skill instructions and maintained examples. This is documentation evidence, not a new native-host installation test."
+            },
+            "grok": {
+                "label": "Grok",
+                "status": "documented",
+                "invocation": "/{skill}",
+                "evidence": "Grok Build documents user-invocable skills as slash commands: https://docs.x.ai/build/features/skills-plugins-marketplaces (checked 2026-09-27). This documents invocation syntax, not support for every skill's tools or workflow."
+            },
+            "antigravity": {
+                "label": "Antigravity",
+                "status": "documented",
+                "invocation": "/{skill}",
+                "evidence": "Antigravity documents CLI skill-to-slash-command conversion: https://www.antigravity.google/docs/skills/#slash-command-conversion (checked 2026-09-27). This documents invocation syntax, not support for every skill's tools or workflow."
+            }
+        }
+    },
+    "provenance": {
+        "sourceFingerprint": "e392816a8e3eebaca05c4e19eaafafa05229642d3f334dd7a8db9c884f9239a8",
+        "configurationFingerprint": "07b99b0da4c9440a174d748635551fb246305101cae87d351fcddf9ff7472e98"
+    }
+}

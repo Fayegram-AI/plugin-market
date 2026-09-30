@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI System Implementation"
+  short_description: "Build web screens, components, and shared UI systems."
+  default_prompt: "Use $ui-system-implementation to build this responsive web screen from the agreed design and verify its behavior."
