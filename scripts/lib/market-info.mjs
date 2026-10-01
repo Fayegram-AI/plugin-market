@@ -5,7 +5,7 @@ import path from "node:path";
 import { readManagedSnapshot } from "./managed-files.mjs";
 import { prioritize, validateSkillOrder } from "./skill-order.mjs";
 import { validatePresentation } from "./presentation.mjs";
-import { validateSetupPolicy, buildSetupGuide, renderSetupMarkdown } from "./setup-guide.mjs";
+import { validateSetupPolicy, buildSetupGuide, renderSetupFiles } from "./setup-guide.mjs";
 import { validateHostingPolicy } from "./hosting-policy.mjs";
 export async function readMarketInfo(root, { optional = false } = {}) {
     try { return JSON.parse(await readFile(path.join(root, "market-info/manifest.json"), "utf8")); }
@@ -22,7 +22,9 @@ export async function validateMarketInfo(root, metadata, registry, { snapshot } 
             const guide = buildSetupGuide(metadata);
             const actual = JSON.parse(await readFile(path.join(root, "market-info/setup.json"), "utf8"));
             if (JSON.stringify(actual) !== JSON.stringify(guide)) errors.push("Resolved setup guide differs from target metadata");
-            if (await readFile(path.join(root, "market-info/SETUP.md"), "utf8") !== renderSetupMarkdown(guide)) errors.push("Agent setup guide differs from maintained instructions");
+            for (const [name, markdown] of renderSetupFiles(guide)) {
+                if (await readFile(path.join(root, name), "utf8") !== markdown) errors.push(`Agent setup guide differs from maintained instructions: ${name}`);
+            }
         }
     } catch (error) { errors.push(`Setup guide: ${error.message}`); }
     if (metadata?.schemaVersion !== 1 || !["prod", "release"].includes(metadata.target)) return ["Invalid resolved market-info schema/target"];

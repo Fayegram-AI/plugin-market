@@ -12,7 +12,7 @@ Repository: https://github.com/Fayegram-AI/plugin-market.git
 
 Distribution channel: **public**. The channel label is separate from native
 package versions and does not establish whether this candidate is published.
-Read the [installation and agent setup guide](market-info/SETUP.md) for host-specific steps, package selection, verification, and existing-installation handling.
+Use the [setup website](https://plugin-market.fayegram.com/setup/) to choose your app and installation method, or read the [agent setup guide](market-info/SETUP.md) in this checkout. App procedures marked as needing input are not confirmed installation instructions.
 
 ## Choose a Plugin
 
@@ -40,15 +40,15 @@ are not installable packages.
 
 ## Getting Started
 
-1. Obtain this repository's checkout and open a terminal at its root.
-2. Choose your host below and follow its installation steps. Install only the plugins you need.
-3. Start a fresh host session, confirm skill discovery, and read the chosen skill's requirements before your first request.
+1. Choose your app, its desktop or terminal interface, and the source method in the setup guide. Grok Build uses a terminal interface.
+2. Follow one confirmed procedure and install only the plugins you need. **Git repository** registers a source URL; **Local copy** uses a folder on your computer, whether cloned, downloaded and extracted, or already available. Resolve the marketplace folder before running relative-path commands. App procedures awaiting confirmation are clearly marked.
+3. Start a fresh session when required, confirm the selected plugins are available, and open their skill guides for examples and requirements.
 
-- [Codex CLI installation](market-info/SETUP.md#codex-cli)
-- [Grok Build installation](market-info/SETUP.md#grok-build)
-- [Antigravity CLI installation](market-info/SETUP.md#antigravity-cli)
+- [Codex setup](market-info/SETUP.md#codex)
+- [Grok Build setup](market-info/SETUP.md#grok-build)
+- [Antigravity setup](market-info/SETUP.md#antigravity)
 
-The [agent-readable setup guide](market-info/SETUP.md) contains the same maintained steps for an assistant helping with installation. It explains how to inspect an existing installation and what to verify before reporting success.
+The [agent setup guide](market-info/SETUP.md) links to focused procedures for each app, interface, and source method. It explains how to reuse existing installations, interpret verification, and stop when an app procedure needs confirmation.
 
 Install the host and sign in before using its native installation commands.
 Plugin installation supplies package files; it does not supply host tools,
@@ -87,15 +87,93 @@ activation requirements, and selecting a platform does not change package files.
 ## Updates and Troubleshooting
 
 When updating, compare the installed package's source and version with the
-checkout you intend to use, then follow your host's supported update or import
+repository source you intend to use, then follow your host's supported update or import
 procedure. Keep unrelated registrations and settings intact. A fresh session may
 be needed to discover new skills.
 
-- If the host cannot find a marketplace, confirm the terminal is at the checkout root and that its native registry is present.
-- If a plugin is already installed, compare its source and version before updating. Keep a working installation until the replacement is understood.
-- If skills are missing, check the plugin's enabled state and restart the session. Explicit-only skills may be absent from an automatic skill list.
-- If a skill cannot use a tool or runtime, check that skill's requirements and the host's permissions. Installation does not grant extra execution permissions.
-- If a check is blocked, report what was observed and what remains unverified. Do not treat a local test as proof of public remote installation.
+<details>
+<summary>The terminal does not recognize the command</summary>
+
+The application may be missing, unavailable in this terminal, or too old for plugin commands.
+
+1. Open a new terminal after installing the application.
+2. Check its version and plugin help against the official command reference.
+3. Do not paste interactive slash commands into the system terminal.
+
+Expected: The application starts and its plugin commands or Plugins interface are available.
+
+</details>
+
+<details>
+<summary>The Git repository cannot be added</summary>
+
+The URL, network connection, or Git access may prevent fetching the marketplace.
+
+1. Compare the source with the repository address in your selected guide.
+2. Confirm access through your normal Git authentication flow; private repositories require access.
+3. Retry after resolving access. Do not disable certificate checks or paste a token into the guide.
+
+Expected: The intended marketplace is listed without an access error.
+
+</details>
+
+<details>
+<summary>The local folder is not recognized</summary>
+
+Marketplace registration uses the repository root; direct plugin installation uses an individual plugin folder.
+
+1. For Codex or Grok registration, open the directory containing the marketplace registry and plugins folder.
+2. For Antigravity terminal installation, select plugins/&lt;plugin-id&gt; inside that checkout.
+3. Keep the existing checkout; do not delete it to retry registration.
+
+Expected: The source is recognized and the desired packages are available.
+
+</details>
+
+<details>
+<summary>The plugin is installed but its skills are missing</summary>
+
+The session may predate installation, the plugin may be disabled, or a skill may require explicit invocation.
+
+1. Check the plugin's installed and enabled state.
+2. Start a fresh session and open the skill picker or the selected plugin's skill guide.
+3. Check invocation and tool requirements. Installation does not grant extra tools or permissions.
+
+Expected: Applicable skills can be discovered or explicitly invoked in the new session.
+
+</details>
+
+<details>
+<summary>Grok does not show a newly installed skill</summary>
+
+Discovery output can distinguish an unloaded package from a skill requiring an explicit request.
+
+1. Check the plugin is enabled in /plugins, then start a new session.
+2. Run the optional discovery command below and look for the selected plugin and its expected skill names.
+3. If the package is present but a skill is not offered automatically, read its invocation requirements.
+
+Inspect skill discovery (PowerShell or Bash/zsh):
+
+```text
+grok inspect --json
+```
+
+Expected: The applicable skill names appear, or an explicit-invocation requirement explains the difference.
+
+</details>
+
+<details>
+<summary>The same plugin is already installed</summary>
+
+A matching installation can be reused; another source may create ambiguity.
+
+1. Compare the installed identity, source, and version with this guide.
+2. Reuse a matching installation.
+3. For another version or source, follow the product's update procedure after deciding which source to keep.
+
+Expected: The intended source and version are identified without removing unrelated registrations.
+
+</details>
 
 Include your host and version, plugin ID and version, the requested skill, and
 the observed error when reporting a problem. Remove private files and credentials

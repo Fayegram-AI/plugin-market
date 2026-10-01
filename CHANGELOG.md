@@ -4,6 +4,27 @@ All notable marketplace-package changes are tracked here.
 
 ## Unreleased
 
+### Setup experience remake: 2026-09-30
+
+- Organize setup by application, interface, and installation method, with focused
+  human and agent guides generated from the same maintained procedure facts.
+- Separate prerequisites, registration, plugin choice, confirmation, optional
+  diagnostics, and later management. Provide PowerShell and Bash command forms.
+- Scope verification to each procedure and retain dated observations. Mark
+  unconfirmed app procedures as awaiting owner input without inventing steps.
+- Keep schema-one setup readable during migration; preserve package bytes,
+  native versions, skill behavior, availability, and licensing.
+
+### Git and local marketplace setup: 2026-09-30
+
+- Present Git repository and local checkout registration as alternative Codex
+  and Grok marketplace methods, using configured addresses and native identities.
+- Keep registration separate from plugin selection; explain Grok's Marketplace
+  tab and label direct CLI package installation as an alternative.
+- Synchronize the agent-readable guide and repository getting-started prose,
+  preserving dated local evidence and Antigravity's existing checkout method.
+- Preserve all plugin package bytes, native versions, and skill behavior.
+
 ### Documentation and planning-trigger reconciliation: 2026-09-30
 
 - Clarify requested repository change planning in Coding Assistant's discovery

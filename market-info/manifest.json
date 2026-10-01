@@ -24,6 +24,7 @@
         {
             "id": "faye-coding-assistant",
             "name": "Faye Coding Assistant",
+            "summary": "Focused, scope-preserving coding skills.",
             "version": "0.1.0-beta.7",
             "release": "public",
             "fingerprint": "f21f3bdf079b354765ba30e63a84ab3a25d085516242b82f140594efe8b136aa",
@@ -47,6 +48,7 @@
         {
             "id": "faye-image-utility",
             "name": "Faye Image Utility",
+            "summary": "Image auditing, editing, conversion, and rating estimates.",
             "version": "0.1.0-beta.6",
             "release": "public",
             "fingerprint": "82511352ff760eb6c4a5419dec9332a1584dfef1bf7173dbc29570f8921b89d4",
@@ -60,6 +62,7 @@
         {
             "id": "faye-ui-system-engineer",
             "name": "Faye UI System Engineer",
+            "summary": "Web UI design, implementation, review, and inspection.",
             "version": "0.1.0-beta.4",
             "release": "public",
             "fingerprint": "ec44a1117d6530797bed8590ab92393c463f2778a3a55d08e0221ab09b859469",
@@ -357,90 +360,490 @@
         ]
     },
     "setup": {
-        "schemaVersion": 1,
-        "title": "Install and set up",
-        "summary": "Connect your coding host to Faye Plugin Market, choose the plugins you need, and confirm their skills are ready to use.",
-        "prerequisites": [
-            "Install and sign in to the host you plan to use. Plugin installation does not install the host or supply an account.",
-            "Use the marketplace checkout for the intended channel. Coming-soon plugins are not available to install from this release.",
-            "Read the chosen plugin's requirements. Helpers may need local runtimes or host tools in addition to the plugin files."
-        ],
-        "agentRules": [
-            "Identify the requested host and surface, the intended marketplace checkout, and the plugins the user wants before making changes.",
-            "Inspect the checkout's market-info/manifest.json and native registry. Use its actual marketplace identity and included packages; do not invent repository addresses or install an excluded plugin.",
-            "Check existing registrations and installations first. Reuse matching entries, preserve unrelated settings, and stop to clarify conflicting sources or versions.",
-            "Follow the user's authorized installation and trust scope; reuse authorization already given. Never clear caches, remove plugins, rewrite global configuration wholesale, or weaken host permissions to make a check pass.",
-            "Run the applicable native steps below. Keep authentication in the host's supported sign-in flow; never request that credentials be pasted into a prompt.",
-            "Verify the installed identity, version, enabled state where exposed, and skill discovery. A successful exit code or copied files alone do not prove a skill works.",
-            "Start a fresh session and use one small read-only skill request when the user authorizes a functional check. Report passed, blocked, and untested steps separately."
-        ],
-        "troubleshooting": [
-            "If the host cannot find a marketplace, confirm the terminal is at the checkout root and that its native registry is present.",
-            "If a plugin is already installed, compare its source and version before updating. Keep a working installation until the replacement is understood.",
-            "If skills are missing, check the plugin's enabled state and restart the session. Explicit-only skills may be absent from an automatic skill list.",
-            "If a skill cannot use a tool or runtime, check that skill's requirements and the host's permissions. Installation does not grant extra execution permissions.",
-            "If a check is blocked, report what was observed and what remains unverified. Do not treat a local test as proof of public remote installation."
-        ],
-        "platforms": [
+        "schemaVersion": 2,
+        "title": "Set up Faye plugins",
+        "summary": "Choose your app, install the plugins you need, and start using their skills.",
+        "products": [
             {
                 "id": "codex",
-                "label": "Codex CLI",
-                "method": "codex-cli",
-                "documentationUrl": "https://developers.openai.com/codex/cli/reference/",
+                "label": "Codex",
+                "summary": "Install reusable skills for coding, image work, and UI tasks in Codex.",
+                "documentationUrl": "https://learn.chatgpt.com/docs/developer-commands",
                 "requirements": [
-                    "An installed Codex CLI with the plugin command and a signed-in account for skill execution."
+                    "Install Codex and sign in before running skills. Use the official documentation if the application is not yet available.",
+                    "Check the chosen plugin's requirements; some skills need additional tools or runtimes."
                 ],
-                "notes": [
-                    "The marketplace's native identity is used after @ in plugin selectors. A local registration alias can be different.",
-                    "Explicit-only invocation policies remain part of the packaged skills."
-                ],
-                "verification": {
-                    "date": "2026-09-27",
-                    "hostVersion": "Codex CLI 0.155.0 on Windows",
-                    "installation": "tested",
-                    "activation": "tested",
-                    "scope": "Local marketplace installation and one read-only exploration skill were tested in isolated configuration directories. Public remote installation and every individual workflow were not tested."
-                }
+                "interfaces": [
+                    {
+                        "id": "app",
+                        "label": "Desktop app",
+                        "summary": "Use Codex through desktop app.",
+                        "methods": [
+                            {
+                                "id": "git",
+                                "status": "needs-input",
+                                "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+                                "verification": {
+                                    "status": "pending",
+                                    "date": "2026-09-30",
+                                    "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                                    "evidenceUrl": "https://learn.chatgpt.com/docs/developer-commands"
+                                },
+                                "captures": [
+                                    {
+                                        "id": "confirm-procedure",
+                                        "title": "Confirm Codex desktop app git setup",
+                                        "kind": "procedure",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Show how to open the controls for adding this custom marketplace in Codex (Desktop app). Record exact menu and button labels.",
+                                            "Confirm whether this interface accepts our Git repository URL directly, the required source format, and the registration result. A curated listing alone does not establish custom Git registration.",
+                                            "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                                            "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                                        ]
+                                    },
+                                    {
+                                        "id": "capture-installation",
+                                        "title": "Screenshots for Codex desktop app",
+                                        "kind": "screenshot",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                                            "Capture the Git source input with the repository URL and the marketplace after successful registration.",
+                                            "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                                            "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "local",
+                                "status": "needs-input",
+                                "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+                                "verification": {
+                                    "status": "pending",
+                                    "date": "2026-09-30",
+                                    "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                                    "evidenceUrl": "https://learn.chatgpt.com/docs/developer-commands"
+                                },
+                                "captures": [
+                                    {
+                                        "id": "confirm-procedure",
+                                        "title": "Confirm Codex desktop app local setup",
+                                        "kind": "procedure",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Show how to open the controls for adding this custom marketplace in Codex (Desktop app). Record exact menu and button labels.",
+                                            "Confirm whether the interface selects a marketplace root or an individual plugin folder. Show the expected directory and registration result.",
+                                            "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                                            "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                                        ]
+                                    },
+                                    {
+                                        "id": "capture-installation",
+                                        "title": "Screenshots for Codex desktop app",
+                                        "kind": "screenshot",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                                            "Capture the local folder chooser or source field and the marketplace after successful registration.",
+                                            "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                                            "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "terminal",
+                        "label": "Terminal",
+                        "summary": "Use Codex through terminal.",
+                        "methods": [
+                            {
+                                "id": "git",
+                                "status": "ready",
+                                "summary": "Add the marketplace using its Git repository URL. The app fetches the source; no manual clone is needed.",
+                                "verification": {
+                                    "status": "documented",
+                                    "date": "2026-09-30",
+                                    "scope": "Git syntax is documented and confirmed by CLI help. A complete Git installation has not been newly verified for this guide.",
+                                    "evidenceUrl": "https://learn.chatgpt.com/docs/developer-commands"
+                                },
+                                "captures": []
+                            },
+                            {
+                                "id": "local",
+                                "status": "ready",
+                                "summary": "Add the marketplace from a local copy on your computer.",
+                                "verification": {
+                                    "status": "tested",
+                                    "date": "2026-09-27",
+                                    "version": "Codex CLI 0.155.0 on Windows",
+                                    "scope": "Local installation and one representative skill were checked on the recorded version. This does not certify every workflow, operating system, or app interface.",
+                                    "evidenceUrl": "https://learn.chatgpt.com/docs/developer-commands"
+                                },
+                                "captures": []
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "id": "grok",
                 "label": "Grok Build",
-                "method": "grok-cli",
+                "summary": "Add the marketplace to Grok Build and choose plugins in its terminal interface.",
                 "documentationUrl": "https://docs.x.ai/build/features/skills-plugins-marketplaces",
                 "requirements": [
-                    "An installed Grok Build CLI with plugin support and a signed-in account for skill execution."
+                    "Install Grok Build and sign in before running skills. Use the official documentation if the application is not yet available.",
+                    "Check the chosen plugin's requirements; some skills need additional tools or runtimes."
                 ],
-                "notes": [
-                    "Trust is a host permission decision, not a marketplace availability setting.",
-                    "Grok discovers skills in its native skill interface; these setup commands do not translate skill requests from another host."
-                ],
-                "verification": {
-                    "date": "2026-09-27",
-                    "hostVersion": "Grok Build 1.0.41 on Windows",
-                    "installation": "tested",
-                    "activation": "tested",
-                    "scope": "Local marketplace installation, loaded-skill discovery, and one read-only exploration skill were tested in isolated configuration directories. Public remote installation and every individual workflow were not tested."
-                }
+                "interfaces": [
+                    {
+                        "id": "terminal",
+                        "label": "Terminal",
+                        "summary": "Use Grok Build through terminal.",
+                        "methods": [
+                            {
+                                "id": "git",
+                                "status": "ready",
+                                "summary": "Add the marketplace using its Git repository URL. The app fetches the source; no manual clone is needed.",
+                                "verification": {
+                                    "status": "documented",
+                                    "date": "2026-09-30",
+                                    "scope": "Git syntax is documented and confirmed by CLI help. A complete Git installation has not been newly verified for this guide.",
+                                    "evidenceUrl": "https://docs.x.ai/build/features/skills-plugins-marketplaces"
+                                },
+                                "captures": []
+                            },
+                            {
+                                "id": "local",
+                                "status": "ready",
+                                "summary": "Add the marketplace from a local copy on your computer.",
+                                "verification": {
+                                    "status": "tested",
+                                    "date": "2026-09-27",
+                                    "version": "Grok Build 1.0.41 on Windows",
+                                    "scope": "Local installation and one representative skill were checked on the recorded version. This does not certify every workflow, operating system, or app interface.",
+                                    "evidenceUrl": "https://docs.x.ai/build/features/skills-plugins-marketplaces"
+                                },
+                                "captures": []
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "id": "antigravity",
-                "label": "Antigravity CLI",
-                "method": "antigravity-cli",
+                "label": "Antigravity",
+                "summary": "Choose the Antigravity interface you use so the installation steps match it.",
                 "documentationUrl": "https://www.antigravity.google/docs/plugins?tab=cli",
                 "requirements": [
-                    "An installed Antigravity CLI and a signed-in account for skill execution. Desktop and IDE setup are separate surfaces."
+                    "Install Antigravity and sign in before running skills. Use the official documentation if the application is not yet available.",
+                    "Check the chosen plugin's requirements; some skills need additional tools or runtimes."
                 ],
-                "notes": [
-                    "Use agy plugin list to verify CLI imports. Filesystem locations can differ by host version; the tested CLI resolved skills under ~/.gemini/config/plugins/.",
-                    "A desktop registration alone does not prove CLI import or skill execution. The local check retained existing desktop registrations."
+                "interfaces": [
+                    {
+                        "id": "app",
+                        "label": "App",
+                        "summary": "Use Antigravity through app.",
+                        "methods": [
+                            {
+                                "id": "git",
+                                "status": "needs-input",
+                                "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+                                "verification": {
+                                    "status": "pending",
+                                    "date": "2026-09-30",
+                                    "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                                    "evidenceUrl": "https://www.antigravity.google/docs/plugins?tab=cli"
+                                },
+                                "captures": [
+                                    {
+                                        "id": "confirm-procedure",
+                                        "title": "Confirm Antigravity app git setup",
+                                        "kind": "procedure",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Show how to open the controls for adding this custom marketplace in Antigravity (App). Record exact menu and button labels.",
+                                            "Confirm whether this interface accepts our Git repository URL directly, the required source format, and the registration result. A curated listing alone does not establish custom Git registration.",
+                                            "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                                            "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                                        ]
+                                    },
+                                    {
+                                        "id": "capture-installation",
+                                        "title": "Screenshots for Antigravity app",
+                                        "kind": "screenshot",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                                            "Capture the Git source input with the repository URL and the marketplace after successful registration.",
+                                            "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                                            "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "local",
+                                "status": "needs-input",
+                                "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+                                "verification": {
+                                    "status": "pending",
+                                    "date": "2026-09-30",
+                                    "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                                    "evidenceUrl": "https://www.antigravity.google/docs/plugins?tab=cli"
+                                },
+                                "captures": [
+                                    {
+                                        "id": "confirm-procedure",
+                                        "title": "Confirm Antigravity app local setup",
+                                        "kind": "procedure",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Show how to open the controls for adding this custom marketplace in Antigravity (App). Record exact menu and button labels.",
+                                            "Confirm whether the interface selects a marketplace root or an individual plugin folder. Show the expected directory and registration result.",
+                                            "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                                            "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                                        ]
+                                    },
+                                    {
+                                        "id": "capture-installation",
+                                        "title": "Screenshots for Antigravity app",
+                                        "kind": "screenshot",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                                            "Capture the local folder chooser or source field and the marketplace after successful registration.",
+                                            "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                                            "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ide",
+                        "label": "IDE",
+                        "summary": "Use Antigravity through ide.",
+                        "methods": [
+                            {
+                                "id": "git",
+                                "status": "needs-input",
+                                "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+                                "verification": {
+                                    "status": "pending",
+                                    "date": "2026-09-30",
+                                    "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                                    "evidenceUrl": "https://www.antigravity.google/docs/plugins?tab=cli"
+                                },
+                                "captures": [
+                                    {
+                                        "id": "confirm-procedure",
+                                        "title": "Confirm Antigravity ide git setup",
+                                        "kind": "procedure",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Show how to open the controls for adding this custom marketplace in Antigravity (IDE). Record exact menu and button labels.",
+                                            "Confirm whether this interface accepts our Git repository URL directly, the required source format, and the registration result. A curated listing alone does not establish custom Git registration.",
+                                            "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                                            "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                                        ]
+                                    },
+                                    {
+                                        "id": "capture-installation",
+                                        "title": "Screenshots for Antigravity ide",
+                                        "kind": "screenshot",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                                            "Capture the Git source input with the repository URL and the marketplace after successful registration.",
+                                            "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                                            "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "local",
+                                "status": "needs-input",
+                                "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+                                "verification": {
+                                    "status": "pending",
+                                    "date": "2026-09-30",
+                                    "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                                    "evidenceUrl": "https://www.antigravity.google/docs/plugins?tab=cli"
+                                },
+                                "captures": [
+                                    {
+                                        "id": "confirm-procedure",
+                                        "title": "Confirm Antigravity ide local setup",
+                                        "kind": "procedure",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Show how to open the controls for adding this custom marketplace in Antigravity (IDE). Record exact menu and button labels.",
+                                            "Confirm whether the interface selects a marketplace root or an individual plugin folder. Show the expected directory and registration result.",
+                                            "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                                            "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                                        ]
+                                    },
+                                    {
+                                        "id": "capture-installation",
+                                        "title": "Screenshots for Antigravity ide",
+                                        "kind": "screenshot",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                                            "Capture the local folder chooser or source field and the marketplace after successful registration.",
+                                            "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                                            "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "terminal",
+                        "label": "Terminal",
+                        "summary": "Use Antigravity through terminal.",
+                        "methods": [
+                            {
+                                "id": "git",
+                                "status": "needs-input",
+                                "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+                                "verification": {
+                                    "status": "pending",
+                                    "date": "2026-09-30",
+                                    "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                                    "evidenceUrl": "https://www.antigravity.google/docs/plugins?tab=cli"
+                                },
+                                "captures": [
+                                    {
+                                        "id": "confirm-procedure",
+                                        "title": "Confirm Antigravity terminal git setup",
+                                        "kind": "procedure",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Show how to open the controls for adding this custom marketplace in Antigravity (Terminal). Record exact menu and button labels.",
+                                            "Confirm whether this interface accepts our Git repository URL directly, the required source format, and the registration result. A curated listing alone does not establish custom Git registration.",
+                                            "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                                            "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                                        ]
+                                    },
+                                    {
+                                        "id": "capture-installation",
+                                        "title": "Screenshots for Antigravity terminal",
+                                        "kind": "screenshot",
+                                        "status": "missing",
+                                        "instructions": [
+                                            "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                                            "Capture the Git source input with the repository URL and the marketplace after successful registration.",
+                                            "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                                            "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "local",
+                                "status": "ready",
+                                "summary": "Install selected plugin folders from a local copy of the marketplace.",
+                                "verification": {
+                                    "status": "tested",
+                                    "date": "2026-09-27",
+                                    "version": "Antigravity CLI 1.2.4 on Windows",
+                                    "scope": "Local installation and one representative skill were checked on the recorded version. This does not certify every workflow, operating system, or app interface.",
+                                    "evidenceUrl": "https://www.antigravity.google/docs/plugins?tab=cli"
+                                },
+                                "captures": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "agentRules": [
+            "Identify the selected product, interface, Git or local method, operating system/shell, and desired plugins. Ask only for missing decisions; reuse the user's existing authorization.",
+            "Read this target's setup.json, manifest.json, and native registry. Use their actual marketplace identity, repository URL, available plugin IDs, versions, and skills. Do not borrow facts from another target.",
+            "A route marked needs-input is not executable guidance. Describe the missing procedure and ask for the user's demonstration or confirmation. Never guess app controls or treat a placeholder as evidence.",
+            "Inspect existing registrations and installed packages using supported read-only commands. Reuse a matching source and installed version. Explain conflicts before replacing anything.",
+            "Choose the declared shell variant. Run only the selected route and plugins, using automation output flags where provided. Interactive slash commands belong in the product, not the operating-system shell.",
+            "Keep authentication in the application's supported sign-in flow. Never ask for credentials in a prompt. Respect existing trust authorization; do not silently add automatic trust flags.",
+            "Preserve unrelated settings and working installations. Do not clear caches, remove unrelated packages, rewrite global configuration wholesale, or weaken permissions to make setup pass.",
+            "Verify installed identity, version, enabled state where exposed, and skill discovery. A zero exit code or copied files alone do not establish successful setup.",
+            "Start or request a fresh session when needed. Run a functional skill request only if the user authorizes that execution; installation does not require a model call.",
+            "Report the selected route, packages installed or reused, observed verification, and the next user action. Separate documented behavior, observations, and untested or blocked work."
+        ],
+        "troubleshooting": [
+            {
+                "id": "command-missing",
+                "title": "The terminal does not recognize the command",
+                "reason": "The application may be missing, unavailable in this terminal, or too old for plugin commands.",
+                "steps": [
+                    "Open a new terminal after installing the application.",
+                    "Check its version and plugin help against the official command reference.",
+                    "Do not paste interactive slash commands into the system terminal."
                 ],
-                "verification": {
-                    "date": "2026-09-27",
-                    "hostVersion": "Antigravity CLI 1.2.4 on Windows",
-                    "installation": "tested",
-                    "activation": "tested",
-                    "scope": "The three release plugins and 23 skills were imported through the active CLI, and one read-only exploration request passed with Gemini 3.8 Flash (Medium). This was not an isolated profile or a test of every workflow; existing desktop registrations were retained."
-                }
+                "expected": "The application starts and its plugin commands or Plugins interface are available."
+            },
+            {
+                "id": "repository-access",
+                "title": "The Git repository cannot be added",
+                "reason": "The URL, network connection, or Git access may prevent fetching the marketplace.",
+                "steps": [
+                    "Compare the source with the repository address in your selected guide.",
+                    "Confirm access through your normal Git authentication flow; private repositories require access.",
+                    "Retry after resolving access. Do not disable certificate checks or paste a token into the guide."
+                ],
+                "expected": "The intended marketplace is listed without an access error."
+            },
+            {
+                "id": "wrong-folder",
+                "title": "The local folder is not recognized",
+                "reason": "Marketplace registration uses the repository root; direct plugin installation uses an individual plugin folder.",
+                "steps": [
+                    "For Codex or Grok registration, open the directory containing the marketplace registry and plugins folder.",
+                    "For Antigravity terminal installation, select plugins/<plugin-id> inside that checkout.",
+                    "Keep the existing checkout; do not delete it to retry registration."
+                ],
+                "expected": "The source is recognized and the desired packages are available."
+            },
+            {
+                "id": "skills-missing",
+                "title": "The plugin is installed but its skills are missing",
+                "reason": "The session may predate installation, the plugin may be disabled, or a skill may require explicit invocation.",
+                "steps": [
+                    "Check the plugin's installed and enabled state.",
+                    "Start a fresh session and open the skill picker or the selected plugin's skill guide.",
+                    "Check invocation and tool requirements. Installation does not grant extra tools or permissions."
+                ],
+                "expected": "Applicable skills can be discovered or explicitly invoked in the new session."
+            },
+            {
+                "id": "grok-discovery",
+                "product": "grok",
+                "title": "Grok does not show a newly installed skill",
+                "reason": "Discovery output can distinguish an unloaded package from a skill requiring an explicit request.",
+                "steps": [
+                    "Check the plugin is enabled in /plugins, then start a new session.",
+                    "Run the optional discovery command below and look for the selected plugin and its expected skill names.",
+                    "If the package is present but a skill is not offered automatically, read its invocation requirements."
+                ],
+                "expected": "The applicable skill names appear, or an explicit-invocation requirement explains the difference."
+            },
+            {
+                "id": "already-installed",
+                "title": "The same plugin is already installed",
+                "reason": "A matching installation can be reused; another source may create ambiguity.",
+                "steps": [
+                    "Compare the installed identity, source, and version with this guide.",
+                    "Reuse a matching installation.",
+                    "For another version or source, follow the product's update procedure after deciding which source to keep."
+                ],
+                "expected": "The intended source and version are identified without removing unrelated registrations."
             }
         ]
     },
@@ -473,7 +876,7 @@
         }
     },
     "provenance": {
-        "sourceFingerprint": "e392816a8e3eebaca05c4e19eaafafa05229642d3f334dd7a8db9c884f9239a8",
+        "sourceFingerprint": "7fbbfced480d8258c8822e0a2f338d8666afd50de3c2d0528bb3c5343c926051",
         "configurationFingerprint": "07b99b0da4c9440a174d748635551fb246305101cae87d351fcddf9ff7472e98"
     }
 }

@@ -1,304 +1,7 @@
 {
-    "schemaVersion": 1,
-    "title": "Install and set up",
-    "summary": "Connect your coding host to Faye Plugin Market, choose the plugins you need, and confirm their skills are ready to use.",
-    "prerequisites": [
-        "Install and sign in to the host you plan to use. Plugin installation does not install the host or supply an account.",
-        "Use the marketplace checkout for the intended channel. Coming-soon plugins are not available to install from this release.",
-        "Read the chosen plugin's requirements. Helpers may need local runtimes or host tools in addition to the plugin files."
-    ],
-    "agentRules": [
-        "Identify the requested host and surface, the intended marketplace checkout, and the plugins the user wants before making changes.",
-        "Inspect the checkout's market-info/manifest.json and native registry. Use its actual marketplace identity and included packages; do not invent repository addresses or install an excluded plugin.",
-        "Check existing registrations and installations first. Reuse matching entries, preserve unrelated settings, and stop to clarify conflicting sources or versions.",
-        "Follow the user's authorized installation and trust scope; reuse authorization already given. Never clear caches, remove plugins, rewrite global configuration wholesale, or weaken host permissions to make a check pass.",
-        "Run the applicable native steps below. Keep authentication in the host's supported sign-in flow; never request that credentials be pasted into a prompt.",
-        "Verify the installed identity, version, enabled state where exposed, and skill discovery. A successful exit code or copied files alone do not prove a skill works.",
-        "Start a fresh session and use one small read-only skill request when the user authorizes a functional check. Report passed, blocked, and untested steps separately."
-    ],
-    "troubleshooting": [
-        "If the host cannot find a marketplace, confirm the terminal is at the checkout root and that its native registry is present.",
-        "If a plugin is already installed, compare its source and version before updating. Keep a working installation until the replacement is understood.",
-        "If skills are missing, check the plugin's enabled state and restart the session. Explicit-only skills may be absent from an automatic skill list.",
-        "If a skill cannot use a tool or runtime, check that skill's requirements and the host's permissions. Installation does not grant extra execution permissions.",
-        "If a check is blocked, report what was observed and what remains unverified. Do not treat a local test as proof of public remote installation."
-    ],
-    "platforms": [
-        {
-            "id": "codex",
-            "label": "Codex CLI",
-            "method": "codex-cli",
-            "documentationUrl": "https://developers.openai.com/codex/cli/reference/",
-            "requirements": [
-                "An installed Codex CLI with the plugin command and a signed-in account for skill execution."
-            ],
-            "notes": [
-                "The marketplace's native identity is used after @ in plugin selectors. A local registration alias can be different.",
-                "Explicit-only invocation policies remain part of the packaged skills."
-            ],
-            "verification": {
-                "date": "2026-09-27",
-                "hostVersion": "Codex CLI 0.155.0 on Windows",
-                "installation": "tested",
-                "activation": "tested",
-                "scope": "Local marketplace installation and one read-only exploration skill were tested in isolated configuration directories. Public remote installation and every individual workflow were not tested."
-            },
-            "steps": [
-                {
-                    "title": "Check your existing setup",
-                    "paragraphs": [
-                        "Check the installed CLI and its marketplace sources. If this checkout is already registered, reuse that registration."
-                    ],
-                    "commands": [
-                        {
-                            "label": "Codex version",
-                            "text": "codex --version",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Configured Codex marketplaces",
-                            "text": "codex plugin marketplace list --json",
-                            "language": "powershell"
-                        }
-                    ]
-                },
-                {
-                    "title": "Add this marketplace",
-                    "paragraphs": [
-                        "Run this only if the checkout is not already registered. Adding a marketplace does not install its plugins."
-                    ],
-                    "commands": [
-                        {
-                            "label": "Register with Codex",
-                            "text": "codex plugin marketplace add . --json",
-                            "language": "powershell"
-                        }
-                    ]
-                },
-                {
-                    "title": "Choose your plugins",
-                    "paragraphs": [
-                        "Install only the plugins you want. These commands use the identity declared by this marketplace."
-                    ],
-                    "commands": [
-                        {
-                            "label": "Install Faye Coding Assistant with Codex",
-                            "text": "codex plugin add faye-coding-assistant@faye-plugin-market --json",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Install Faye Image Utility with Codex",
-                            "text": "codex plugin add faye-image-utility@faye-plugin-market --json",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Install Faye UI System Engineer with Codex",
-                            "text": "codex plugin add faye-ui-system-engineer@faye-plugin-market --json",
-                            "language": "powershell"
-                        }
-                    ]
-                },
-                {
-                    "title": "Verify and start a new session",
-                    "paragraphs": [
-                        "Confirm the selected plugins are installed and enabled, then start a new Codex session so their skills can be discovered. Open a skill guide for its requirements and usage examples."
-                    ],
-                    "commands": [
-                        {
-                            "label": "Verify Codex plugins",
-                            "text": "codex plugin list --marketplace faye-plugin-market --available --json",
-                            "language": "powershell"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "grok",
-            "label": "Grok Build",
-            "method": "grok-cli",
-            "documentationUrl": "https://docs.x.ai/build/features/skills-plugins-marketplaces",
-            "requirements": [
-                "An installed Grok Build CLI with plugin support and a signed-in account for skill execution."
-            ],
-            "notes": [
-                "Trust is a host permission decision, not a marketplace availability setting.",
-                "Grok discovers skills in its native skill interface; these setup commands do not translate skill requests from another host."
-            ],
-            "verification": {
-                "date": "2026-09-27",
-                "hostVersion": "Grok Build 1.0.41 on Windows",
-                "installation": "tested",
-                "activation": "tested",
-                "scope": "Local marketplace installation, loaded-skill discovery, and one read-only exploration skill were tested in isolated configuration directories. Public remote installation and every individual workflow were not tested."
-            },
-            "steps": [
-                {
-                    "title": "Check your existing setup",
-                    "paragraphs": [
-                        "Check the installed CLI and the source paths already configured. Grok reports an error when the same marketplace is added again; reuse the existing source."
-                    ],
-                    "commands": [
-                        {
-                            "label": "Grok version",
-                            "text": "grok --version",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Configured Grok marketplaces",
-                            "text": "grok plugin marketplace list",
-                            "language": "powershell"
-                        }
-                    ]
-                },
-                {
-                    "title": "Add this marketplace",
-                    "paragraphs": [
-                        "Run from the checkout root only if this source is not already registered. Grok may label a local source using its folder name."
-                    ],
-                    "commands": [
-                        {
-                            "label": "Register with Grok",
-                            "text": "grok plugin marketplace add .",
-                            "language": "powershell"
-                        }
-                    ]
-                },
-                {
-                    "title": "Choose and trust your plugins",
-                    "paragraphs": [
-                        "Review each package before installing. The trust flag explicitly trusts that package in Grok. Relative paths select this checkout even when another marketplace offers the same plugin name."
-                    ],
-                    "commands": [
-                        {
-                            "label": "Install Faye Coding Assistant with Grok",
-                            "text": "grok plugin install ./plugins/faye-coding-assistant --trust",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Install Faye Image Utility with Grok",
-                            "text": "grok plugin install ./plugins/faye-image-utility --trust",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Install Faye UI System Engineer with Grok",
-                            "text": "grok plugin install ./plugins/faye-ui-system-engineer --trust",
-                            "language": "powershell"
-                        }
-                    ]
-                },
-                {
-                    "title": "Verify and start a new session",
-                    "paragraphs": [
-                        "Check the selected plugins and the skills Grok discovers. Start a new session, or reload the Plugins panel, to use newly installed skills."
-                    ],
-                    "commands": [
-                        {
-                            "label": "Verify Grok plugins",
-                            "text": "grok plugin list --json",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Inspect Grok discovery",
-                            "text": "grok inspect --json",
-                            "language": "powershell"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "antigravity",
-            "label": "Antigravity CLI",
-            "method": "antigravity-cli",
-            "documentationUrl": "https://www.antigravity.google/docs/plugins?tab=cli",
-            "requirements": [
-                "An installed Antigravity CLI and a signed-in account for skill execution. Desktop and IDE setup are separate surfaces."
-            ],
-            "notes": [
-                "Use agy plugin list to verify CLI imports. Filesystem locations can differ by host version; the tested CLI resolved skills under ~/.gemini/config/plugins/.",
-                "A desktop registration alone does not prove CLI import or skill execution. The local check retained existing desktop registrations."
-            ],
-            "verification": {
-                "date": "2026-09-27",
-                "hostVersion": "Antigravity CLI 1.2.4 on Windows",
-                "installation": "tested",
-                "activation": "tested",
-                "scope": "The three release plugins and 23 skills were imported through the active CLI, and one read-only exploration request passed with Gemini 3.8 Flash (Medium). This was not an isolated profile or a test of every workflow; existing desktop registrations were retained."
-            },
-            "steps": [
-                {
-                    "title": "Check the Antigravity CLI",
-                    "paragraphs": [
-                        "These instructions apply to the CLI. Desktop and IDE registrations use separate discovery paths and do not prove a CLI import."
-                    ],
-                    "commands": [
-                        {
-                            "label": "Antigravity CLI version",
-                            "text": "agy --version",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Imported CLI plugins",
-                            "text": "agy plugin list",
-                            "language": "powershell"
-                        }
-                    ]
-                },
-                {
-                    "title": "Choose your plugins",
-                    "paragraphs": [
-                        "Validate and install only the packages you want from this checkout. Installation stages plugin files in the Antigravity CLI profile. Inspect existing imports before replacing a package."
-                    ],
-                    "commands": [
-                        {
-                            "label": "Validate Faye Coding Assistant with Antigravity",
-                            "text": "agy plugin validate ./plugins/faye-coding-assistant",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Install Faye Coding Assistant with Antigravity",
-                            "text": "agy plugin install ./plugins/faye-coding-assistant",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Validate Faye Image Utility with Antigravity",
-                            "text": "agy plugin validate ./plugins/faye-image-utility",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Install Faye Image Utility with Antigravity",
-                            "text": "agy plugin install ./plugins/faye-image-utility",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Validate Faye UI System Engineer with Antigravity",
-                            "text": "agy plugin validate ./plugins/faye-ui-system-engineer",
-                            "language": "powershell"
-                        },
-                        {
-                            "label": "Install Faye UI System Engineer with Antigravity",
-                            "text": "agy plugin install ./plugins/faye-ui-system-engineer",
-                            "language": "powershell"
-                        }
-                    ]
-                },
-                {
-                    "title": "Verify and start a new session",
-                    "paragraphs": [
-                        "Confirm the plugin appears in the CLI list, then start a new CLI session and inspect its skills. Use the native host's skill discovery rather than assuming another platform's invocation syntax."
-                    ],
-                    "commands": [
-                        {
-                            "label": "Verify Antigravity CLI plugins",
-                            "text": "agy plugin list",
-                            "language": "powershell"
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
+    "schemaVersion": 2,
+    "title": "Set up Faye plugins",
+    "summary": "Choose your app, install the plugins you need, and start using their skills.",
     "target": "release",
     "release": "public",
     "marketplace": {
@@ -307,22 +10,2592 @@
         "summary": "Fayegram plugins for everyday utilities, software development, image work, and browser UI systems."
     },
     "repositoryUrl": "https://github.com/Fayegram-AI/plugin-market.git",
-    "repositoryNote": "Clone the configured repository with Git, then open a terminal at the checkout root. The commands below run from that directory.",
     "plugins": [
         {
             "id": "faye-coding-assistant",
             "name": "Faye Coding Assistant",
-            "version": "0.1.0-beta.7"
+            "version": "0.1.0-beta.7",
+            "summary": "Focused, scope-preserving coding skills.",
+            "skills": [
+                "code-review",
+                "codebase-exploration",
+                "coding-goal-guardrails",
+                "coding-handoff",
+                "phase-implementation-review",
+                "reconcile-repository-docs",
+                "refactor-planning",
+                "report-coding-goal-progress",
+                "repository-change-planning",
+                "repository-debugging",
+                "repository-implementation",
+                "source-file-token-estimation",
+                "test-suite-health",
+                "verification-planning"
+            ]
         },
         {
             "id": "faye-image-utility",
             "name": "Faye Image Utility",
-            "version": "0.1.0-beta.6"
+            "version": "0.1.0-beta.6",
+            "summary": "Image auditing, editing, conversion, and rating estimates.",
+            "skills": [
+                "faye-image-age-rating",
+                "faye-image-artifact-audit",
+                "faye-image-format-converter",
+                "simple-paint-n-annotation"
+            ]
         },
         {
             "id": "faye-ui-system-engineer",
             "name": "Faye UI System Engineer",
-            "version": "0.1.0-beta.4"
+            "version": "0.1.0-beta.4",
+            "summary": "Web UI design, implementation, review, and inspection.",
+            "skills": [
+                "ui-inspection",
+                "ui-system-architecture",
+                "ui-system-implementation",
+                "ui-system-review",
+                "ui-visual-design"
+            ]
         }
-    ]
+    ],
+    "products": [
+        {
+            "id": "codex",
+            "label": "Codex",
+            "summary": "Install reusable skills for coding, image work, and UI tasks in Codex.",
+            "documentationUrl": "https://learn.chatgpt.com/docs/developer-commands",
+            "interfaces": [
+                {
+                    "id": "app",
+                    "label": "Desktop app",
+                    "summary": "Use Codex through desktop app."
+                },
+                {
+                    "id": "terminal",
+                    "label": "Terminal",
+                    "summary": "Use Codex through terminal."
+                }
+            ]
+        },
+        {
+            "id": "grok",
+            "label": "Grok Build",
+            "summary": "Add the marketplace to Grok Build and choose plugins in its terminal interface.",
+            "documentationUrl": "https://docs.x.ai/build/features/skills-plugins-marketplaces",
+            "interfaces": [
+                {
+                    "id": "terminal",
+                    "label": "Terminal",
+                    "summary": "Use Grok Build through terminal."
+                }
+            ]
+        },
+        {
+            "id": "antigravity",
+            "label": "Antigravity",
+            "summary": "Choose the Antigravity interface you use so the installation steps match it.",
+            "documentationUrl": "https://www.antigravity.google/docs/plugins?tab=cli",
+            "interfaces": [
+                {
+                    "id": "app",
+                    "label": "App",
+                    "summary": "Use Antigravity through app."
+                },
+                {
+                    "id": "ide",
+                    "label": "IDE",
+                    "summary": "Use Antigravity through ide."
+                },
+                {
+                    "id": "terminal",
+                    "label": "Terminal",
+                    "summary": "Use Antigravity through terminal."
+                }
+            ]
+        }
+    ],
+    "flows": [
+        {
+            "id": "codex-app-git",
+            "product": "codex",
+            "interface": "app",
+            "method": "git",
+            "href": "/setup/codex/app/git/",
+            "agentPath": "market-info/setup/codex/app/git.md",
+            "title": "Codex: desktop app setup",
+            "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+            "status": "needs-input",
+            "prerequisites": [
+                "Install Codex and sign in before running skills. Use the official documentation if the application is not yet available.",
+                "Check the chosen plugin's requirements; some skills need additional tools or runtimes."
+            ],
+            "steps": [],
+            "packages": [],
+            "start": {
+                "id": "await-procedure",
+                "title": "Procedure awaiting confirmation",
+                "paragraphs": [
+                    "Use a confirmed terminal guide while the app-specific instructions are prepared. The requests below describe exactly what is missing."
+                ],
+                "expected": "This route becomes actionable after the missing procedure is confirmed.",
+                "commands": []
+            },
+            "management": [],
+            "alternatives": [],
+            "verification": {
+                "status": "pending",
+                "date": "2026-09-30",
+                "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                "evidenceUrl": "https://learn.chatgpt.com/docs/developer-commands"
+            },
+            "captures": [
+                {
+                    "id": "confirm-procedure",
+                    "title": "Confirm Codex desktop app git setup",
+                    "kind": "procedure",
+                    "status": "missing",
+                    "instructions": [
+                        "Show how to open the controls for adding this custom marketplace in Codex (Desktop app). Record exact menu and button labels.",
+                        "Confirm whether this interface accepts our Git repository URL directly, the required source format, and the registration result. A curated listing alone does not establish custom Git registration.",
+                        "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                        "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                    ]
+                },
+                {
+                    "id": "capture-installation",
+                    "title": "Screenshots for Codex desktop app",
+                    "kind": "screenshot",
+                    "status": "missing",
+                    "instructions": [
+                        "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                        "Capture the Git source input with the repository URL and the marketplace after successful registration.",
+                        "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                        "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "codex-app-local",
+            "product": "codex",
+            "interface": "app",
+            "method": "local",
+            "href": "/setup/codex/app/local/",
+            "agentPath": "market-info/setup/codex/app/local.md",
+            "title": "Codex: desktop app setup",
+            "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+            "status": "needs-input",
+            "prerequisites": [
+                "Install Codex and sign in before running skills. Use the official documentation if the application is not yet available.",
+                "Check the chosen plugin's requirements; some skills need additional tools or runtimes."
+            ],
+            "steps": [],
+            "packages": [],
+            "start": {
+                "id": "await-procedure",
+                "title": "Procedure awaiting confirmation",
+                "paragraphs": [
+                    "Use a confirmed terminal guide while the app-specific instructions are prepared. The requests below describe exactly what is missing."
+                ],
+                "expected": "This route becomes actionable after the missing procedure is confirmed.",
+                "commands": []
+            },
+            "management": [],
+            "alternatives": [],
+            "verification": {
+                "status": "pending",
+                "date": "2026-09-30",
+                "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                "evidenceUrl": "https://learn.chatgpt.com/docs/developer-commands"
+            },
+            "captures": [
+                {
+                    "id": "confirm-procedure",
+                    "title": "Confirm Codex desktop app local setup",
+                    "kind": "procedure",
+                    "status": "missing",
+                    "instructions": [
+                        "Show how to open the controls for adding this custom marketplace in Codex (Desktop app). Record exact menu and button labels.",
+                        "Confirm whether the interface selects a marketplace root or an individual plugin folder. Show the expected directory and registration result.",
+                        "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                        "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                    ]
+                },
+                {
+                    "id": "capture-installation",
+                    "title": "Screenshots for Codex desktop app",
+                    "kind": "screenshot",
+                    "status": "missing",
+                    "instructions": [
+                        "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                        "Capture the local folder chooser or source field and the marketplace after successful registration.",
+                        "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                        "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "codex-terminal-git",
+            "product": "codex",
+            "interface": "terminal",
+            "method": "git",
+            "href": "/setup/codex/terminal/git/",
+            "agentPath": "market-info/setup/codex/terminal/git.md",
+            "title": "Codex: terminal setup",
+            "summary": "Add the marketplace using its Git repository URL. The app fetches the source; no manual clone is needed.",
+            "status": "ready",
+            "prerequisites": [
+                "Install Codex and sign in before running skills. Use the official documentation if the application is not yet available.",
+                "Check the chosen plugin's requirements; some skills need additional tools or runtimes.",
+                "Use PowerShell on Windows or Bash/zsh on macOS/Linux. Interactive slash commands are entered inside the application.",
+                "Git and access to the configured repository are required. Registration can run from any directory; it fetches the source for you."
+            ],
+            "steps": [
+                {
+                    "id": "register",
+                    "title": "Add Faye Plugin Market",
+                    "paragraphs": [
+                        "Run this once for the selected source. If the same source is already registered, reuse it. Adding a marketplace makes its plugins available to choose; it does not install them all."
+                    ],
+                    "expected": "The source is registered. Its native marketplace identity is faye-plugin-market.",
+                    "commands": [
+                        {
+                            "id": "register",
+                            "label": "Add marketplace",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin marketplace add https://github.com/Fayegram-AI/plugin-market.git",
+                                "bash": "codex plugin marketplace add https://github.com/Fayegram-AI/plugin-market.git"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin marketplace add https://github.com/Fayegram-AI/plugin-market.git --json",
+                                "bash": "codex plugin marketplace add https://github.com/Fayegram-AI/plugin-market.git --json"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "packages": [
+                {
+                    "pluginId": "faye-coding-assistant",
+                    "paragraphs": [
+                        "Install Faye Coding Assistant only if you want its skills. Review any permission or trust prompts shown by the application."
+                    ],
+                    "commands": [
+                        {
+                            "id": "install-faye-coding-assistant",
+                            "label": "Install Faye Coding Assistant",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin add faye-coding-assistant@faye-plugin-market",
+                                "bash": "codex plugin add faye-coding-assistant@faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin add faye-coding-assistant@faye-plugin-market --json",
+                                "bash": "codex plugin add faye-coding-assistant@faye-plugin-market --json"
+                            }
+                        }
+                    ],
+                    "expected": "Faye Coding Assistant appears in the installed plugin list. Compare its version with 0.1.0-beta.7 shown by this marketplace."
+                },
+                {
+                    "pluginId": "faye-image-utility",
+                    "paragraphs": [
+                        "Install Faye Image Utility only if you want its skills. Review any permission or trust prompts shown by the application."
+                    ],
+                    "commands": [
+                        {
+                            "id": "install-faye-image-utility",
+                            "label": "Install Faye Image Utility",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin add faye-image-utility@faye-plugin-market",
+                                "bash": "codex plugin add faye-image-utility@faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin add faye-image-utility@faye-plugin-market --json",
+                                "bash": "codex plugin add faye-image-utility@faye-plugin-market --json"
+                            }
+                        }
+                    ],
+                    "expected": "Faye Image Utility appears in the installed plugin list. Compare its version with 0.1.0-beta.6 shown by this marketplace."
+                },
+                {
+                    "pluginId": "faye-ui-system-engineer",
+                    "paragraphs": [
+                        "Install Faye UI System Engineer only if you want its skills. Review any permission or trust prompts shown by the application."
+                    ],
+                    "commands": [
+                        {
+                            "id": "install-faye-ui-system-engineer",
+                            "label": "Install Faye UI System Engineer",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin add faye-ui-system-engineer@faye-plugin-market",
+                                "bash": "codex plugin add faye-ui-system-engineer@faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin add faye-ui-system-engineer@faye-plugin-market --json",
+                                "bash": "codex plugin add faye-ui-system-engineer@faye-plugin-market --json"
+                            }
+                        }
+                    ],
+                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.4 shown by this marketplace."
+                }
+            ],
+            "start": {
+                "id": "start",
+                "title": "Confirm installation and start a new session",
+                "paragraphs": [
+                    "Check the plugins you selected are installed and enabled where the application exposes that state. The list command below is a quick confirmation, not a test of every skill.",
+                    "Start a new Codex session, open its skill picker or Plugins interface, and choose a task from the installed plugin's skill guides. Read that skill's inputs and requirements before sending your request.",
+                    "Codex skill requests may use $skill-name. Copy the example from the selected skill's guide, including any explicit invocation it requires."
+                ],
+                "expected": "Your selected plugins are installed and their applicable skills can be found or explicitly invoked in a fresh session.",
+                "commands": [
+                    {
+                        "id": "installed",
+                        "label": "List installed plugins",
+                        "kind": "terminal",
+                        "variants": {
+                            "powershell": "codex plugin list --marketplace faye-plugin-market",
+                            "bash": "codex plugin list --marketplace faye-plugin-market"
+                        },
+                        "agentVariants": {
+                            "powershell": "codex plugin list --marketplace faye-plugin-market --json",
+                            "bash": "codex plugin list --marketplace faye-plugin-market --json"
+                        }
+                    }
+                ]
+            },
+            "management": [
+                {
+                    "id": "refresh",
+                    "title": "Refresh the Git marketplace",
+                    "paragraphs": [
+                        "Refresh the source when you want to check for new package versions. Compare installed versions afterward; refreshing the catalog alone is not evidence that each installed plugin was updated."
+                    ],
+                    "expected": "The marketplace refresh succeeds; inspect the desired plugin's current and available version before changing its installation.",
+                    "commands": [
+                        {
+                            "id": "refresh",
+                            "label": "Refresh marketplace",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin marketplace upgrade faye-plugin-market",
+                                "bash": "codex plugin marketplace upgrade faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin marketplace upgrade faye-plugin-market",
+                                "bash": "codex plugin marketplace upgrade faye-plugin-market"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "toggle",
+                    "title": "Enable or disable a plugin",
+                    "paragraphs": [
+                        "Open /plugins inside Codex. Select an installed plugin and use the displayed enable/disable action. Disabling keeps the installation but makes its capabilities unavailable until enabled again."
+                    ],
+                    "expected": "The plugin browser shows the intended enabled state.",
+                    "commands": [
+                        {
+                            "id": "plugins",
+                            "label": "Inside Codex",
+                            "kind": "interactive",
+                            "variants": {
+                                "powershell": "/plugins",
+                                "bash": "/plugins"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-coding-assistant",
+                    "title": "Uninstall Faye Coding Assistant",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye Coding Assistant is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-coding-assistant",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin remove faye-coding-assistant@faye-plugin-market",
+                                "bash": "codex plugin remove faye-coding-assistant@faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin remove faye-coding-assistant@faye-plugin-market",
+                                "bash": "codex plugin remove faye-coding-assistant@faye-plugin-market"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-image-utility",
+                    "title": "Uninstall Faye Image Utility",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye Image Utility is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-image-utility",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin remove faye-image-utility@faye-plugin-market",
+                                "bash": "codex plugin remove faye-image-utility@faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin remove faye-image-utility@faye-plugin-market",
+                                "bash": "codex plugin remove faye-image-utility@faye-plugin-market"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-ui-system-engineer",
+                    "title": "Uninstall Faye UI System Engineer",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye UI System Engineer is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-ui-system-engineer",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin remove faye-ui-system-engineer@faye-plugin-market",
+                                "bash": "codex plugin remove faye-ui-system-engineer@faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin remove faye-ui-system-engineer@faye-plugin-market",
+                                "bash": "codex plugin remove faye-ui-system-engineer@faye-plugin-market"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "alternatives": [
+                {
+                    "id": "existing",
+                    "title": "Check an existing installation",
+                    "paragraphs": [
+                        "Use this before adding a second source or when setup reports that the plugin already exists. Compare the names and source locations; reuse a matching installation."
+                    ],
+                    "expected": "The intended source and installed package are identified without removing other registrations.",
+                    "commands": [
+                        {
+                            "id": "existing-plugins",
+                            "label": "Installed plugins",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin list --marketplace faye-plugin-market",
+                                "bash": "codex plugin list --marketplace faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin list --marketplace faye-plugin-market --json",
+                                "bash": "codex plugin list --marketplace faye-plugin-market --json"
+                            }
+                        },
+                        {
+                            "id": "existing-markets",
+                            "label": "Registered marketplaces",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin marketplace list",
+                                "bash": "codex plugin marketplace list"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin marketplace list --json",
+                                "bash": "codex plugin marketplace list --json"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "verification": {
+                "status": "documented",
+                "date": "2026-09-30",
+                "scope": "Git syntax is documented and confirmed by CLI help. A complete Git installation has not been newly verified for this guide.",
+                "evidenceUrl": "https://learn.chatgpt.com/docs/developer-commands"
+            },
+            "captures": []
+        },
+        {
+            "id": "codex-terminal-local",
+            "product": "codex",
+            "interface": "terminal",
+            "method": "local",
+            "href": "/setup/codex/terminal/local/",
+            "agentPath": "market-info/setup/codex/terminal/local.md",
+            "title": "Codex: terminal setup",
+            "summary": "Add the marketplace from a local copy on your computer.",
+            "status": "ready",
+            "prerequisites": [
+                "Install Codex and sign in before running skills. Use the official documentation if the application is not yet available.",
+                "Check the chosen plugin's requirements; some skills need additional tools or runtimes.",
+                "Use PowerShell on Windows or Bash/zsh on macOS/Linux. Interactive slash commands are entered inside the application."
+            ],
+            "steps": [
+                {
+                    "id": "folder",
+                    "title": "Open the marketplace folder",
+                    "paragraphs": [
+                        "Replace the entire quoted example path below with the full path to your marketplace root. Keep the quotes, especially when the path contains spaces. Choose the command for your terminal shell.",
+                        "All following relative paths use this folder. The single dot means this marketplace root; ./plugins/<plugin-id> means one plugin folder inside it."
+                    ],
+                    "expected": "Your terminal is in the folder containing plugins and .agents/plugins/marketplace.json.",
+                    "commands": [
+                        {
+                            "id": "enter",
+                            "label": "Open your local copy — replace the example path",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "Set-Location -LiteralPath 'C:\\path\\to\\Faye Plugin Market'",
+                                "bash": "cd -- '/path/to/Faye Plugin Market'"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "register",
+                    "title": "Add Faye Plugin Market",
+                    "paragraphs": [
+                        "Run this once for the selected source. If the same source is already registered, reuse it. Adding a marketplace makes its plugins available to choose; it does not install them all."
+                    ],
+                    "expected": "The source is registered. Its native marketplace identity is faye-plugin-market.",
+                    "commands": [
+                        {
+                            "id": "register",
+                            "label": "Add marketplace",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin marketplace add .",
+                                "bash": "codex plugin marketplace add ."
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin marketplace add . --json",
+                                "bash": "codex plugin marketplace add . --json"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "packages": [
+                {
+                    "pluginId": "faye-coding-assistant",
+                    "paragraphs": [
+                        "Install Faye Coding Assistant only if you want its skills. Review any permission or trust prompts shown by the application."
+                    ],
+                    "commands": [
+                        {
+                            "id": "install-faye-coding-assistant",
+                            "label": "Install Faye Coding Assistant",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin add faye-coding-assistant@faye-plugin-market",
+                                "bash": "codex plugin add faye-coding-assistant@faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin add faye-coding-assistant@faye-plugin-market --json",
+                                "bash": "codex plugin add faye-coding-assistant@faye-plugin-market --json"
+                            }
+                        }
+                    ],
+                    "expected": "Faye Coding Assistant appears in the installed plugin list. Compare its version with 0.1.0-beta.7 shown by this marketplace."
+                },
+                {
+                    "pluginId": "faye-image-utility",
+                    "paragraphs": [
+                        "Install Faye Image Utility only if you want its skills. Review any permission or trust prompts shown by the application."
+                    ],
+                    "commands": [
+                        {
+                            "id": "install-faye-image-utility",
+                            "label": "Install Faye Image Utility",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin add faye-image-utility@faye-plugin-market",
+                                "bash": "codex plugin add faye-image-utility@faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin add faye-image-utility@faye-plugin-market --json",
+                                "bash": "codex plugin add faye-image-utility@faye-plugin-market --json"
+                            }
+                        }
+                    ],
+                    "expected": "Faye Image Utility appears in the installed plugin list. Compare its version with 0.1.0-beta.6 shown by this marketplace."
+                },
+                {
+                    "pluginId": "faye-ui-system-engineer",
+                    "paragraphs": [
+                        "Install Faye UI System Engineer only if you want its skills. Review any permission or trust prompts shown by the application."
+                    ],
+                    "commands": [
+                        {
+                            "id": "install-faye-ui-system-engineer",
+                            "label": "Install Faye UI System Engineer",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin add faye-ui-system-engineer@faye-plugin-market",
+                                "bash": "codex plugin add faye-ui-system-engineer@faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin add faye-ui-system-engineer@faye-plugin-market --json",
+                                "bash": "codex plugin add faye-ui-system-engineer@faye-plugin-market --json"
+                            }
+                        }
+                    ],
+                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.4 shown by this marketplace."
+                }
+            ],
+            "start": {
+                "id": "start",
+                "title": "Confirm installation and start a new session",
+                "paragraphs": [
+                    "Check the plugins you selected are installed and enabled where the application exposes that state. The list command below is a quick confirmation, not a test of every skill.",
+                    "Start a new Codex session, open its skill picker or Plugins interface, and choose a task from the installed plugin's skill guides. Read that skill's inputs and requirements before sending your request.",
+                    "Codex skill requests may use $skill-name. Copy the example from the selected skill's guide, including any explicit invocation it requires."
+                ],
+                "expected": "Your selected plugins are installed and their applicable skills can be found or explicitly invoked in a fresh session.",
+                "commands": [
+                    {
+                        "id": "installed",
+                        "label": "List installed plugins",
+                        "kind": "terminal",
+                        "variants": {
+                            "powershell": "codex plugin list --marketplace faye-plugin-market",
+                            "bash": "codex plugin list --marketplace faye-plugin-market"
+                        },
+                        "agentVariants": {
+                            "powershell": "codex plugin list --marketplace faye-plugin-market --json",
+                            "bash": "codex plugin list --marketplace faye-plugin-market --json"
+                        }
+                    }
+                ]
+            },
+            "management": [
+                {
+                    "id": "update-copy",
+                    "title": "Update a local copy later",
+                    "paragraphs": [
+                        "Updating the source is separate from installing a plugin. git pull updates an existing Git checkout; it does not create one and cannot update an extracted archive.",
+                        "Before updating a checkout, check its branch and local changes. For an archive, obtain a newer copy separately and compare versions. Do not overwrite the existing folder or change an installed plugin without deciding to update it."
+                    ],
+                    "expected": "You have identified the source and version you intend to use before making an update.",
+                    "commands": []
+                },
+                {
+                    "id": "toggle",
+                    "title": "Enable or disable a plugin",
+                    "paragraphs": [
+                        "Open /plugins inside Codex. Select an installed plugin and use the displayed enable/disable action. Disabling keeps the installation but makes its capabilities unavailable until enabled again."
+                    ],
+                    "expected": "The plugin browser shows the intended enabled state.",
+                    "commands": [
+                        {
+                            "id": "plugins",
+                            "label": "Inside Codex",
+                            "kind": "interactive",
+                            "variants": {
+                                "powershell": "/plugins",
+                                "bash": "/plugins"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-coding-assistant",
+                    "title": "Uninstall Faye Coding Assistant",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye Coding Assistant is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-coding-assistant",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin remove faye-coding-assistant@faye-plugin-market",
+                                "bash": "codex plugin remove faye-coding-assistant@faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin remove faye-coding-assistant@faye-plugin-market",
+                                "bash": "codex plugin remove faye-coding-assistant@faye-plugin-market"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-image-utility",
+                    "title": "Uninstall Faye Image Utility",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye Image Utility is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-image-utility",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin remove faye-image-utility@faye-plugin-market",
+                                "bash": "codex plugin remove faye-image-utility@faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin remove faye-image-utility@faye-plugin-market",
+                                "bash": "codex plugin remove faye-image-utility@faye-plugin-market"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-ui-system-engineer",
+                    "title": "Uninstall Faye UI System Engineer",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye UI System Engineer is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-ui-system-engineer",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin remove faye-ui-system-engineer@faye-plugin-market",
+                                "bash": "codex plugin remove faye-ui-system-engineer@faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin remove faye-ui-system-engineer@faye-plugin-market",
+                                "bash": "codex plugin remove faye-ui-system-engineer@faye-plugin-market"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "alternatives": [
+                {
+                    "id": "existing",
+                    "title": "Check an existing installation",
+                    "paragraphs": [
+                        "Use this before adding a second source or when setup reports that the plugin already exists. Compare the names and source locations; reuse a matching installation."
+                    ],
+                    "expected": "The intended source and installed package are identified without removing other registrations.",
+                    "commands": [
+                        {
+                            "id": "existing-plugins",
+                            "label": "Installed plugins",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin list --marketplace faye-plugin-market",
+                                "bash": "codex plugin list --marketplace faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin list --marketplace faye-plugin-market --json",
+                                "bash": "codex plugin list --marketplace faye-plugin-market --json"
+                            }
+                        },
+                        {
+                            "id": "existing-markets",
+                            "label": "Registered marketplaces",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "codex plugin marketplace list",
+                                "bash": "codex plugin marketplace list"
+                            },
+                            "agentVariants": {
+                                "powershell": "codex plugin marketplace list --json",
+                                "bash": "codex plugin marketplace list --json"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "verification": {
+                "status": "tested",
+                "date": "2026-09-27",
+                "version": "Codex CLI 0.155.0 on Windows",
+                "scope": "Local installation and one representative skill were checked on the recorded version. This does not certify every workflow, operating system, or app interface.",
+                "evidenceUrl": "https://learn.chatgpt.com/docs/developer-commands"
+            },
+            "captures": [],
+            "preparationChoices": [
+                {
+                    "id": "reuse",
+                    "title": "Use an existing copy",
+                    "paragraphs": [
+                        "Find the marketplace folder already on your computer. It contains plugins and the hidden .agents/plugins/marketplace.json registry. A plugin folder inside plugins is not the marketplace root.",
+                        "Keep this copy in a stable location. Do not overwrite it or change its Git branch just to follow this guide."
+                    ],
+                    "expected": "You know the full path to the marketplace root.",
+                    "commands": []
+                },
+                {
+                    "id": "clone",
+                    "title": "Clone the repository",
+                    "paragraphs": [
+                        "Git must be installed. Run this from the parent folder where you want to keep the copy. faye-plugin-market is an example destination name; choose another unused name if needed.",
+                        "If the destination already exists, use that copy or choose a different destination. Do not overwrite it. After cloning, use the full path to the new folder in the next step."
+                    ],
+                    "expected": "A new local copy exists in the chosen destination.",
+                    "commands": [
+                        {
+                            "id": "clone",
+                            "label": "Clone into a new folder",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "git clone https://github.com/Fayegram-AI/plugin-market.git faye-plugin-market",
+                                "bash": "git clone https://github.com/Fayegram-AI/plugin-market.git faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "git clone https://github.com/Fayegram-AI/plugin-market.git faye-plugin-market",
+                                "bash": "git clone https://github.com/Fayegram-AI/plugin-market.git faye-plugin-market"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "download",
+                    "title": "Download and extract the repository",
+                    "paragraphs": [
+                        "Open the repository: https://github.com/Fayegram-AI/plugin-market",
+                        "Use its source archive download option, then extract the archive into a stable location. Open the extracted folder containing plugins and .agents/plugins/marketplace.json, not the archive or a surrounding downloads folder.",
+                        "An extracted archive is a local copy without Git history; git pull cannot update it."
+                    ],
+                    "expected": "The extracted marketplace root is available on your computer.",
+                    "commands": []
+                }
+            ]
+        },
+        {
+            "id": "grok-terminal-git",
+            "product": "grok",
+            "interface": "terminal",
+            "method": "git",
+            "href": "/setup/grok/terminal/git/",
+            "agentPath": "market-info/setup/grok/terminal/git.md",
+            "title": "Grok Build: terminal setup",
+            "summary": "Add the marketplace using its Git repository URL. The app fetches the source; no manual clone is needed.",
+            "status": "ready",
+            "prerequisites": [
+                "Install Grok Build and sign in before running skills. Use the official documentation if the application is not yet available.",
+                "Check the chosen plugin's requirements; some skills need additional tools or runtimes.",
+                "Use PowerShell on Windows or Bash/zsh on macOS/Linux. Interactive slash commands are entered inside the application.",
+                "Git and access to the configured repository are required. Registration can run from any directory; it fetches the source for you."
+            ],
+            "steps": [
+                {
+                    "id": "register",
+                    "title": "Add Faye Plugin Market",
+                    "paragraphs": [
+                        "Run this once for the selected source. If the same source is already registered, reuse it. Adding a marketplace makes its plugins available to choose; it does not install them all."
+                    ],
+                    "expected": "The source is registered. Its native marketplace identity is faye-plugin-market.",
+                    "commands": [
+                        {
+                            "id": "register",
+                            "label": "Add marketplace",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin marketplace add https://github.com/Fayegram-AI/plugin-market.git",
+                                "bash": "grok plugin marketplace add https://github.com/Fayegram-AI/plugin-market.git"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin marketplace add https://github.com/Fayegram-AI/plugin-market.git",
+                                "bash": "grok plugin marketplace add https://github.com/Fayegram-AI/plugin-market.git"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "catalog",
+                    "title": "Open Grok's plugin catalog",
+                    "paragraphs": [
+                        "Start Grok in your terminal, enter /plugins, and select the Marketplace tab. Choose the source you just registered. The slash command below belongs inside Grok, not your operating-system terminal."
+                    ],
+                    "expected": "The Faye packages in this guide appear in the selected catalog.",
+                    "commands": [
+                        {
+                            "id": "launch",
+                            "label": "Start Grok",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok",
+                                "bash": "grok"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok",
+                                "bash": "grok"
+                            }
+                        },
+                        {
+                            "id": "catalog",
+                            "label": "Inside Grok",
+                            "kind": "interactive",
+                            "variants": {
+                                "powershell": "/plugins",
+                                "bash": "/plugins"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "packages": [
+                {
+                    "pluginId": "faye-coding-assistant",
+                    "paragraphs": [
+                        "Choose Faye Coding Assistant in the selected Marketplace tab and install it. Review Grok's trust prompt before accepting."
+                    ],
+                    "commands": [],
+                    "expected": "Faye Coding Assistant appears in the installed plugin list. Compare its version with 0.1.0-beta.7 shown by this marketplace."
+                },
+                {
+                    "pluginId": "faye-image-utility",
+                    "paragraphs": [
+                        "Choose Faye Image Utility in the selected Marketplace tab and install it. Review Grok's trust prompt before accepting."
+                    ],
+                    "commands": [],
+                    "expected": "Faye Image Utility appears in the installed plugin list. Compare its version with 0.1.0-beta.6 shown by this marketplace."
+                },
+                {
+                    "pluginId": "faye-ui-system-engineer",
+                    "paragraphs": [
+                        "Choose Faye UI System Engineer in the selected Marketplace tab and install it. Review Grok's trust prompt before accepting."
+                    ],
+                    "commands": [],
+                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.4 shown by this marketplace."
+                }
+            ],
+            "start": {
+                "id": "start",
+                "title": "Confirm installation and start a new session",
+                "paragraphs": [
+                    "Check the plugins you selected are installed and enabled where the application exposes that state. The list command below is a quick confirmation, not a test of every skill.",
+                    "Start a new Grok Build session, open its skill picker or Plugins interface, and choose a task from the installed plugin's skill guides. Read that skill's inputs and requirements before sending your request.",
+                    "Use the product's native skill picker or slash-command guidance. Read the selected skill's guide rather than translating another application's example yourself."
+                ],
+                "expected": "Your selected plugins are installed and their applicable skills can be found or explicitly invoked in a fresh session.",
+                "commands": [
+                    {
+                        "id": "installed",
+                        "label": "List installed plugins",
+                        "kind": "terminal",
+                        "variants": {
+                            "powershell": "grok plugin list",
+                            "bash": "grok plugin list"
+                        },
+                        "agentVariants": {
+                            "powershell": "grok plugin list --json",
+                            "bash": "grok plugin list --json"
+                        }
+                    }
+                ]
+            },
+            "management": [
+                {
+                    "id": "manage-faye-coding-assistant",
+                    "title": "Update or toggle Faye Coding Assistant",
+                    "paragraphs": [
+                        "Choose only the operation you intend to perform. Check the installed source and version before updating. Disabling keeps the plugin installed; enabling makes its capabilities available again. Start a fresh session after changing its state."
+                    ],
+                    "expected": "The installed plugin list shows the intended version and enabled state.",
+                    "commands": [
+                        {
+                            "id": "update-faye-coding-assistant",
+                            "label": "Update selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin update faye-coding-assistant",
+                                "bash": "grok plugin update faye-coding-assistant"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin update faye-coding-assistant",
+                                "bash": "grok plugin update faye-coding-assistant"
+                            }
+                        },
+                        {
+                            "id": "disable-faye-coding-assistant",
+                            "label": "Disable selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin disable faye-coding-assistant",
+                                "bash": "grok plugin disable faye-coding-assistant"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin disable faye-coding-assistant",
+                                "bash": "grok plugin disable faye-coding-assistant"
+                            }
+                        },
+                        {
+                            "id": "enable-faye-coding-assistant",
+                            "label": "Enable selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin enable faye-coding-assistant",
+                                "bash": "grok plugin enable faye-coding-assistant"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin enable faye-coding-assistant",
+                                "bash": "grok plugin enable faye-coding-assistant"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "manage-faye-image-utility",
+                    "title": "Update or toggle Faye Image Utility",
+                    "paragraphs": [
+                        "Choose only the operation you intend to perform. Check the installed source and version before updating. Disabling keeps the plugin installed; enabling makes its capabilities available again. Start a fresh session after changing its state."
+                    ],
+                    "expected": "The installed plugin list shows the intended version and enabled state.",
+                    "commands": [
+                        {
+                            "id": "update-faye-image-utility",
+                            "label": "Update selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin update faye-image-utility",
+                                "bash": "grok plugin update faye-image-utility"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin update faye-image-utility",
+                                "bash": "grok plugin update faye-image-utility"
+                            }
+                        },
+                        {
+                            "id": "disable-faye-image-utility",
+                            "label": "Disable selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin disable faye-image-utility",
+                                "bash": "grok plugin disable faye-image-utility"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin disable faye-image-utility",
+                                "bash": "grok plugin disable faye-image-utility"
+                            }
+                        },
+                        {
+                            "id": "enable-faye-image-utility",
+                            "label": "Enable selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin enable faye-image-utility",
+                                "bash": "grok plugin enable faye-image-utility"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin enable faye-image-utility",
+                                "bash": "grok plugin enable faye-image-utility"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "manage-faye-ui-system-engineer",
+                    "title": "Update or toggle Faye UI System Engineer",
+                    "paragraphs": [
+                        "Choose only the operation you intend to perform. Check the installed source and version before updating. Disabling keeps the plugin installed; enabling makes its capabilities available again. Start a fresh session after changing its state."
+                    ],
+                    "expected": "The installed plugin list shows the intended version and enabled state.",
+                    "commands": [
+                        {
+                            "id": "update-faye-ui-system-engineer",
+                            "label": "Update selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin update faye-ui-system-engineer",
+                                "bash": "grok plugin update faye-ui-system-engineer"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin update faye-ui-system-engineer",
+                                "bash": "grok plugin update faye-ui-system-engineer"
+                            }
+                        },
+                        {
+                            "id": "disable-faye-ui-system-engineer",
+                            "label": "Disable selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin disable faye-ui-system-engineer",
+                                "bash": "grok plugin disable faye-ui-system-engineer"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin disable faye-ui-system-engineer",
+                                "bash": "grok plugin disable faye-ui-system-engineer"
+                            }
+                        },
+                        {
+                            "id": "enable-faye-ui-system-engineer",
+                            "label": "Enable selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin enable faye-ui-system-engineer",
+                                "bash": "grok plugin enable faye-ui-system-engineer"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin enable faye-ui-system-engineer",
+                                "bash": "grok plugin enable faye-ui-system-engineer"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-coding-assistant",
+                    "title": "Uninstall Faye Coding Assistant",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye Coding Assistant is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-coding-assistant",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin uninstall faye-coding-assistant",
+                                "bash": "grok plugin uninstall faye-coding-assistant"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin uninstall faye-coding-assistant",
+                                "bash": "grok plugin uninstall faye-coding-assistant"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-image-utility",
+                    "title": "Uninstall Faye Image Utility",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye Image Utility is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-image-utility",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin uninstall faye-image-utility",
+                                "bash": "grok plugin uninstall faye-image-utility"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin uninstall faye-image-utility",
+                                "bash": "grok plugin uninstall faye-image-utility"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-ui-system-engineer",
+                    "title": "Uninstall Faye UI System Engineer",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye UI System Engineer is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-ui-system-engineer",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin uninstall faye-ui-system-engineer",
+                                "bash": "grok plugin uninstall faye-ui-system-engineer"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin uninstall faye-ui-system-engineer",
+                                "bash": "grok plugin uninstall faye-ui-system-engineer"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "alternatives": [
+                {
+                    "id": "direct-faye-coding-assistant",
+                    "title": "Direct CLI installation: Faye Coding Assistant",
+                    "paragraphs": [
+                        "Optional alternative to installing through the Marketplace tab. This installs one plugin directly and does not require marketplace registration. Do not use both routes for the same installation.",
+                        "Review the interactive trust prompt. Automatic trust is not enabled by this example."
+                    ],
+                    "expected": "Faye Coding Assistant appears in the installed list.",
+                    "commands": [
+                        {
+                            "id": "direct-faye-coding-assistant",
+                            "label": "Install directly",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin install 'https://github.com/Fayegram-AI/plugin-market.git#plugins/faye-coding-assistant'",
+                                "bash": "grok plugin install 'https://github.com/Fayegram-AI/plugin-market.git#plugins/faye-coding-assistant'"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin install 'https://github.com/Fayegram-AI/plugin-market.git#plugins/faye-coding-assistant'",
+                                "bash": "grok plugin install 'https://github.com/Fayegram-AI/plugin-market.git#plugins/faye-coding-assistant'"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "direct-faye-image-utility",
+                    "title": "Direct CLI installation: Faye Image Utility",
+                    "paragraphs": [
+                        "Optional alternative to installing through the Marketplace tab. This installs one plugin directly and does not require marketplace registration. Do not use both routes for the same installation.",
+                        "Review the interactive trust prompt. Automatic trust is not enabled by this example."
+                    ],
+                    "expected": "Faye Image Utility appears in the installed list.",
+                    "commands": [
+                        {
+                            "id": "direct-faye-image-utility",
+                            "label": "Install directly",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin install 'https://github.com/Fayegram-AI/plugin-market.git#plugins/faye-image-utility'",
+                                "bash": "grok plugin install 'https://github.com/Fayegram-AI/plugin-market.git#plugins/faye-image-utility'"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin install 'https://github.com/Fayegram-AI/plugin-market.git#plugins/faye-image-utility'",
+                                "bash": "grok plugin install 'https://github.com/Fayegram-AI/plugin-market.git#plugins/faye-image-utility'"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "direct-faye-ui-system-engineer",
+                    "title": "Direct CLI installation: Faye UI System Engineer",
+                    "paragraphs": [
+                        "Optional alternative to installing through the Marketplace tab. This installs one plugin directly and does not require marketplace registration. Do not use both routes for the same installation.",
+                        "Review the interactive trust prompt. Automatic trust is not enabled by this example."
+                    ],
+                    "expected": "Faye UI System Engineer appears in the installed list.",
+                    "commands": [
+                        {
+                            "id": "direct-faye-ui-system-engineer",
+                            "label": "Install directly",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin install 'https://github.com/Fayegram-AI/plugin-market.git#plugins/faye-ui-system-engineer'",
+                                "bash": "grok plugin install 'https://github.com/Fayegram-AI/plugin-market.git#plugins/faye-ui-system-engineer'"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin install 'https://github.com/Fayegram-AI/plugin-market.git#plugins/faye-ui-system-engineer'",
+                                "bash": "grok plugin install 'https://github.com/Fayegram-AI/plugin-market.git#plugins/faye-ui-system-engineer'"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "existing",
+                    "title": "Check an existing installation",
+                    "paragraphs": [
+                        "Use this before adding a second source or when setup reports that the plugin already exists. Compare the names and source locations; reuse a matching installation."
+                    ],
+                    "expected": "The intended source and installed package are identified without removing other registrations.",
+                    "commands": [
+                        {
+                            "id": "existing-plugins",
+                            "label": "Installed plugins",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin list",
+                                "bash": "grok plugin list"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin list --json",
+                                "bash": "grok plugin list --json"
+                            }
+                        },
+                        {
+                            "id": "existing-markets",
+                            "label": "Registered marketplaces",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin marketplace list",
+                                "bash": "grok plugin marketplace list"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin marketplace list",
+                                "bash": "grok plugin marketplace list"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "verification": {
+                "status": "documented",
+                "date": "2026-09-30",
+                "scope": "Git syntax is documented and confirmed by CLI help. A complete Git installation has not been newly verified for this guide.",
+                "evidenceUrl": "https://docs.x.ai/build/features/skills-plugins-marketplaces"
+            },
+            "captures": []
+        },
+        {
+            "id": "grok-terminal-local",
+            "product": "grok",
+            "interface": "terminal",
+            "method": "local",
+            "href": "/setup/grok/terminal/local/",
+            "agentPath": "market-info/setup/grok/terminal/local.md",
+            "title": "Grok Build: terminal setup",
+            "summary": "Add the marketplace from a local copy on your computer.",
+            "status": "ready",
+            "prerequisites": [
+                "Install Grok Build and sign in before running skills. Use the official documentation if the application is not yet available.",
+                "Check the chosen plugin's requirements; some skills need additional tools or runtimes.",
+                "Use PowerShell on Windows or Bash/zsh on macOS/Linux. Interactive slash commands are entered inside the application."
+            ],
+            "steps": [
+                {
+                    "id": "folder",
+                    "title": "Open the marketplace folder",
+                    "paragraphs": [
+                        "Replace the entire quoted example path below with the full path to your marketplace root. Keep the quotes, especially when the path contains spaces. Choose the command for your terminal shell.",
+                        "All following relative paths use this folder. The single dot means this marketplace root; ./plugins/<plugin-id> means one plugin folder inside it."
+                    ],
+                    "expected": "Your terminal is in the folder containing plugins and .agents/plugins/marketplace.json.",
+                    "commands": [
+                        {
+                            "id": "enter",
+                            "label": "Open your local copy — replace the example path",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "Set-Location -LiteralPath 'C:\\path\\to\\Faye Plugin Market'",
+                                "bash": "cd -- '/path/to/Faye Plugin Market'"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "register",
+                    "title": "Add Faye Plugin Market",
+                    "paragraphs": [
+                        "Run this once for the selected source. If the same source is already registered, reuse it. Adding a marketplace makes its plugins available to choose; it does not install them all."
+                    ],
+                    "expected": "The source is registered. Its native marketplace identity is faye-plugin-market. Grok may display the local folder name; match its source path when choosing the catalog.",
+                    "commands": [
+                        {
+                            "id": "register",
+                            "label": "Add marketplace",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin marketplace add .",
+                                "bash": "grok plugin marketplace add ."
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin marketplace add .",
+                                "bash": "grok plugin marketplace add ."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "catalog",
+                    "title": "Open Grok's plugin catalog",
+                    "paragraphs": [
+                        "Start Grok in your terminal, enter /plugins, and select the Marketplace tab. Choose the source you just registered. The slash command below belongs inside Grok, not your operating-system terminal."
+                    ],
+                    "expected": "The Faye packages in this guide appear in the selected catalog.",
+                    "commands": [
+                        {
+                            "id": "launch",
+                            "label": "Start Grok",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok",
+                                "bash": "grok"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok",
+                                "bash": "grok"
+                            }
+                        },
+                        {
+                            "id": "catalog",
+                            "label": "Inside Grok",
+                            "kind": "interactive",
+                            "variants": {
+                                "powershell": "/plugins",
+                                "bash": "/plugins"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "packages": [
+                {
+                    "pluginId": "faye-coding-assistant",
+                    "paragraphs": [
+                        "Choose Faye Coding Assistant in the selected Marketplace tab and install it. Review Grok's trust prompt before accepting."
+                    ],
+                    "commands": [],
+                    "expected": "Faye Coding Assistant appears in the installed plugin list. Compare its version with 0.1.0-beta.7 shown by this marketplace."
+                },
+                {
+                    "pluginId": "faye-image-utility",
+                    "paragraphs": [
+                        "Choose Faye Image Utility in the selected Marketplace tab and install it. Review Grok's trust prompt before accepting."
+                    ],
+                    "commands": [],
+                    "expected": "Faye Image Utility appears in the installed plugin list. Compare its version with 0.1.0-beta.6 shown by this marketplace."
+                },
+                {
+                    "pluginId": "faye-ui-system-engineer",
+                    "paragraphs": [
+                        "Choose Faye UI System Engineer in the selected Marketplace tab and install it. Review Grok's trust prompt before accepting."
+                    ],
+                    "commands": [],
+                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.4 shown by this marketplace."
+                }
+            ],
+            "start": {
+                "id": "start",
+                "title": "Confirm installation and start a new session",
+                "paragraphs": [
+                    "Check the plugins you selected are installed and enabled where the application exposes that state. The list command below is a quick confirmation, not a test of every skill.",
+                    "Start a new Grok Build session, open its skill picker or Plugins interface, and choose a task from the installed plugin's skill guides. Read that skill's inputs and requirements before sending your request.",
+                    "Use the product's native skill picker or slash-command guidance. Read the selected skill's guide rather than translating another application's example yourself."
+                ],
+                "expected": "Your selected plugins are installed and their applicable skills can be found or explicitly invoked in a fresh session.",
+                "commands": [
+                    {
+                        "id": "installed",
+                        "label": "List installed plugins",
+                        "kind": "terminal",
+                        "variants": {
+                            "powershell": "grok plugin list",
+                            "bash": "grok plugin list"
+                        },
+                        "agentVariants": {
+                            "powershell": "grok plugin list --json",
+                            "bash": "grok plugin list --json"
+                        }
+                    }
+                ]
+            },
+            "management": [
+                {
+                    "id": "update-copy",
+                    "title": "Update a local copy later",
+                    "paragraphs": [
+                        "Updating the source is separate from installing a plugin. git pull updates an existing Git checkout; it does not create one and cannot update an extracted archive.",
+                        "Before updating a checkout, check its branch and local changes. For an archive, obtain a newer copy separately and compare versions. Do not overwrite the existing folder or change an installed plugin without deciding to update it."
+                    ],
+                    "expected": "You have identified the source and version you intend to use before making an update.",
+                    "commands": []
+                },
+                {
+                    "id": "manage-faye-coding-assistant",
+                    "title": "Update or toggle Faye Coding Assistant",
+                    "paragraphs": [
+                        "Choose only the operation you intend to perform. Check the installed source and version before updating. Disabling keeps the plugin installed; enabling makes its capabilities available again. Start a fresh session after changing its state."
+                    ],
+                    "expected": "The installed plugin list shows the intended version and enabled state.",
+                    "commands": [
+                        {
+                            "id": "update-faye-coding-assistant",
+                            "label": "Update selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin update faye-coding-assistant",
+                                "bash": "grok plugin update faye-coding-assistant"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin update faye-coding-assistant",
+                                "bash": "grok plugin update faye-coding-assistant"
+                            }
+                        },
+                        {
+                            "id": "disable-faye-coding-assistant",
+                            "label": "Disable selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin disable faye-coding-assistant",
+                                "bash": "grok plugin disable faye-coding-assistant"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin disable faye-coding-assistant",
+                                "bash": "grok plugin disable faye-coding-assistant"
+                            }
+                        },
+                        {
+                            "id": "enable-faye-coding-assistant",
+                            "label": "Enable selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin enable faye-coding-assistant",
+                                "bash": "grok plugin enable faye-coding-assistant"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin enable faye-coding-assistant",
+                                "bash": "grok plugin enable faye-coding-assistant"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "manage-faye-image-utility",
+                    "title": "Update or toggle Faye Image Utility",
+                    "paragraphs": [
+                        "Choose only the operation you intend to perform. Check the installed source and version before updating. Disabling keeps the plugin installed; enabling makes its capabilities available again. Start a fresh session after changing its state."
+                    ],
+                    "expected": "The installed plugin list shows the intended version and enabled state.",
+                    "commands": [
+                        {
+                            "id": "update-faye-image-utility",
+                            "label": "Update selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin update faye-image-utility",
+                                "bash": "grok plugin update faye-image-utility"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin update faye-image-utility",
+                                "bash": "grok plugin update faye-image-utility"
+                            }
+                        },
+                        {
+                            "id": "disable-faye-image-utility",
+                            "label": "Disable selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin disable faye-image-utility",
+                                "bash": "grok plugin disable faye-image-utility"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin disable faye-image-utility",
+                                "bash": "grok plugin disable faye-image-utility"
+                            }
+                        },
+                        {
+                            "id": "enable-faye-image-utility",
+                            "label": "Enable selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin enable faye-image-utility",
+                                "bash": "grok plugin enable faye-image-utility"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin enable faye-image-utility",
+                                "bash": "grok plugin enable faye-image-utility"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "manage-faye-ui-system-engineer",
+                    "title": "Update or toggle Faye UI System Engineer",
+                    "paragraphs": [
+                        "Choose only the operation you intend to perform. Check the installed source and version before updating. Disabling keeps the plugin installed; enabling makes its capabilities available again. Start a fresh session after changing its state."
+                    ],
+                    "expected": "The installed plugin list shows the intended version and enabled state.",
+                    "commands": [
+                        {
+                            "id": "update-faye-ui-system-engineer",
+                            "label": "Update selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin update faye-ui-system-engineer",
+                                "bash": "grok plugin update faye-ui-system-engineer"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin update faye-ui-system-engineer",
+                                "bash": "grok plugin update faye-ui-system-engineer"
+                            }
+                        },
+                        {
+                            "id": "disable-faye-ui-system-engineer",
+                            "label": "Disable selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin disable faye-ui-system-engineer",
+                                "bash": "grok plugin disable faye-ui-system-engineer"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin disable faye-ui-system-engineer",
+                                "bash": "grok plugin disable faye-ui-system-engineer"
+                            }
+                        },
+                        {
+                            "id": "enable-faye-ui-system-engineer",
+                            "label": "Enable selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin enable faye-ui-system-engineer",
+                                "bash": "grok plugin enable faye-ui-system-engineer"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin enable faye-ui-system-engineer",
+                                "bash": "grok plugin enable faye-ui-system-engineer"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-coding-assistant",
+                    "title": "Uninstall Faye Coding Assistant",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye Coding Assistant is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-coding-assistant",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin uninstall faye-coding-assistant",
+                                "bash": "grok plugin uninstall faye-coding-assistant"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin uninstall faye-coding-assistant",
+                                "bash": "grok plugin uninstall faye-coding-assistant"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-image-utility",
+                    "title": "Uninstall Faye Image Utility",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye Image Utility is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-image-utility",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin uninstall faye-image-utility",
+                                "bash": "grok plugin uninstall faye-image-utility"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin uninstall faye-image-utility",
+                                "bash": "grok plugin uninstall faye-image-utility"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-ui-system-engineer",
+                    "title": "Uninstall Faye UI System Engineer",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye UI System Engineer is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-ui-system-engineer",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin uninstall faye-ui-system-engineer",
+                                "bash": "grok plugin uninstall faye-ui-system-engineer"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin uninstall faye-ui-system-engineer",
+                                "bash": "grok plugin uninstall faye-ui-system-engineer"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "alternatives": [
+                {
+                    "id": "direct-faye-coding-assistant",
+                    "title": "Direct CLI installation: Faye Coding Assistant",
+                    "paragraphs": [
+                        "Optional alternative to installing through the Marketplace tab. This installs one plugin directly and does not require marketplace registration. Do not use both routes for the same installation.",
+                        "Review the interactive trust prompt. Automatic trust is not enabled by this example."
+                    ],
+                    "expected": "Faye Coding Assistant appears in the installed list.",
+                    "commands": [
+                        {
+                            "id": "direct-faye-coding-assistant",
+                            "label": "Install directly",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin install ./plugins/faye-coding-assistant",
+                                "bash": "grok plugin install ./plugins/faye-coding-assistant"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin install ./plugins/faye-coding-assistant",
+                                "bash": "grok plugin install ./plugins/faye-coding-assistant"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "direct-faye-image-utility",
+                    "title": "Direct CLI installation: Faye Image Utility",
+                    "paragraphs": [
+                        "Optional alternative to installing through the Marketplace tab. This installs one plugin directly and does not require marketplace registration. Do not use both routes for the same installation.",
+                        "Review the interactive trust prompt. Automatic trust is not enabled by this example."
+                    ],
+                    "expected": "Faye Image Utility appears in the installed list.",
+                    "commands": [
+                        {
+                            "id": "direct-faye-image-utility",
+                            "label": "Install directly",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin install ./plugins/faye-image-utility",
+                                "bash": "grok plugin install ./plugins/faye-image-utility"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin install ./plugins/faye-image-utility",
+                                "bash": "grok plugin install ./plugins/faye-image-utility"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "direct-faye-ui-system-engineer",
+                    "title": "Direct CLI installation: Faye UI System Engineer",
+                    "paragraphs": [
+                        "Optional alternative to installing through the Marketplace tab. This installs one plugin directly and does not require marketplace registration. Do not use both routes for the same installation.",
+                        "Review the interactive trust prompt. Automatic trust is not enabled by this example."
+                    ],
+                    "expected": "Faye UI System Engineer appears in the installed list.",
+                    "commands": [
+                        {
+                            "id": "direct-faye-ui-system-engineer",
+                            "label": "Install directly",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin install ./plugins/faye-ui-system-engineer",
+                                "bash": "grok plugin install ./plugins/faye-ui-system-engineer"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin install ./plugins/faye-ui-system-engineer",
+                                "bash": "grok plugin install ./plugins/faye-ui-system-engineer"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "existing",
+                    "title": "Check an existing installation",
+                    "paragraphs": [
+                        "Use this before adding a second source or when setup reports that the plugin already exists. Compare the names and source locations; reuse a matching installation."
+                    ],
+                    "expected": "The intended source and installed package are identified without removing other registrations.",
+                    "commands": [
+                        {
+                            "id": "existing-plugins",
+                            "label": "Installed plugins",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin list",
+                                "bash": "grok plugin list"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin list --json",
+                                "bash": "grok plugin list --json"
+                            }
+                        },
+                        {
+                            "id": "existing-markets",
+                            "label": "Registered marketplaces",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "grok plugin marketplace list",
+                                "bash": "grok plugin marketplace list"
+                            },
+                            "agentVariants": {
+                                "powershell": "grok plugin marketplace list",
+                                "bash": "grok plugin marketplace list"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "verification": {
+                "status": "tested",
+                "date": "2026-09-27",
+                "version": "Grok Build 1.0.41 on Windows",
+                "scope": "Local installation and one representative skill were checked on the recorded version. This does not certify every workflow, operating system, or app interface.",
+                "evidenceUrl": "https://docs.x.ai/build/features/skills-plugins-marketplaces"
+            },
+            "captures": [],
+            "preparationChoices": [
+                {
+                    "id": "reuse",
+                    "title": "Use an existing copy",
+                    "paragraphs": [
+                        "Find the marketplace folder already on your computer. It contains plugins and the hidden .agents/plugins/marketplace.json registry. A plugin folder inside plugins is not the marketplace root.",
+                        "Keep this copy in a stable location. Do not overwrite it or change its Git branch just to follow this guide."
+                    ],
+                    "expected": "You know the full path to the marketplace root.",
+                    "commands": []
+                },
+                {
+                    "id": "clone",
+                    "title": "Clone the repository",
+                    "paragraphs": [
+                        "Git must be installed. Run this from the parent folder where you want to keep the copy. faye-plugin-market is an example destination name; choose another unused name if needed.",
+                        "If the destination already exists, use that copy or choose a different destination. Do not overwrite it. After cloning, use the full path to the new folder in the next step."
+                    ],
+                    "expected": "A new local copy exists in the chosen destination.",
+                    "commands": [
+                        {
+                            "id": "clone",
+                            "label": "Clone into a new folder",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "git clone https://github.com/Fayegram-AI/plugin-market.git faye-plugin-market",
+                                "bash": "git clone https://github.com/Fayegram-AI/plugin-market.git faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "git clone https://github.com/Fayegram-AI/plugin-market.git faye-plugin-market",
+                                "bash": "git clone https://github.com/Fayegram-AI/plugin-market.git faye-plugin-market"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "download",
+                    "title": "Download and extract the repository",
+                    "paragraphs": [
+                        "Open the repository: https://github.com/Fayegram-AI/plugin-market",
+                        "Use its source archive download option, then extract the archive into a stable location. Open the extracted folder containing plugins and .agents/plugins/marketplace.json, not the archive or a surrounding downloads folder.",
+                        "An extracted archive is a local copy without Git history; git pull cannot update it."
+                    ],
+                    "expected": "The extracted marketplace root is available on your computer.",
+                    "commands": []
+                }
+            ]
+        },
+        {
+            "id": "antigravity-app-git",
+            "product": "antigravity",
+            "interface": "app",
+            "method": "git",
+            "href": "/setup/antigravity/app/git/",
+            "agentPath": "market-info/setup/antigravity/app/git.md",
+            "title": "Antigravity: app setup",
+            "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+            "status": "needs-input",
+            "prerequisites": [
+                "Install Antigravity and sign in before running skills. Use the official documentation if the application is not yet available.",
+                "Check the chosen plugin's requirements; some skills need additional tools or runtimes."
+            ],
+            "steps": [],
+            "packages": [],
+            "start": {
+                "id": "await-procedure",
+                "title": "Procedure awaiting confirmation",
+                "paragraphs": [
+                    "Use a confirmed terminal guide while the app-specific instructions are prepared. The requests below describe exactly what is missing."
+                ],
+                "expected": "This route becomes actionable after the missing procedure is confirmed.",
+                "commands": []
+            },
+            "management": [],
+            "alternatives": [],
+            "verification": {
+                "status": "pending",
+                "date": "2026-09-30",
+                "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                "evidenceUrl": "https://www.antigravity.google/docs/plugins?tab=cli"
+            },
+            "captures": [
+                {
+                    "id": "confirm-procedure",
+                    "title": "Confirm Antigravity app git setup",
+                    "kind": "procedure",
+                    "status": "missing",
+                    "instructions": [
+                        "Show how to open the controls for adding this custom marketplace in Antigravity (App). Record exact menu and button labels.",
+                        "Confirm whether this interface accepts our Git repository URL directly, the required source format, and the registration result. A curated listing alone does not establish custom Git registration.",
+                        "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                        "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                    ]
+                },
+                {
+                    "id": "capture-installation",
+                    "title": "Screenshots for Antigravity app",
+                    "kind": "screenshot",
+                    "status": "missing",
+                    "instructions": [
+                        "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                        "Capture the Git source input with the repository URL and the marketplace after successful registration.",
+                        "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                        "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "antigravity-app-local",
+            "product": "antigravity",
+            "interface": "app",
+            "method": "local",
+            "href": "/setup/antigravity/app/local/",
+            "agentPath": "market-info/setup/antigravity/app/local.md",
+            "title": "Antigravity: app setup",
+            "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+            "status": "needs-input",
+            "prerequisites": [
+                "Install Antigravity and sign in before running skills. Use the official documentation if the application is not yet available.",
+                "Check the chosen plugin's requirements; some skills need additional tools or runtimes."
+            ],
+            "steps": [],
+            "packages": [],
+            "start": {
+                "id": "await-procedure",
+                "title": "Procedure awaiting confirmation",
+                "paragraphs": [
+                    "Use a confirmed terminal guide while the app-specific instructions are prepared. The requests below describe exactly what is missing."
+                ],
+                "expected": "This route becomes actionable after the missing procedure is confirmed.",
+                "commands": []
+            },
+            "management": [],
+            "alternatives": [],
+            "verification": {
+                "status": "pending",
+                "date": "2026-09-30",
+                "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                "evidenceUrl": "https://www.antigravity.google/docs/plugins?tab=cli"
+            },
+            "captures": [
+                {
+                    "id": "confirm-procedure",
+                    "title": "Confirm Antigravity app local setup",
+                    "kind": "procedure",
+                    "status": "missing",
+                    "instructions": [
+                        "Show how to open the controls for adding this custom marketplace in Antigravity (App). Record exact menu and button labels.",
+                        "Confirm whether the interface selects a marketplace root or an individual plugin folder. Show the expected directory and registration result.",
+                        "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                        "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                    ]
+                },
+                {
+                    "id": "capture-installation",
+                    "title": "Screenshots for Antigravity app",
+                    "kind": "screenshot",
+                    "status": "missing",
+                    "instructions": [
+                        "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                        "Capture the local folder chooser or source field and the marketplace after successful registration.",
+                        "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                        "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "antigravity-ide-git",
+            "product": "antigravity",
+            "interface": "ide",
+            "method": "git",
+            "href": "/setup/antigravity/ide/git/",
+            "agentPath": "market-info/setup/antigravity/ide/git.md",
+            "title": "Antigravity: ide setup",
+            "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+            "status": "needs-input",
+            "prerequisites": [
+                "Install Antigravity and sign in before running skills. Use the official documentation if the application is not yet available.",
+                "Check the chosen plugin's requirements; some skills need additional tools or runtimes."
+            ],
+            "steps": [],
+            "packages": [],
+            "start": {
+                "id": "await-procedure",
+                "title": "Procedure awaiting confirmation",
+                "paragraphs": [
+                    "Use a confirmed terminal guide while the app-specific instructions are prepared. The requests below describe exactly what is missing."
+                ],
+                "expected": "This route becomes actionable after the missing procedure is confirmed.",
+                "commands": []
+            },
+            "management": [],
+            "alternatives": [],
+            "verification": {
+                "status": "pending",
+                "date": "2026-09-30",
+                "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                "evidenceUrl": "https://www.antigravity.google/docs/plugins?tab=cli"
+            },
+            "captures": [
+                {
+                    "id": "confirm-procedure",
+                    "title": "Confirm Antigravity ide git setup",
+                    "kind": "procedure",
+                    "status": "missing",
+                    "instructions": [
+                        "Show how to open the controls for adding this custom marketplace in Antigravity (IDE). Record exact menu and button labels.",
+                        "Confirm whether this interface accepts our Git repository URL directly, the required source format, and the registration result. A curated listing alone does not establish custom Git registration.",
+                        "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                        "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                    ]
+                },
+                {
+                    "id": "capture-installation",
+                    "title": "Screenshots for Antigravity ide",
+                    "kind": "screenshot",
+                    "status": "missing",
+                    "instructions": [
+                        "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                        "Capture the Git source input with the repository URL and the marketplace after successful registration.",
+                        "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                        "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "antigravity-ide-local",
+            "product": "antigravity",
+            "interface": "ide",
+            "method": "local",
+            "href": "/setup/antigravity/ide/local/",
+            "agentPath": "market-info/setup/antigravity/ide/local.md",
+            "title": "Antigravity: ide setup",
+            "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+            "status": "needs-input",
+            "prerequisites": [
+                "Install Antigravity and sign in before running skills. Use the official documentation if the application is not yet available.",
+                "Check the chosen plugin's requirements; some skills need additional tools or runtimes."
+            ],
+            "steps": [],
+            "packages": [],
+            "start": {
+                "id": "await-procedure",
+                "title": "Procedure awaiting confirmation",
+                "paragraphs": [
+                    "Use a confirmed terminal guide while the app-specific instructions are prepared. The requests below describe exactly what is missing."
+                ],
+                "expected": "This route becomes actionable after the missing procedure is confirmed.",
+                "commands": []
+            },
+            "management": [],
+            "alternatives": [],
+            "verification": {
+                "status": "pending",
+                "date": "2026-09-30",
+                "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                "evidenceUrl": "https://www.antigravity.google/docs/plugins?tab=cli"
+            },
+            "captures": [
+                {
+                    "id": "confirm-procedure",
+                    "title": "Confirm Antigravity ide local setup",
+                    "kind": "procedure",
+                    "status": "missing",
+                    "instructions": [
+                        "Show how to open the controls for adding this custom marketplace in Antigravity (IDE). Record exact menu and button labels.",
+                        "Confirm whether the interface selects a marketplace root or an individual plugin folder. Show the expected directory and registration result.",
+                        "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                        "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                    ]
+                },
+                {
+                    "id": "capture-installation",
+                    "title": "Screenshots for Antigravity ide",
+                    "kind": "screenshot",
+                    "status": "missing",
+                    "instructions": [
+                        "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                        "Capture the local folder chooser or source field and the marketplace after successful registration.",
+                        "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                        "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "antigravity-terminal-git",
+            "product": "antigravity",
+            "interface": "terminal",
+            "method": "git",
+            "href": "/setup/antigravity/terminal/git/",
+            "agentPath": "market-info/setup/antigravity/terminal/git.md",
+            "title": "Antigravity: terminal setup",
+            "summary": "This route is awaiting the owner’s confirmation of the app-specific installation procedure.",
+            "status": "needs-input",
+            "prerequisites": [
+                "Install Antigravity and sign in before running skills. Use the official documentation if the application is not yet available.",
+                "Check the chosen plugin's requirements; some skills need additional tools or runtimes.",
+                "Use PowerShell on Windows or Bash/zsh on macOS/Linux. Interactive slash commands are entered inside the application."
+            ],
+            "steps": [],
+            "packages": [],
+            "start": {
+                "id": "await-procedure",
+                "title": "Procedure awaiting confirmation",
+                "paragraphs": [
+                    "Use a confirmed terminal guide while the app-specific instructions are prepared. The requests below describe exactly what is missing."
+                ],
+                "expected": "This route becomes actionable after the missing procedure is confirmed.",
+                "commands": []
+            },
+            "management": [],
+            "alternatives": [],
+            "verification": {
+                "status": "pending",
+                "date": "2026-09-30",
+                "scope": "The custom-marketplace procedure has not been confirmed. Placeholder content is not an installation instruction.",
+                "evidenceUrl": "https://www.antigravity.google/docs/plugins?tab=cli"
+            },
+            "captures": [
+                {
+                    "id": "confirm-procedure",
+                    "title": "Confirm Antigravity terminal git setup",
+                    "kind": "procedure",
+                    "status": "missing",
+                    "instructions": [
+                        "Show how to open the controls for adding this custom marketplace in Antigravity (Terminal). Record exact menu and button labels.",
+                        "Confirm whether this interface accepts our Git repository URL directly, the required source format, and the registration result. A curated listing alone does not establish custom Git registration.",
+                        "Show how to install one Faye plugin, identify its installed/enabled state, and find its skills in a new session. Record the application version.",
+                        "If this interface needs a different supported workflow, provide that procedure instead; do not infer it from another interface."
+                    ]
+                },
+                {
+                    "id": "capture-installation",
+                    "title": "Screenshots for Antigravity terminal",
+                    "kind": "screenshot",
+                    "status": "missing",
+                    "instructions": [
+                        "Capture the marketplace/source entry point before adding anything, with the relevant control visible.",
+                        "Capture the Git source input with the repository URL and the marketplace after successful registration.",
+                        "Capture one Faye plugin's installation/details screen, its installed state, and the skill-discovery view. Keep the relevant labels readable.",
+                        "Exclude account details, credentials, private projects, and unrelated windows. Use real captures, not simulated screens."
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "antigravity-terminal-local",
+            "product": "antigravity",
+            "interface": "terminal",
+            "method": "local",
+            "href": "/setup/antigravity/terminal/local/",
+            "agentPath": "market-info/setup/antigravity/terminal/local.md",
+            "title": "Antigravity: terminal setup",
+            "summary": "Install selected plugin folders from a local copy of the marketplace.",
+            "status": "ready",
+            "prerequisites": [
+                "Install Antigravity and sign in before running skills. Use the official documentation if the application is not yet available.",
+                "Check the chosen plugin's requirements; some skills need additional tools or runtimes.",
+                "Use PowerShell on Windows or Bash/zsh on macOS/Linux. Interactive slash commands are entered inside the application."
+            ],
+            "steps": [
+                {
+                    "id": "folder",
+                    "title": "Open the marketplace folder",
+                    "paragraphs": [
+                        "Replace the entire quoted example path below with the full path to your marketplace root. Keep the quotes, especially when the path contains spaces. Choose the command for your terminal shell.",
+                        "All following relative paths use this folder. The single dot means this marketplace root; ./plugins/<plugin-id> means one plugin folder inside it."
+                    ],
+                    "expected": "Your terminal is in the folder containing plugins and .agents/plugins/marketplace.json.",
+                    "commands": [
+                        {
+                            "id": "enter",
+                            "label": "Open your local copy — replace the example path",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "Set-Location -LiteralPath 'C:\\path\\to\\Faye Plugin Market'",
+                                "bash": "cd -- '/path/to/Faye Plugin Market'"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "packages": [
+                {
+                    "pluginId": "faye-coding-assistant",
+                    "paragraphs": [
+                        "Install Faye Coding Assistant only if you want its skills. Review any permission or trust prompts shown by the application."
+                    ],
+                    "commands": [
+                        {
+                            "id": "install-faye-coding-assistant",
+                            "label": "Install Faye Coding Assistant",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "agy plugin install ./plugins/faye-coding-assistant",
+                                "bash": "agy plugin install ./plugins/faye-coding-assistant"
+                            },
+                            "agentVariants": {
+                                "powershell": "agy plugin install ./plugins/faye-coding-assistant",
+                                "bash": "agy plugin install ./plugins/faye-coding-assistant"
+                            }
+                        }
+                    ],
+                    "expected": "Faye Coding Assistant appears in the installed plugin list. Compare its version with 0.1.0-beta.7 shown by this marketplace."
+                },
+                {
+                    "pluginId": "faye-image-utility",
+                    "paragraphs": [
+                        "Install Faye Image Utility only if you want its skills. Review any permission or trust prompts shown by the application."
+                    ],
+                    "commands": [
+                        {
+                            "id": "install-faye-image-utility",
+                            "label": "Install Faye Image Utility",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "agy plugin install ./plugins/faye-image-utility",
+                                "bash": "agy plugin install ./plugins/faye-image-utility"
+                            },
+                            "agentVariants": {
+                                "powershell": "agy plugin install ./plugins/faye-image-utility",
+                                "bash": "agy plugin install ./plugins/faye-image-utility"
+                            }
+                        }
+                    ],
+                    "expected": "Faye Image Utility appears in the installed plugin list. Compare its version with 0.1.0-beta.6 shown by this marketplace."
+                },
+                {
+                    "pluginId": "faye-ui-system-engineer",
+                    "paragraphs": [
+                        "Install Faye UI System Engineer only if you want its skills. Review any permission or trust prompts shown by the application."
+                    ],
+                    "commands": [
+                        {
+                            "id": "install-faye-ui-system-engineer",
+                            "label": "Install Faye UI System Engineer",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "agy plugin install ./plugins/faye-ui-system-engineer",
+                                "bash": "agy plugin install ./plugins/faye-ui-system-engineer"
+                            },
+                            "agentVariants": {
+                                "powershell": "agy plugin install ./plugins/faye-ui-system-engineer",
+                                "bash": "agy plugin install ./plugins/faye-ui-system-engineer"
+                            }
+                        }
+                    ],
+                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.4 shown by this marketplace."
+                }
+            ],
+            "start": {
+                "id": "start",
+                "title": "Confirm installation and start a new session",
+                "paragraphs": [
+                    "Check the plugins you selected are installed and enabled where the application exposes that state. The list command below is a quick confirmation, not a test of every skill.",
+                    "Start a new Antigravity session, open its skill picker or Plugins interface, and choose a task from the installed plugin's skill guides. Read that skill's inputs and requirements before sending your request.",
+                    "Use the product's native skill picker or slash-command guidance. Read the selected skill's guide rather than translating another application's example yourself."
+                ],
+                "expected": "Your selected plugins are installed and their applicable skills can be found or explicitly invoked in a fresh session.",
+                "commands": [
+                    {
+                        "id": "installed",
+                        "label": "List installed plugins",
+                        "kind": "terminal",
+                        "variants": {
+                            "powershell": "agy plugin list",
+                            "bash": "agy plugin list"
+                        },
+                        "agentVariants": {
+                            "powershell": "agy plugin list",
+                            "bash": "agy plugin list"
+                        }
+                    }
+                ]
+            },
+            "management": [
+                {
+                    "id": "update-copy",
+                    "title": "Update a local copy later",
+                    "paragraphs": [
+                        "Updating the source is separate from installing a plugin. git pull updates an existing Git checkout; it does not create one and cannot update an extracted archive.",
+                        "Before updating a checkout, check its branch and local changes. For an archive, obtain a newer copy separately and compare versions. Do not overwrite the existing folder or change an installed plugin without deciding to update it."
+                    ],
+                    "expected": "You have identified the source and version you intend to use before making an update.",
+                    "commands": []
+                },
+                {
+                    "id": "manage",
+                    "title": "Manage an installed plugin",
+                    "paragraphs": [
+                        "Open /plugins in an Antigravity CLI session and use the Installed tab to inspect or toggle a plugin. For a newer local copy, compare versions and use the documented installation procedure for that package after deciding to replace it."
+                    ],
+                    "expected": "The Installed tab reflects the intended plugin and enabled state.",
+                    "commands": [
+                        {
+                            "id": "plugins",
+                            "label": "Inside Antigravity",
+                            "kind": "interactive",
+                            "variants": {
+                                "powershell": "/plugins",
+                                "bash": "/plugins"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-coding-assistant",
+                    "title": "Uninstall Faye Coding Assistant",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye Coding Assistant is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-coding-assistant",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "agy plugin uninstall faye-coding-assistant",
+                                "bash": "agy plugin uninstall faye-coding-assistant"
+                            },
+                            "agentVariants": {
+                                "powershell": "agy plugin uninstall faye-coding-assistant",
+                                "bash": "agy plugin uninstall faye-coding-assistant"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-image-utility",
+                    "title": "Uninstall Faye Image Utility",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye Image Utility is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-image-utility",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "agy plugin uninstall faye-image-utility",
+                                "bash": "agy plugin uninstall faye-image-utility"
+                            },
+                            "agentVariants": {
+                                "powershell": "agy plugin uninstall faye-image-utility",
+                                "bash": "agy plugin uninstall faye-image-utility"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "remove-faye-ui-system-engineer",
+                    "title": "Uninstall Faye UI System Engineer",
+                    "paragraphs": [
+                        "Only use this when you intend to remove this plugin. It removes the selected installation and its capabilities; it is not a troubleshooting prerequisite. Leave other plugins and marketplace sources intact."
+                    ],
+                    "expected": "Faye UI System Engineer is no longer listed as installed.",
+                    "commands": [
+                        {
+                            "id": "remove-faye-ui-system-engineer",
+                            "label": "Uninstall selected plugin",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "agy plugin uninstall faye-ui-system-engineer",
+                                "bash": "agy plugin uninstall faye-ui-system-engineer"
+                            },
+                            "agentVariants": {
+                                "powershell": "agy plugin uninstall faye-ui-system-engineer",
+                                "bash": "agy plugin uninstall faye-ui-system-engineer"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "alternatives": [
+                {
+                    "id": "existing",
+                    "title": "Check an existing installation",
+                    "paragraphs": [
+                        "Use this before adding a second source or when setup reports that the plugin already exists. Compare the names and source locations; reuse a matching installation."
+                    ],
+                    "expected": "The intended source and installed package are identified without removing other registrations.",
+                    "commands": [
+                        {
+                            "id": "existing-plugins",
+                            "label": "Installed plugins",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "agy plugin list",
+                                "bash": "agy plugin list"
+                            },
+                            "agentVariants": {
+                                "powershell": "agy plugin list",
+                                "bash": "agy plugin list"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "verification": {
+                "status": "tested",
+                "date": "2026-09-27",
+                "version": "Antigravity CLI 1.2.4 on Windows",
+                "scope": "Local installation and one representative skill were checked on the recorded version. This does not certify every workflow, operating system, or app interface.",
+                "evidenceUrl": "https://www.antigravity.google/docs/plugins?tab=cli"
+            },
+            "captures": [],
+            "preparationChoices": [
+                {
+                    "id": "reuse",
+                    "title": "Use an existing copy",
+                    "paragraphs": [
+                        "Find the marketplace folder already on your computer. It contains plugins and the hidden .agents/plugins/marketplace.json registry. A plugin folder inside plugins is not the marketplace root.",
+                        "Keep this copy in a stable location. Do not overwrite it or change its Git branch just to follow this guide."
+                    ],
+                    "expected": "You know the full path to the marketplace root.",
+                    "commands": []
+                },
+                {
+                    "id": "clone",
+                    "title": "Clone the repository",
+                    "paragraphs": [
+                        "Git must be installed. Run this from the parent folder where you want to keep the copy. faye-plugin-market is an example destination name; choose another unused name if needed.",
+                        "If the destination already exists, use that copy or choose a different destination. Do not overwrite it. After cloning, use the full path to the new folder in the next step."
+                    ],
+                    "expected": "A new local copy exists in the chosen destination.",
+                    "commands": [
+                        {
+                            "id": "clone",
+                            "label": "Clone into a new folder",
+                            "kind": "terminal",
+                            "variants": {
+                                "powershell": "git clone https://github.com/Fayegram-AI/plugin-market.git faye-plugin-market",
+                                "bash": "git clone https://github.com/Fayegram-AI/plugin-market.git faye-plugin-market"
+                            },
+                            "agentVariants": {
+                                "powershell": "git clone https://github.com/Fayegram-AI/plugin-market.git faye-plugin-market",
+                                "bash": "git clone https://github.com/Fayegram-AI/plugin-market.git faye-plugin-market"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "download",
+                    "title": "Download and extract the repository",
+                    "paragraphs": [
+                        "Open the repository: https://github.com/Fayegram-AI/plugin-market",
+                        "Use its source archive download option, then extract the archive into a stable location. Open the extracted folder containing plugins and .agents/plugins/marketplace.json, not the archive or a surrounding downloads folder.",
+                        "An extracted archive is a local copy without Git history; git pull cannot update it."
+                    ],
+                    "expected": "The extracted marketplace root is available on your computer.",
+                    "commands": []
+                }
+            ]
+        }
+    ],
+    "agentRules": [
+        "Identify the selected product, interface, Git or local method, operating system/shell, and desired plugins. Ask only for missing decisions; reuse the user's existing authorization.",
+        "Read this target's setup.json, manifest.json, and native registry. Use their actual marketplace identity, repository URL, available plugin IDs, versions, and skills. Do not borrow facts from another target.",
+        "A route marked needs-input is not executable guidance. Describe the missing procedure and ask for the user's demonstration or confirmation. Never guess app controls or treat a placeholder as evidence.",
+        "Inspect existing registrations and installed packages using supported read-only commands. Reuse a matching source and installed version. Explain conflicts before replacing anything.",
+        "Choose the declared shell variant. Run only the selected route and plugins, using automation output flags where provided. Interactive slash commands belong in the product, not the operating-system shell.",
+        "Keep authentication in the application's supported sign-in flow. Never ask for credentials in a prompt. Respect existing trust authorization; do not silently add automatic trust flags.",
+        "Preserve unrelated settings and working installations. Do not clear caches, remove unrelated packages, rewrite global configuration wholesale, or weaken permissions to make setup pass.",
+        "Verify installed identity, version, enabled state where exposed, and skill discovery. A zero exit code or copied files alone do not establish successful setup.",
+        "Start or request a fresh session when needed. Run a functional skill request only if the user authorizes that execution; installation does not require a model call.",
+        "Report the selected route, packages installed or reused, observed verification, and the next user action. Separate documented behavior, observations, and untested or blocked work."
+    ],
+    "troubleshooting": [
+        {
+            "id": "command-missing",
+            "title": "The terminal does not recognize the command",
+            "reason": "The application may be missing, unavailable in this terminal, or too old for plugin commands.",
+            "steps": [
+                "Open a new terminal after installing the application.",
+                "Check its version and plugin help against the official command reference.",
+                "Do not paste interactive slash commands into the system terminal."
+            ],
+            "expected": "The application starts and its plugin commands or Plugins interface are available.",
+            "commands": []
+        },
+        {
+            "id": "repository-access",
+            "title": "The Git repository cannot be added",
+            "reason": "The URL, network connection, or Git access may prevent fetching the marketplace.",
+            "steps": [
+                "Compare the source with the repository address in your selected guide.",
+                "Confirm access through your normal Git authentication flow; private repositories require access.",
+                "Retry after resolving access. Do not disable certificate checks or paste a token into the guide."
+            ],
+            "expected": "The intended marketplace is listed without an access error.",
+            "commands": []
+        },
+        {
+            "id": "wrong-folder",
+            "title": "The local folder is not recognized",
+            "reason": "Marketplace registration uses the repository root; direct plugin installation uses an individual plugin folder.",
+            "steps": [
+                "For Codex or Grok registration, open the directory containing the marketplace registry and plugins folder.",
+                "For Antigravity terminal installation, select plugins/<plugin-id> inside that checkout.",
+                "Keep the existing checkout; do not delete it to retry registration."
+            ],
+            "expected": "The source is recognized and the desired packages are available.",
+            "commands": []
+        },
+        {
+            "id": "skills-missing",
+            "title": "The plugin is installed but its skills are missing",
+            "reason": "The session may predate installation, the plugin may be disabled, or a skill may require explicit invocation.",
+            "steps": [
+                "Check the plugin's installed and enabled state.",
+                "Start a fresh session and open the skill picker or the selected plugin's skill guide.",
+                "Check invocation and tool requirements. Installation does not grant extra tools or permissions."
+            ],
+            "expected": "Applicable skills can be discovered or explicitly invoked in the new session.",
+            "commands": []
+        },
+        {
+            "id": "grok-discovery",
+            "product": "grok",
+            "title": "Grok does not show a newly installed skill",
+            "reason": "Discovery output can distinguish an unloaded package from a skill requiring an explicit request.",
+            "steps": [
+                "Check the plugin is enabled in /plugins, then start a new session.",
+                "Run the optional discovery command below and look for the selected plugin and its expected skill names.",
+                "If the package is present but a skill is not offered automatically, read its invocation requirements."
+            ],
+            "expected": "The applicable skill names appear, or an explicit-invocation requirement explains the difference.",
+            "commands": [
+                {
+                    "id": "discovery",
+                    "label": "Inspect skill discovery",
+                    "kind": "terminal",
+                    "variants": {
+                        "powershell": "grok inspect --json",
+                        "bash": "grok inspect --json"
+                    },
+                    "agentVariants": {
+                        "powershell": "grok inspect --json",
+                        "bash": "grok inspect --json"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "already-installed",
+            "title": "The same plugin is already installed",
+            "reason": "A matching installation can be reused; another source may create ambiguity.",
+            "steps": [
+                "Compare the installed identity, source, and version with this guide.",
+                "Reuse a matching installation.",
+                "For another version or source, follow the product's update procedure after deciding which source to keep."
+            ],
+            "expected": "The intended source and version are identified without removing unrelated registrations.",
+            "commands": []
+        }
+    ],
+    "legacyRoutes": {
+        "codex": "/setup/codex/",
+        "codex-git": "/setup/codex/terminal/git/",
+        "codex-local": "/setup/codex/terminal/local/",
+        "grok": "/setup/grok/",
+        "grok-git": "/setup/grok/terminal/git/",
+        "grok-local": "/setup/grok/terminal/local/",
+        "antigravity": "/setup/antigravity/",
+        "antigravity-git": "/setup/antigravity/terminal/git/",
+        "antigravity-local": "/setup/antigravity/terminal/local/"
+    }
 }

@@ -32,9 +32,9 @@ are not installable packages.
 
 ## Getting Started
 
-1. Obtain this repository's checkout and open a terminal at its root.
-2. Choose your host below and follow its installation steps. Install only the plugins you need.
-3. Start a fresh host session, confirm skill discovery, and read the chosen skill's requirements before your first request.
+1. Choose your app, its desktop or terminal interface, and the source method in the setup guide. Grok Build uses a terminal interface.
+2. Follow one confirmed procedure and install only the plugins you need. **Git repository** registers a source URL; **Local copy** uses a folder on your computer, whether cloned, downloaded and extracted, or already available. Resolve the marketplace folder before running relative-path commands. App procedures awaiting confirmation are clearly marked.
+3. Start a fresh session when required, confirm the selected plugins are available, and open their skill guides for examples and requirements.
 
 {{HOST_SETUP}}
 
@@ -71,7 +71,7 @@ activation requirements, and selecting a platform does not change package files.
 ## Updates and Troubleshooting
 
 When updating, compare the installed package's source and version with the
-checkout you intend to use, then follow your host's supported update or import
+repository source you intend to use, then follow your host's supported update or import
 procedure. Keep unrelated registrations and settings intact. A fresh session may
 be needed to discover new skills.
 
