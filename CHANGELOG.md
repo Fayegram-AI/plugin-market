@@ -4,6 +4,15 @@ All notable marketplace-package changes are tracked here.
 
 ## Unreleased
 
+### UI System Engineer 0.1.0-beta.5
+
+- Add shared principles for meaningful structure, proportionate visual treatment,
+  necessary explanations, and truthful feedback.
+- Refine design specifications, usability, browser focus, and state distinctions
+  within the existing browser UI scopes and supported product capabilities.
+- Retain the five skill identities, invocation policy, scanner behavior, and
+  dependency requirements.
+
 ### Setup experience remake: 2026-09-30
 
 - Organize setup by application, interface, and installation method, with focused

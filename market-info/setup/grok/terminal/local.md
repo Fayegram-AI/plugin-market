@@ -149,11 +149,11 @@ Expected: Faye Image Utility appears in the installed plugin list. Compare its v
 
 ### If requested: Faye UI System Engineer
 
-Identity: `faye-ui-system-engineer`; expected version: `0.1.0-beta.4`.
+Identity: `faye-ui-system-engineer`; expected version: `0.1.0-beta.5`.
 
 Choose Faye UI System Engineer in the selected Marketplace tab and install it. Review Grok's trust prompt before accepting.
 
-Expected: Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.4 shown by this marketplace.
+Expected: Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.5 shown by this marketplace.
 
 ## Confirm installation and start a new session
 

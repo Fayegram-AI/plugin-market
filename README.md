@@ -20,7 +20,7 @@ Use the [setup website](https://plugin-market.fayegram.com/setup/) to choose you
 | --- | --- | --- | ---: |
 | [Faye Coding Assistant](plugins/faye-coding-assistant/README.md) | Focused, scope-preserving coding skills. | `0.1.0-beta.7` | 14 |
 | [Faye Image Utility](plugins/faye-image-utility/README.md) | Image auditing, editing, conversion, and rating estimates. | `0.1.0-beta.6` | 4 |
-| [Faye UI System Engineer](plugins/faye-ui-system-engineer/README.md) | Web UI design, implementation, review, and inspection. | `0.1.0-beta.4` | 5 |
+| [Faye UI System Engineer](plugins/faye-ui-system-engineer/README.md) | Web UI design, implementation, review, and inspection. | `0.1.0-beta.5` | 5 |
 
 Each package includes its own instructions, requirements, usage guidance, and
 license. Follow a package link above for its workflows and examples, or browse
@@ -34,7 +34,7 @@ are not installable packages.
 | --- | --- | --- |
 | `faye-coding-assistant` | `0.1.0-beta.7` | `code-review`, `codebase-exploration`, `coding-goal-guardrails`, `coding-handoff`, `phase-implementation-review`, `reconcile-repository-docs`, `refactor-planning`, `report-coding-goal-progress`, `repository-change-planning`, `repository-debugging`, `repository-implementation`, `source-file-token-estimation`, `test-suite-health`, `verification-planning` |
 | `faye-image-utility` | `0.1.0-beta.6` | `faye-image-age-rating`, `faye-image-artifact-audit`, `faye-image-format-converter`, `simple-paint-n-annotation` |
-| `faye-ui-system-engineer` | `0.1.0-beta.4` | `ui-inspection`, `ui-system-architecture`, `ui-system-implementation`, `ui-system-review`, `ui-visual-design` |
+| `faye-ui-system-engineer` | `0.1.0-beta.5` | `ui-inspection`, `ui-system-architecture`, `ui-system-implementation`, `ui-system-review`, `ui-visual-design` |
 
 </details>
 

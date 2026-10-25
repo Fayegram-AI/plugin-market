@@ -11,7 +11,9 @@ and motion to the task and product character. Shared visual foundations cover
 semantic roles, themes, variants, and density; implementation and inspection use
 the same guidance to make decisions and diagnose problems.
 
-Plugin ID: `faye-ui-system-engineer` · Version: `0.1.0-beta.4` · Publisher: [Fayegram](https://fayegram.com)
+[General UI principles](references/ui-principles.md) connect meaningful structure, proportionate visual treatment, necessary explanations, and truthful behavior. Detailed interaction, browser, and state guidance applies to the surface's existing operations and ownership. The principles support contextual decisions across the supported browser scopes without prescribing a style or requiring additional product capabilities.
+
+Plugin ID: `faye-ui-system-engineer` · Version: `0.1.0-beta.5` · Publisher: [Fayegram](https://fayegram.com)
 
 - Website: [Faye Plugin Market](https://plugin-market.fayegram.com)
 - Repository: [plugin-market](https://github.com/Fayegram-AI/plugin-market)

@@ -48,7 +48,7 @@
         {
             "id": "faye-ui-system-engineer",
             "name": "Faye UI System Engineer",
-            "version": "0.1.0-beta.4",
+            "version": "0.1.0-beta.5",
             "summary": "Web UI design, implementation, review, and inspection.",
             "skills": [
                 "ui-inspection",
@@ -342,7 +342,7 @@
                             }
                         }
                     ],
-                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.4 shown by this marketplace."
+                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.5 shown by this marketplace."
                 }
             ],
             "start": {
@@ -654,7 +654,7 @@
                             }
                         }
                     ],
-                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.4 shown by this marketplace."
+                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.5 shown by this marketplace."
                 }
             ],
             "start": {
@@ -972,7 +972,7 @@
                         "Choose Faye UI System Engineer in the selected Marketplace tab and install it. Review Grok's trust prompt before accepting."
                     ],
                     "commands": [],
-                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.4 shown by this marketplace."
+                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.5 shown by this marketplace."
                 }
             ],
             "start": {
@@ -1451,7 +1451,7 @@
                         "Choose Faye UI System Engineer in the selected Marketplace tab and install it. Review Grok's trust prompt before accepting."
                     ],
                     "commands": [],
-                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.4 shown by this marketplace."
+                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.5 shown by this marketplace."
                 }
             ],
             "start": {
@@ -2276,7 +2276,7 @@
                             }
                         }
                     ],
-                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.4 shown by this marketplace."
+                    "expected": "Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.5 shown by this marketplace."
                 }
             ],
             "start": {
