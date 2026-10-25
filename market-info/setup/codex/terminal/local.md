@@ -139,7 +139,7 @@ Expected: Faye Image Utility appears in the installed plugin list. Compare its v
 
 ### If requested: Faye UI System Engineer
 
-Identity: `faye-ui-system-engineer`; expected version: `0.1.0-beta.4`.
+Identity: `faye-ui-system-engineer`; expected version: `0.1.0-beta.5`.
 
 Install Faye UI System Engineer only if you want its skills. Review any permission or trust prompts shown by the application.
 
@@ -149,7 +149,7 @@ Install Faye UI System Engineer — PowerShell or Bash/zsh:
 codex plugin add faye-ui-system-engineer@faye-plugin-market --json
 ```
 
-Expected: Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.4 shown by this marketplace.
+Expected: Faye UI System Engineer appears in the installed plugin list. Compare its version with 0.1.0-beta.5 shown by this marketplace.
 
 ## Confirm installation and start a new session
 

@@ -1,10 +1,6 @@
 # Web State Architecture
 
-Use this reference when a web UI-system task includes state ownership, shared
-stores, asynchronous or server data, URL or session state, persistence,
-hydration, cross-feature coordination, or state migration. Preserve the host
-project's framework and established state mechanisms. This contract does not
-prescribe a store package or create a cross-framework state API.
+Use this reference when a web UI-system task includes state ownership, shared stores, asynchronous or server data, URL or session state, persistence, hydration, cross-feature coordination, or state migration. Preserve the host project's framework and established state mechanisms. This contract does not prescribe a store package or create a cross-framework state API.
 
 ## Contents
 
@@ -24,80 +20,52 @@ prescribe a store package or create a cross-framework state API.
 Classify state before choosing where it lives. Record:
 
 - Authority: which layer is allowed to change the value.
-- Lifetime: one interaction, one view instance, one route, one session, or
-  longer.
+- Lifetime: one interaction, one view instance, one route, one session, or longer.
 - Scope: one element, one composed workflow, one feature, or several features.
-- Source of truth: browser, server, authored-content model, domain model, or
-  client-owned value.
+- Source of truth: browser, server, authored-content model, domain model, or client-owned value.
 - Shareability: whether navigation or a copied URL must reproduce it.
-- Persistence: whether it survives reload, logout, account change, or schema
-  evolution.
-- Coordination: whether updates are synchronous, asynchronous, optimistic, or
-  conflict-prone.
+- Persistence: whether it survives reload, logout, account change, or schema evolution.
+- Coordination: whether updates are synchronous, asynchronous, optimistic, or conflict-prone.
 
-Choose the narrowest owner that has the required authority and lifetime.
-Global state is an ownership outcome for genuinely cross-feature data, not a
-default location for values that are merely convenient to access.
+Choose the narrowest owner that has the required authority and lifetime. Global state is an ownership outcome for genuinely cross-feature data, not a default location for values that are merely convenient to access.
 
 ## State Classes And Owners
 
 ### Interaction-local state
 
-Behaviors or primitives may own transient UI mechanics such as open state,
-roving focus, draft input, drag state, pointer capture, and the value required
-to cancel an edit. Dispose it with the owning interaction or element.
+Behaviors or primitives may own transient UI mechanics such as open state, roving focus, draft input, drag state, pointer capture, and the value required to cancel an edit. Dispose it with the owning interaction or element.
 
 ### View-local state
 
-Views may own placement-specific state such as a local filter, a temporary
-section expansion, or an uncommitted workflow step when no other placement
-must observe it. Do not promote it solely to avoid passing an explicit input.
+Views may own placement-specific state such as a local filter, a temporary section expansion, or an uncommitted workflow step when no other placement must observe it. Do not promote it solely to avoid passing an explicit input.
 
 ### URL and navigation state
 
-The router or application composition owns state that must survive navigation,
-participate in browser history, support deep links, or be shareable. Parse and
-validate it at the navigation boundary; feature adapters consume normalized
-values rather than raw URL strings.
+The router or application composition owns state that must survive navigation, participate in browser history, support deep links, or be shareable. Parse and validate it at the navigation boundary; feature adapters consume normalized values rather than raw URL strings.
 
 ### Feature and domain state
 
-The owning feature or domain layer retains business values, validation policy,
-permissions, commands, and invariants. UI modules observe it through narrow
-interfaces and report intent through adapters; they do not become an alternate
-domain authority.
+The owning feature or domain layer retains business values, validation policy, permissions, commands, and invariants. UI modules observe it through narrow interfaces and report intent through adapters; they do not become an alternate domain authority.
 
 ### Server state
 
-The host project's data-access or server-cache boundary owns remote records,
-request status, freshness, invalidation, and retry policy. Do not copy server
-data into a general client store unless a distinct editable snapshot or domain
-workflow requires a second value with an explicit synchronization contract.
+The host project's data-access or server-cache boundary owns remote records, request status, freshness, invalidation, and retry policy. Do not copy server data into a general client store unless a distinct editable snapshot or domain workflow requires a second value with an explicit synchronization contract.
 
 ### Application and session state
 
-Application composition may own authenticated identity, active account or
-workspace, locale, runtime theme, connectivity, and other truly cross-feature
-session concerns. Define which changes reset feature, URL, cache, and
-persistent state.
+Application composition may own authenticated identity, active account or workspace, locale, runtime theme, connectivity, and other truly cross-feature session concerns. Define which changes reset feature, URL, cache, and persistent state.
 
 ### Persistent client state
 
-An explicit persistence boundary owns serialization, storage keys, versions,
-migration, recovery, and deletion. Features own the meaning of persisted
-values. Primitives and patterns do not read browser storage directly.
+An explicit persistence boundary owns serialization, storage keys, versions, migration, recovery, and deletion. Features own the meaning of persisted values. Primitives and patterns do not read browser storage directly.
 
 ### Authored-content state
 
-Documents, canvases, diagrams, previews, and scenes remain in their owning
-content or domain model. Surrounding application or editor chrome may select,
-inspect, or command that model through feature interfaces, but must not create
-a competing copy of authored content.
+Documents, canvases, diagrams, previews, and scenes remain in their owning content or domain model. Surrounding application or editor chrome may select, inspect, or command that model through feature interfaces, but must not create a competing copy of authored content.
 
 ## Dependency And Data Flow
 
-Use this direction unless the host project has an equivalent established
-boundary:
+Use this direction unless the host project has an equivalent established boundary:
 
 ```text
 application composition
@@ -106,13 +74,10 @@ application composition
     -> patterns and primitives
 ```
 
-User intent travels upward through semantic outputs. Current values and status
-travel downward through explicit inputs or narrow subscriptions. Interaction-
-local state stays inside the owning behavior, primitive, or composed workflow.
+User intent travels upward through semantic outputs. Current values and status travel downward through explicit inputs or narrow subscriptions. Interaction-local state stays inside the owning behavior, primitive, or composed workflow.
 
 - Primitives and patterns do not import feature or application stores.
-- Feature adapters may select domain values, convert units, provide product
-  terminology, and translate semantic UI outputs into commands.
+- Feature adapters may select domain values, convert units, provide product terminology, and translate semantic UI outputs into commands.
 - Views compose adapters and may coordinate view-local or navigation state.
 - Application composition wires cross-feature and session owners.
 - Domain modules do not import UI modules.
@@ -120,17 +85,23 @@ local state stays inside the owning behavior, primitive, or composed workflow.
 ## Sources Of Truth And Derived State
 
 - Keep one authoritative value for each concern.
-- Derive projections, counts, visibility, and formatted values when practical
-  instead of synchronizing duplicate writable copies.
-- If an editable draft intentionally diverges from its source, name both
-  values, define initialization, commit, cancellation, conflict, and reset.
-- Controlled and uncontrolled forms require explicit precedence and change
-  signals. Do not hide two writable authorities behind one public value.
-- Use selectors or equivalent narrow projections so consumers subscribe only
-  to values that can affect them.
+- Derive projections, counts, visibility, and formatted values when practical instead of synchronizing duplicate writable copies.
+- If an editable draft intentionally diverges from its source, name both values, define initialization, commit, cancellation, conflict, and reset.
+- Controlled and uncontrolled forms require explicit precedence and change signals. Do not hide two writable authorities behind one public value.
+- Use selectors or equivalent narrow projections so consumers subscribe only to values that can affect them.
 - Do not expose an entire store when a consumer needs one value and one intent.
 
 ## Async And Server State
+
+### Presentation And Data Effects
+
+When a stateful view changes presentation, filtering, sorting, or content, classify the effect before choosing ownership or loading feedback. A presentation change alters how the same information is shown; a query changes the requested or visible set; sorting changes order and may require a server query; a mutation changes authoritative content. A control can combine effects, so inspect its actual contract rather than infer behavior from a label such as "View".
+
+If a view only rearranges already available data, avoid introducing a request or loading state without a data requirement. This does not prohibit server-rendered navigation, pagination, or a query needed by the host's established rendering/data model. Keep feature data authority separate from presentation preferences and preserve existing URL and history expectations. Do not introduce a client store or SPA migration to enforce a presentation rule.
+
+When a supported browsing workflow must retain context across a geometry change, identify the meaningful object or position to retain. A stable item identity and relative position can be more useful than a raw scroll offset when rows become cards or content wraps. Define a logical fallback if the item disappears, and respect newer user scrolling or navigation. Reuse existing browser/router restoration where it meets the contract; do not add anchors or persistence to surfaces that do not need them.
+
+### Pending Operations And Results
 
 For each asynchronous workflow, define:
 
@@ -142,61 +113,44 @@ For each asynchronous workflow, define:
 - Whether user input remains editable while work is pending.
 - Focus and announcement results when completion changes the visible UI.
 
-Do not let a primitive start business requests or infer cache policy. The
-feature adapter invokes the owning command and maps its status into semantic UI
-inputs such as busy, disabled, invalid, or described error state.
+Do not let a primitive start business requests or infer cache policy. The feature adapter invokes the owning command and maps its status into semantic UI inputs such as busy, disabled, invalid, or described error state.
+
+For editable workflows that allow changes while submission is pending, associate the operation with its submitted snapshot or revision. If A is submitted and the user produces draft B, acknowledging A does not mark B saved or authorize replacing it with A. Keep pending identity, acknowledged value, and current draft distinct through the host's existing ownership model; serialize or coordinate further submissions according to the actual operation contract. The UI must reflect the product's supported edit and close behavior without inventing a save queue or synchronization service.
+
+For operations that may succeed without delivering a response, distinguish confirmed rejection from an unknown outcome. A timeout or lost connection alone cannot establish whether the change committed. Use supported status lookup or reconciliation when available; retry only under known operation guarantees, such as an existing idempotency contract. If those capabilities are absent, preserve available work, state what is unknown, and offer only supported recovery. Do not claim definite failure, successful rollback, or safe automatic resubmission without evidence.
+
+When an operation can outlive its UI surface, give it the owner and lifetime required by that existing workflow. Dismissal closes a surface; discard abandons an unsubmitted draft; cancellation requests that work stop only where the operation supports it. Aborting a client request does not prove that a server effect was cancelled. Define how completion remains observable or is reconciled after dismissal without updating disposed views or stealing focus. Do not move every local interaction into a persistent operation manager.
 
 ## URL And Persistent State
 
-- Put reproducible navigation state in the URL when the product expects deep
-  links, history, refresh continuity, or sharing.
-- Keep sensitive values, credentials, and private records out of URLs and
-  client persistence unless an approved security design requires them.
-- Treat storage as an external boundary that can be missing, unavailable,
-  malformed, stale, or written by an older schema.
-- Version persisted shapes that can evolve. Define migration, fallback, and
-  removal rather than silently accepting incompatible data.
-- Separate persistence effects from in-memory state transitions so tests can
-  verify each contract independently.
-- During hydration, define which source wins and prevent a temporary default
-  from overwriting an authoritative restored value.
+- Put reproducible navigation state in the URL when the product expects deep links, history, refresh continuity, or sharing.
+- Keep sensitive values, credentials, and private records out of URLs and client persistence unless an approved security design requires them.
+- Treat storage as an external boundary that can be missing, unavailable, malformed, stale, or written by an older schema.
+- Version persisted shapes that can evolve. Define migration, fallback, and removal rather than silently accepting incompatible data.
+- Separate persistence effects from in-memory state transitions so tests can verify each contract independently.
+- During hydration, define which source wins and prevent a temporary default from overwriting an authoritative restored value.
 
 ## Lifecycle And Reset Boundaries
 
-State architecture must define creation and disposal, not only reads and
-writes. Verify behavior for route changes, view removal, logout, account or
-workspace switching, permission changes, reconnect, and application reload.
+State architecture must define creation and disposal, not only reads and writes. Verify behavior for route changes, view removal, logout, account or workspace switching, permission changes, reconnect, and application reload.
 
-Remove listeners and subscriptions with their owner. Cancel obsolete work or
-ignore its result using an explicit request identity. Clear feature, cache, and
-persistent state when its authority no longer applies; do not rely on a page
-reload to repair ownership mistakes.
+Remove listeners and subscriptions with their owner. Cancel obsolete work or ignore its result using an explicit request identity. Clear feature, cache, and persistent state when its authority no longer applies; do not rely on a page reload to repair ownership mistakes.
 
 ## Public UI Boundaries
 
-Reusable UI accepts semantic values and reports semantic intent. Appropriate
-inputs include selected, expanded, busy, invalid, value, and description.
-Appropriate outputs include activate, select, commit, cancel, dismiss, and
-resize.
+Reusable UI accepts semantic values and reports semantic intent. Appropriate inputs include selected, expanded, busy, invalid, value, and description. Appropriate outputs include activate, select, commit, cancel, dismiss, and resize.
 
-Do not pass a product store, server client, account record, document model, or
-business command into a primitive or pattern. Put that mapping in a feature
-adapter and preserve the host framework's native input, event, subscription,
-and lifecycle conventions.
+Do not pass a product store, server client, account record, document model, or business command into a primitive or pattern. Put that mapping in a feature adapter and preserve the host framework's native input, event, subscription, and lifecycle conventions.
 
 ## Migration Workflow
 
-1. Inventory every readable, writable, derived, persisted, and asynchronous
-   value in the bounded workflow.
+1. Inventory every readable, writable, derived, persisted, and asynchronous value in the bounded workflow.
 2. Classify its authority, lifetime, scope, source of truth, and reset boundary.
-3. Record compatibility requirements for URLs, storage keys, commands,
-   selectors, events, loading states, and focus behavior.
-4. Introduce the smallest missing owner or adapter without adding a parallel
-   store or behavior engine.
+3. Record compatibility requirements for URLs, storage keys, commands, selectors, events, loading states, and focus behavior.
+4. Introduce the smallest missing owner or adapter without adding a parallel store or behavior engine.
 5. Migrate every placement in the slice to the same source and command path.
 6. Remove duplicate writable state only after proving no consumer remains.
-7. Verify reload, navigation, async completion, cancellation, reset, and
-   disposal in addition to the normal workflow.
+7. Verify reload, navigation, async completion, cancellation, reset, and disposal in addition to the normal workflow.
 
 ## Verification And Anti-Patterns
 
@@ -204,18 +158,11 @@ Confirm that:
 
 - Each writable value has one named authority.
 - Derived values cannot drift from their source.
-- Primitives and patterns import no feature, application, storage, or server
-  state implementation.
+- Primitives and patterns import no feature, application, storage, or server state implementation.
 - Global state has a documented cross-feature consumer and lifecycle.
-- URL, server, session, and persisted values have explicit reconciliation and
-  reset rules.
-- Async completion cannot update an obsolete route, selection, account, or
-  disposed view.
+- URL, server, session, and persisted values have explicit reconciliation and reset rules.
+- Async completion cannot update an obsolete route, selection, account, or disposed view.
 - Narrow subscriptions avoid unrelated rerenders or updates.
-- Existing store, command, selector, URL, persistence, and accessibility
-  contracts remain compatible unless an approved replacement exists.
+- Existing store, command, selector, URL, persistence, and accessibility contracts remain compatible unless an approved replacement exists.
 
-Reject hidden duplicate sources of truth, one universal application store,
-storage access from reusable controls, view-specific command dispatch copied
-across placements, business requests started by primitives, and speculative
-state abstraction with no migrated consumer.
+Reject hidden duplicate sources of truth, one universal application store, storage access from reusable controls, view-specific command dispatch copied across placements, business requests started by primitives, and speculative state abstraction with no migrated consumer.

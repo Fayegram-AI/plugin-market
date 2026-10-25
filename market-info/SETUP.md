@@ -12,7 +12,7 @@ Repository: https://github.com/Fayegram-AI/plugin-market.git
 
 - **Faye Coding Assistant**: `faye-coding-assistant`, version `0.1.0-beta.7`. Skills: `code-review`, `codebase-exploration`, `coding-goal-guardrails`, `coding-handoff`, `phase-implementation-review`, `reconcile-repository-docs`, `refactor-planning`, `report-coding-goal-progress`, `repository-change-planning`, `repository-debugging`, `repository-implementation`, `source-file-token-estimation`, `test-suite-health`, `verification-planning`.
 - **Faye Image Utility**: `faye-image-utility`, version `0.1.0-beta.6`. Skills: `faye-image-age-rating`, `faye-image-artifact-audit`, `faye-image-format-converter`, `simple-paint-n-annotation`.
-- **Faye UI System Engineer**: `faye-ui-system-engineer`, version `0.1.0-beta.4`. Skills: `ui-inspection`, `ui-system-architecture`, `ui-system-implementation`, `ui-system-review`, `ui-visual-design`.
+- **Faye UI System Engineer**: `faye-ui-system-engineer`, version `0.1.0-beta.5`. Skills: `ui-inspection`, `ui-system-architecture`, `ui-system-implementation`, `ui-system-review`, `ui-visual-design`.
 
 ## Operating rules
 
