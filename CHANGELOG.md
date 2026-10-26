@@ -2,7 +2,7 @@
 
 All notable marketplace-package changes are tracked here.
 
-## Unreleased
+## 2026-10-25
 
 ### UI System Engineer 0.1.0-beta.5
 
@@ -12,6 +12,8 @@ All notable marketplace-package changes are tracked here.
   within the existing browser UI scopes and supported product capabilities.
 - Retain the five skill identities, invocation policy, scanner behavior, and
   dependency requirements.
+
+## 2026-10-01
 
 ### Setup experience remake: 2026-09-30
 
@@ -33,6 +35,10 @@ All notable marketplace-package changes are tracked here.
 - Synchronize the agent-readable guide and repository getting-started prose,
   preserving dated local evidence and Antigravity's existing checkout method.
 - Preserve all plugin package bytes, native versions, and skill behavior.
+
+## Earlier Development History
+
+The entries below describe development and candidate preparation before the October 1 publication. Their dates and statements reflect the state when recorded; they do not describe the current distribution or establish that every earlier candidate package was published.
 
 ### Documentation and planning-trigger reconciliation: 2026-09-30
 
@@ -166,7 +172,7 @@ All notable marketplace-package changes are tracked here.
 - Kept Faye Coding Assistant at `0.1.0-beta.6` and Faye Image Utility at
   `0.1.0-beta.4`.
 
-## 2026-09-08
+### 2026-09-08
 
 - Reconciled the Grok marketplace registry and per-plugin Grok/root
   compatibility manifests, with matching release versions and validation.
@@ -224,7 +230,7 @@ All notable marketplace-package changes are tracked here.
 - Strengthened standalone validation for publication metadata, documentation,
   licensing boundaries, and release-package cleanliness.
 
-## 2026-06-17
+### 2026-06-17
 
 - Prepared the marketplace source as a standalone Git-addressable repository.
 - Renamed the marketplace to `faye-codex-market`.
