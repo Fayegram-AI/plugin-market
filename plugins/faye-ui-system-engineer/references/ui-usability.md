@@ -4,11 +4,11 @@ Evaluate the task the surface supports. Select relevant checks and use evidence 
 
 ## Orientation And Decisions
 
-Make the current location, relevant information, and next useful action clear. Keep the information needed for a decision near that decision: price near a purchase action, an affected item near its destructive action, or current filters near their results. Do not require users to remember a value from another panel when it can remain visible. Preserve useful selection, input, and navigation context across the supported flow.
+Make the location, information, and available actions clear where the intended use requires them. Discovery may deliberately defer information or meaning; keep consequential operation scope and supported recovery understandable. Keep the information needed for a decision near that decision: price near a purchase action, an affected item near its destructive action, or current filters near their results. Do not require users to remember a value from another panel when it can remain visible. Preserve useful selection, input, and navigation context across the supported flow.
 
 Group by meaning and distinguish primary, secondary, and destructive actions. Use links for destinations and buttons for actions; preserve browser navigation. Make comparable records use consistent fields and terminology. Keep important context available when revealing details; hiding everything behind tooltips or menus can reduce visual clutter while increasing the work of comparing or acting.
 
-Progressive disclosure suits optional explanation and infrequent advanced choices. It should not conceal required input, the consequence of an action, or the main information users repeatedly compare. Reuse familiar host patterns for navigation, forms, and commands unless a demonstrated task benefit justifies a different one. Do not add bulk actions, shortcuts, or onboarding merely to fill a feature list.
+Progressive disclosure suits optional explanation and infrequent advanced choices. It should not conceal required input, the consequence of an action, or the main information users repeatedly compare. Use familiar host patterns where they serve the intended operation and experience. A different treatment needs a concrete reason and accessible behavior; novelty alone is insufficient. Do not add bulk actions, shortcuts, or onboarding merely to fill a feature list.
 
 ## Content And Message Hierarchy
 

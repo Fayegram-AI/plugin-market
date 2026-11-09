@@ -244,7 +244,12 @@ async function validatePluginPackage(pluginPath, pluginName, registryNames) {
     const readmePath = path.join(pluginPath, "README.md");
     const readme = await readText(readmePath, `${pluginName} README`);
     if (readme !== null) {
-        requireText(readmePath, readme, manifest.version, `version ${manifest.version}`);
+        // Release-independent prose may omit a version; explicit metadata must agree.
+        for (const declaration of readme.matchAll(/(?:^|[·|])[ \t]*(?:[-*][ \t]+)?Version:[ \t]*`?([^`\s·|]*)/gmu)) {
+            if (declaration[1] !== manifest.version) {
+                errors.push(`${relative(readmePath)} Version field must match package metadata (${manifest.version}).`);
+            }
+        }
         requireText(readmePath, readme, "npm run validate", "portable validation command");
         for (const skillName of skillNames) {
             requireText(readmePath, readme, skillName, `skill ${skillName}`);

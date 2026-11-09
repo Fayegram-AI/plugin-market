@@ -17,6 +17,6 @@ Specify a project-owned UI system with clear contracts and real consumers. Archi
 
 ## Deliver The Specification
 
-Cover the proposed ownership and dependency model, public inputs and outputs, interaction and state contracts, responsive/accessibility behavior, migration sequence, and acceptance evidence. Distinguish current facts from proposals and record unresolved constraints. Scale the document to the requested change.
+Cover the proposed ownership and dependency model, public inputs and outputs, interaction and state contracts, responsive/accessibility behavior, migration sequence, and acceptance evidence. Preserve consequential design intent in the contracts it depends on, including continuous response or controlled variation where relevant. Distinguish current facts from proposals and record unresolved constraints. Scale the document to the requested change.
 
 Keep the host framework and native API conventions. Logical layers are not a requirement to create six directories. Do not introduce a dependency, global store, or generalized component without a consumer and justified ownership. For an authorized design-and-build task, continue with `ui-system-implementation`. Follow [evidence storage](../../references/evidence-storage.md) for file outputs; a proposal does not imply permission to write a durable report.

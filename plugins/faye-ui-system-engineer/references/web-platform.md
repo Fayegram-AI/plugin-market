@@ -45,7 +45,7 @@ Use [UI usability](ui-usability.md) for labels, feedback, and recovery decisions
 
 ## Motion And Rendering
 
-Choose motion only after its purpose is clear in [visual language](visual-language.md). Repeated controls need prompt feedback; do not delay input or hold users behind a decorative transition. Coordinate related transitions so position, emphasis, and state tell the same story.
+Choose motion only after its purpose is clear in [visual language](visual-language.md). Distinguish feedback latency from the intended unfolding of a response. A sustained or evolving response can carry the experience; decorative transitions must not delay input or conceal its registration. Coordinate related transitions so position, emphasis, and state tell the same story.
 
 Define what happens when a transition is interrupted, reversed, or triggered again. Settle into the current state rather than queueing stale visual feedback. Keep essential content visible if animation fails or is disabled. Reduced-motion behavior must preserve the state change, often through an immediate update or a less spatial transition. Avoid perpetual decorative movement competing with work; provide appropriate control when sustained motion is part of the experience.
 

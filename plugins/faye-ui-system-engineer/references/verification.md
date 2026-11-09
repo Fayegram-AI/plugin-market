@@ -48,7 +48,7 @@ Verify with keyboard and pointer:
 - Drag, resize, and pointer-capture cleanup
 - Commit and cancel payloads, prevented defaults, retained or restored focus, and listener disposal where editable controls expose those contracts
 - Native form submission, useful label activation, paste/autofill, and retained input on recovery when forms change
-- Interrupted, reversed, or repeated animated actions and reduced-motion behavior when motion changes; observe input responsiveness rather than inferring it
+- Interrupted, reversed, or repeated actions and reduced-motion behavior when motion changes; observe input responsiveness, control resolution, continuity, and any intended variation rather than inferring them
 - For deferred focus changes, move to another control or workflow before the callback completes and verify that obsolete work cannot reclaim focus; also verify legitimate initial and return focus
 - For changed entry flows, compare already known context with a genuinely unresolved choice and confirm that each uses the supported operation without redundant selection steps
 
@@ -65,6 +65,8 @@ Choose representative viewport and container widths from the selected web profil
 Look for overflow, clipped labels, collapsing inputs, inaccessible controls, content starvation, accidental wrapping, and unstable scroll ownership. Include representative long/unbroken/localized content and relevant font or media fallbacks. For affected mobile flows, check sticky controls, overlays, and the on-screen keyboard on a supported surface; desktop resizing alone is insufficient.
 
 ## Visual QA
+
+Compare the result with the consequential design decisions, including the intended experience. Identify qualities that a correction must preserve. For behavior carried over time, exercise realistic tempo, sustained input, repetition, and interruption; screenshots alone cannot establish the result. Check whether adaptation preserves defining relationships as well as access to controls. Separate observed behavior from claims about enjoyment or emotional effect.
 
 For changed composition and copy, assess both overapplication and underapplication. Check that grouping, reading order, priority, and action placement express actual relationships; excessive gaps must not detach related information, and compression must not impair reading or operation. Verify content-driven sizes with actual text, controls, and gaps rather than treating a minimum height as an exact height.
 

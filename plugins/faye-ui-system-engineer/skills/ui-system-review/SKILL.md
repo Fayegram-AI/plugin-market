@@ -23,6 +23,6 @@ Establish actionable findings from the named UI source or change. Keep the revie
 
 ## Report And Continue
 
-Lead with supported findings ordered by impact. For each, identify the source location, trigger or affected state, evidence, user consequence, and bounded correction with a useful recheck. Group confirmed shared causes rather than repeating their symptoms. Separate defects, design preferences, and unverified risks. State coverage and limitations even when no actionable findings are found.
+Lead with supported findings ordered by consequences for the intended use and experience. For each, identify the source location, trigger or affected state, evidence, user consequence, and bounded correction with a useful recheck. Preserve achieved qualities and group confirmed shared causes. Separate defects, design preferences, and unverified risks. State coverage and limitations even when no actionable findings are found.
 
 For requested fixes, establish findings first and continue with `ui-system-implementation` within the authorized scope. An independent second assessment may use the optional [UI reviewer](../../references/reviewer.md) when delegation is available and authorized; it is not a mandatory review stage. Follow [evidence storage](../../references/evidence-storage.md) for captures and requested reports.

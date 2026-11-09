@@ -1,6 +1,6 @@
 ---
 name: ui-visual-design
-description: Establish, refine, or critique the visual direction of a browser UI, screen, or component, including hierarchy, composition, typography, spacing, density, and color. Exclude exact-value style edits, source architecture reviews, and non-UI image critique.
+description: Establish, refine, or critique the visual and experiential direction of a browser UI, screen, or component through composition, typography, color, imagery, and interaction feel. Exclude exact-value style edits, source architecture reviews, and non-UI image critique.
 ---
 
 # UI Visual Design
@@ -9,11 +9,11 @@ Turn visual judgment into a product-specific design that can be implemented and 
 
 ## Develop The Design
 
-1. Establish the audience, primary task, surface, constraints, and available evidence. Read [ownership and scope](../../references/ownership-and-scope.md) for authority and chrome/content boundaries; inspect source only when relevant.
+1. Establish what people should accomplish, understand, and experience, the surface, fixed constraints, and available evidence. Resolve only missing information that materially changes the direction. Read [ownership and scope](../../references/ownership-and-scope.md) for authority and chrome/content boundaries; inspect source only when relevant.
 2. Read [general UI principles](../../references/ui-principles.md) and [visual language](../../references/visual-language.md). Identify whether the task refines an established language, matches a supplied reference, or creates a requested new direction. Evaluate existing and proposed choices against the brief and make material assumptions explicit instead of silently inventing a brand.
-3. Use [design specification](../../references/design-specification.md) to turn direction into layout, hierarchy, typography, spacing, semantic color, imagery, icon, shape, and motion decisions. Compare consequential alternatives against the task and critique the direction before implementation. Use the worked decisions for preservation, reference adaptation, density, or creating a direction from the task and content.
+3. Use [design specification](../../references/design-specification.md) to resolve consequential design questions through coordinated composition, type, color, imagery, and relevant interaction or material response. Compare meaningful alternatives with the same content and constraints when the direction is open; skip variants that do not resolve a real question. Abstract relationships from references rather than copying their styling or inventing behavior.
 4. Check action priority, labels, navigation, feedback, and recovery using [UI usability](../../references/ui-usability.md). Exercise the design with realistic content, available assets, and relevant states, not only an ideal empty composition. Specify reflow and content fallbacks alongside the layout.
-5. Define observable acceptance criteria at relevant sizes and input methods. Use the applicable [web profile](../../references/web-profiles.md); read [web platform](../../references/web-platform.md) when specifying interactive controls or browser behavior.
+5. Define observable acceptance criteria for the intended experience, including qualities to preserve across sizes, inputs, and relevant sustained or repeated use. Static composition is a complete design direction. Use the applicable [web profile](../../references/web-profiles.md); read [web platform](../../references/web-platform.md) when specifying interactive controls or browser behavior.
 
 When the design defines shared tokens, themes, variants, or density, read [visual foundations](../../references/visual-foundations.md) to connect the choices into reusable visual contracts. Keep purely local composition local.
 

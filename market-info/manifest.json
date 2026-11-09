@@ -63,9 +63,9 @@
             "id": "faye-ui-system-engineer",
             "name": "Faye UI System Engineer",
             "summary": "Web UI design, implementation, review, and inspection.",
-            "version": "0.1.0-beta.5",
+            "version": "0.1.0-beta.6",
             "release": "public",
-            "fingerprint": "81e498162c22c078efe49756c5a215b7d77b702997b7372f964f130d1a8fea6b",
+            "fingerprint": "af1261c4fa36ed1cc1b7c00ec6f830485ae343edeaa5f4b09551784d730f2467",
             "skills": [
                 "ui-inspection",
                 "ui-system-architecture",
@@ -876,7 +876,7 @@
         }
     },
     "provenance": {
-        "sourceFingerprint": "ad7de62cb5bed8711c72b317c721f66cde5af5c778d44d5a431ff3406166acc6",
+        "sourceFingerprint": "fd723072f916fae15077fa1d2756baf34163893e286c924073d3382a2951e617",
         "configurationFingerprint": "07b99b0da4c9440a174d748635551fb246305101cae87d351fcddf9ff7472e98"
     }
 }

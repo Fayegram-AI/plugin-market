@@ -1,16 +1,10 @@
 # Security Policy
 
-This repository contains plugin packages, skills, agent definitions, and
-validation scripts. It must not contain credentials, local machine paths,
-private workspace artifacts, logs, generated user outputs, or website
-deployment artifacts.
+This repository contains plugin packages, skills, agent definitions, and validation scripts. It must not contain credentials, local machine paths, private workspace artifacts, logs, generated user outputs, or website deployment artifacts.
 
 ## Reporting
 
-Report security-sensitive issues privately through GitHub Security Advisories.
-If Security Advisories are unavailable, contact the repository owner privately
-through GitHub. Do not post credentials, exploit details, or private user data
-in a public issue or pull request.
+Report security-sensitive issues privately through GitHub Security Advisories. If Security Advisories are unavailable, contact the repository owner privately through GitHub. Do not post credentials, exploit details, or private user data in a public issue or pull request.
 
 ## Scope
 
